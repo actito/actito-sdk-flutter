@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:sample/ui/device/views/device_data_field_view.dart';
 
 import '../../logger/logger.dart';

@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:sample/ui/home/views/device_card_view.dart';
 import 'package:sample/ui/home/views/dnd_card_view.dart';
 import 'package:sample/ui/home/views/geo_card_view.dart';

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/enviroment_variables.dart';

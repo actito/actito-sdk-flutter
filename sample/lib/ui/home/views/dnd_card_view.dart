@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:sample/theme/theme.dart';
 
 import '../../../logger/logger.dart';

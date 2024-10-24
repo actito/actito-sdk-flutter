@@ -1,0 +1,31 @@
+name: actito_flutter
+description: Internal Actito plugin. Use the `actito` plugin instead.
+version: 4.0.0
+homepage: https://actito.com
+documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito
+
+environment:
+  sdk: '>=2.17.0 <4.0.0'
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json_annotation: ^4.9.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  build_runner: ^2.0.0
+  json_serializable: ^6.3.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.actito.flutter
+        pluginClass: ActitoPlugin
+      ios:
+        pluginClass: ActitoPlugin

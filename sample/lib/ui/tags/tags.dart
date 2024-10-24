@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:sample/logger/logger.dart';
 
 class TagsView extends StatefulWidget {

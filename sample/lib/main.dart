@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:notificare/notificare.dart';
+import 'package:notificare/actito.dart';
 import 'package:notificare_geo/notificare_geo.dart';
 import 'package:notificare_in_app_messaging/notificare_in_app_messaging.dart';
 import 'package:notificare_push/notificare_push.dart';
