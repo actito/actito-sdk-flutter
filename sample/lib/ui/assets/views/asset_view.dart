@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_assets/notificare_assets.dart';
+import 'package:notificare_assets/actito_assets.dart';
 import 'package:sample/theme/theme.dart';
 
 import 'asset_data_field_view.dart';

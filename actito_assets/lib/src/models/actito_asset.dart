@@ -1,18 +1,18 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'notificare_asset.g.dart';
+part 'actito_asset.g.dart';
 
 @JsonSerializable(anyMap: true, explicitToJson: true)
-class NotificareAsset {
+class ActitoAsset {
   final String title;
   final String? description;
   final String? key;
   final String? url;
-  final NotificareAssetButton? button;
-  final NotificareAssetMetaData? metaData;
+  final ActitoAssetButton? button;
+  final ActitoAssetMetaData? metaData;
   final Map<String, dynamic> extra;
 
-  NotificareAsset({
+  ActitoAsset({
     required this.title,
     required this.description,
     required this.key,
@@ -22,42 +22,42 @@ class NotificareAsset {
     required this.extra,
   });
 
-  factory NotificareAsset.fromJson(Map<String, dynamic> json) =>
-      _$NotificareAssetFromJson(json);
+  factory ActitoAsset.fromJson(Map<String, dynamic> json) =>
+      _$ActitoAssetFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificareAssetToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoAssetToJson(this);
 }
 
 @JsonSerializable(anyMap: true, explicitToJson: true)
-class NotificareAssetButton {
+class ActitoAssetButton {
   final String? label;
   final String? action;
 
-  NotificareAssetButton({
+  ActitoAssetButton({
     required this.label,
     required this.action,
   });
 
-  factory NotificareAssetButton.fromJson(Map<String, dynamic> json) =>
-      _$NotificareAssetButtonFromJson(json);
+  factory ActitoAssetButton.fromJson(Map<String, dynamic> json) =>
+      _$ActitoAssetButtonFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificareAssetButtonToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoAssetButtonToJson(this);
 }
 
 @JsonSerializable(anyMap: true, explicitToJson: true)
-class NotificareAssetMetaData {
+class ActitoAssetMetaData {
   final String originalFileName;
   final String contentType;
   final int contentLength;
 
-  NotificareAssetMetaData({
+  ActitoAssetMetaData({
     required this.originalFileName,
     required this.contentType,
     required this.contentLength,
   });
 
-  factory NotificareAssetMetaData.fromJson(Map<String, dynamic> json) =>
-      _$NotificareAssetMetaDataFromJson(json);
+  factory ActitoAssetMetaData.fromJson(Map<String, dynamic> json) =>
+      _$ActitoAssetMetaDataFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificareAssetMetaDataToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoAssetMetaDataToJson(this);
 }

@@ -1,9 +1,9 @@
 // import 'package:flutter/services.dart';
 // import 'package:flutter_test/flutter_test.dart';
-// import 'package:notificare_assets/notificare_assets.dart';
+// import 'package:actito_assets/actito_assets.dart';
 
 void main() {
-  // const MethodChannel channel = MethodChannel('notificare_assets');
+  // const MethodChannel channel = MethodChannel('actito_assets');
   //
   // TestWidgetsFlutterBinding.ensureInitialized();
   //
@@ -18,6 +18,6 @@ void main() {
   // });
   //
   // test('getPlatformVersion', () async {
-  //   expect(await NotificareAssets.platformVersion, '42');
+  //   expect(await ActitoAssets.platformVersion, '42');
   // });
 }

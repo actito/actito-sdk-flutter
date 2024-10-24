@@ -1,4 +1,4 @@
-package re.notifica.assets.flutter
+package com.actito.assets.flutter
 
 import android.os.Handler
 import android.os.Looper
@@ -9,18 +9,18 @@ import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import re.notifica.Notificare
-import re.notifica.NotificareCallback
-import re.notifica.assets.ktx.assets
-import re.notifica.assets.models.NotificareAsset
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.assets.ktx.assets
+import com.actito.assets.models.ActitoAsset
 
-class NotificareAssetsPlugin : FlutterPlugin, MethodCallHandler {
+class ActitoAssetsPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(
             flutterPluginBinding.binaryMessenger,
-            "re.notifica.assets.flutter/notificare_assets",
+            "com.actito.assets.flutter/actito_assets",
             JSONMethodCodec.INSTANCE
         )
         channel.setMethodCallHandler(this)
@@ -42,8 +42,8 @@ class NotificareAssetsPlugin : FlutterPlugin, MethodCallHandler {
             pluginResult.error(NOTIFICARE_ERROR, "Invalid request arguments.", null)
         }
 
-        Notificare.assets().fetch(group, object : NotificareCallback<List<NotificareAsset>> {
-            override fun onSuccess(result: List<NotificareAsset>) {
+        Actito.assets().fetch(group, object : ActitoCallback<List<ActitoAsset>> {
+            override fun onSuccess(result: List<ActitoAsset>) {
                 onMainThread {
                     pluginResult.success(result.map { it.toJson() })
                 }
@@ -58,7 +58,7 @@ class NotificareAssetsPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     internal companion object {
-        internal const val NOTIFICARE_ERROR = "notificare_error"
+        internal const val NOTIFICARE_ERROR = "actito_error"
 
         internal fun onMainThread(action: () -> Unit) {
             Handler(Looper.getMainLooper()).post { action() }

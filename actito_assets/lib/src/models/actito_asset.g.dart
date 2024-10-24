@@ -1,28 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notificare_asset.dart';
+part of 'actito_asset.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NotificareAsset _$NotificareAssetFromJson(Map json) => NotificareAsset(
+ActitoAsset _$ActitoAssetFromJson(Map json) => ActitoAsset(
       title: json['title'] as String,
       description: json['description'] as String?,
       key: json['key'] as String?,
       url: json['url'] as String?,
       button: json['button'] == null
           ? null
-          : NotificareAssetButton.fromJson(
+          : ActitoAssetButton.fromJson(
               Map<String, dynamic>.from(json['button'] as Map)),
       metaData: json['metaData'] == null
           ? null
-          : NotificareAssetMetaData.fromJson(
+          : ActitoAssetMetaData.fromJson(
               Map<String, dynamic>.from(json['metaData'] as Map)),
       extra: Map<String, dynamic>.from(json['extra'] as Map),
     );
 
-Map<String, dynamic> _$NotificareAssetToJson(NotificareAsset instance) =>
+Map<String, dynamic> _$ActitoAssetToJson(ActitoAsset instance) =>
     <String, dynamic>{
       'title': instance.title,
       'description': instance.description,
@@ -33,28 +33,28 @@ Map<String, dynamic> _$NotificareAssetToJson(NotificareAsset instance) =>
       'extra': instance.extra,
     };
 
-NotificareAssetButton _$NotificareAssetButtonFromJson(Map json) =>
-    NotificareAssetButton(
+ActitoAssetButton _$ActitoAssetButtonFromJson(Map json) =>
+    ActitoAssetButton(
       label: json['label'] as String?,
       action: json['action'] as String?,
     );
 
-Map<String, dynamic> _$NotificareAssetButtonToJson(
-        NotificareAssetButton instance) =>
+Map<String, dynamic> _$ActitoAssetButtonToJson(
+        ActitoAssetButton instance) =>
     <String, dynamic>{
       'label': instance.label,
       'action': instance.action,
     };
 
-NotificareAssetMetaData _$NotificareAssetMetaDataFromJson(Map json) =>
-    NotificareAssetMetaData(
+ActitoAssetMetaData _$ActitoAssetMetaDataFromJson(Map json) =>
+    ActitoAssetMetaData(
       originalFileName: json['originalFileName'] as String,
       contentType: json['contentType'] as String,
       contentLength: json['contentLength'] as int,
     );
 
-Map<String, dynamic> _$NotificareAssetMetaDataToJson(
-        NotificareAssetMetaData instance) =>
+Map<String, dynamic> _$ActitoAssetMetaDataToJson(
+        ActitoAssetMetaData instance) =>
     <String, dynamic>{
       'originalFileName': instance.originalFileName,
       'contentType': instance.contentType,

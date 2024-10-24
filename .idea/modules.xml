@@ -3,10 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/actito/actito.iml" filepath="$PROJECT_DIR$/actito/actito.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_assets/actito_assets.iml" filepath="$PROJECT_DIR$/actito_assets/actito_assets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_assets/android/actito_assets_android.iml" filepath="$PROJECT_DIR$/actito_assets/android/actito_assets_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_flutter/actito_flutter.iml" filepath="$PROJECT_DIR$/actito_flutter/actito_flutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" filepath="$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_assets/notificare_assets.iml" filepath="$PROJECT_DIR$/notificare_assets/notificare_assets.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_assets/android/notificare_assets_android.iml" filepath="$PROJECT_DIR$/notificare_assets/android/notificare_assets_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_geo/notificare_geo.iml" filepath="$PROJECT_DIR$/notificare_geo/notificare_geo.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/notificare_geo/android/notificare_geo_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_in_app_messaging/notificare_in_app_messaging.iml" filepath="$PROJECT_DIR$/notificare_in_app_messaging/notificare_in_app_messaging.iml" />

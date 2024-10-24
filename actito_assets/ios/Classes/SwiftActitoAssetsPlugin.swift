@@ -1,17 +1,17 @@
 import Flutter
 import UIKit
-import NotificareKit
-import NotificareAssetsKit
+import ActitoKit
+import ActitoAssetsKit
 
 private typealias FlutterDictionary = [String: Any?]
-private let DEFAULT_ERROR_CODE = "notificare_error"
+private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftNotificareAssetsPlugin: NSObject, FlutterPlugin {
+public class SwiftActitoAssetsPlugin: NSObject, FlutterPlugin {
 
-    private static let instance = SwiftNotificareAssetsPlugin()
+    private static let instance = SwiftActitoAssetsPlugin()
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "re.notifica.assets.flutter/notificare_assets", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
+        let channel = FlutterMethodChannel(name: "com.actito.assets.flutter/actito_assets", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
@@ -29,7 +29,7 @@ public class SwiftNotificareAssetsPlugin: NSObject, FlutterPlugin {
     private func fetch(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let group = call.arguments as! String
         
-        Notificare.shared.assets().fetch(group: group) { result in
+        Actito.shared.assets().fetch(group: group) { result in
             switch result {
             case let .success(assets):
                 do {

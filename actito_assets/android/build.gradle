@@ -1,4 +1,4 @@
-group 're.notifica.assets.flutter'
+group 'com.actito.assets.flutter'
 
 buildscript {
     ext.kotlin_version = '1.9.10'
@@ -28,7 +28,7 @@ apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 're.notifica.assets.flutter'
+        namespace 'com.actito.assets.flutter'
     }
 
     compileSdkVersion 34
@@ -52,7 +52,7 @@ android {
 }
 
 dependencies {
-    def notificare_version = '4.0.0'
-    api "re.notifica:notificare:$notificare_version"
-    api "re.notifica:notificare-assets:$notificare_version"
+    def actito_version = '4.0.0'
+    api "com.actito:actito:$actito_version"
+    api "com.actito:actito-assets:$actito_version"
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_assets/notificare_assets.dart';
+import 'package:notificare_assets/actito_assets.dart';
 import 'package:sample/ui/assets/views/assets_list_view.dart';
 
 import '../../logger/logger.dart';
