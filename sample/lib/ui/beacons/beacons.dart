@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare_geo/notificare_geo.dart';
+import 'package:notificare_geo/actito_geo.dart';
 
 import 'views/beacon_row_view.dart';
 

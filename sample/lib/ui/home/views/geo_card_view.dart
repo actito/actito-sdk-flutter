@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_geo/notificare_geo.dart';
+import 'package:notificare_geo/actito_geo.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sample/theme/theme.dart';
 

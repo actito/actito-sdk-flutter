@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_geo/notificare_geo.dart';
+import 'package:notificare_geo/actito_geo.dart';
 
 class BeaconRowView extends StatelessWidget {
   final NotificareBeacon beacon;
