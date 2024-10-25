@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:notificare/actito.dart';
 import 'package:notificare_geo/actito_geo.dart';
 import 'package:notificare_in_app_messaging/actito_in_app_messaging.dart';
-import 'package:notificare_push/notificare_push.dart';
+import 'package:notificare_push/actito_push.dart';
 import 'package:notificare_push_ui/notificare_push_ui.dart';
 import 'package:notificare_scannables/notificare_scannables.dart';
 import 'package:sample/ui/home/home.dart';

@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:notificare_inbox/actito_inbox.dart';
-import 'package:notificare_push/notificare_push.dart';
+import 'package:notificare_push/actito_push.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sample/theme/theme.dart';
 
