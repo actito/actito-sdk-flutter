@@ -1,0 +1,38 @@
+name: actito_user_inbox
+description: "Actito User Inbox Flutter Plugin: Provide your users with a single inbox accessible across all their devices."
+version: 4.0.0
+homepage: https://actito.com
+documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito_user_inbox
+
+environment:
+  sdk: '>=2.17.0 <4.0.0'
+  flutter: ">=1.20.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  json_annotation: ^4.9.0
+  actito: ^4.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^1.0.0
+  build_runner: ^2.0.0
+  json_serializable: ^6.3.0
+
+dependency_overrides:
+  actito:
+    path: ../actito
+  actito_flutter:
+    path: ../actito_flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.actito.inbox.user.flutter
+        pluginClass: ActitoUserInboxPlugin
+      ios:
+        pluginClass: ActitoUserInboxPlugin
