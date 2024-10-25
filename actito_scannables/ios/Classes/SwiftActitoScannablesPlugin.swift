@@ -1,14 +1,14 @@
 import Flutter
 import UIKit
-import NotificareKit
-import NotificareScannablesKit
+import ActitoKit
+import ActitoScannablesKit
 
 private typealias FlutterDictionary = [String: Any?]
-private let DEFAULT_ERROR_CODE = "notificare_error"
+private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
-    private static let instance = SwiftNotificareScannablesPlugin()
-    private let events = NotificareScannablesPluginEvents(packageId: "re.notifica.scannables.flutter")
+public class SwiftActitoScannablesPlugin: NSObject, FlutterPlugin {
+    private static let instance = SwiftActitoScannablesPlugin()
+    private let events = ActitoScannablesPluginEvents(packageId: "com.actito.scannables.flutter")
     
     private var rootViewController: UIViewController? {
         get {
@@ -17,11 +17,11 @@ public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
     }
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "re.notifica.scannables.flutter/notificare_scannables", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
+        let channel = FlutterMethodChannel(name: "com.actito.scannables.flutter/actito_scannables", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(instance, channel: channel)
         
         instance.events.setup(registrar: registrar)
-        Notificare.shared.scannables().delegate = instance
+        Actito.shared.scannables().delegate = instance
     }
     
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -40,7 +40,7 @@ public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
     // MARK: - Methods
     
     private func canStartNfcScannableSession(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        response(Notificare.shared.scannables().canStartNfcScannableSession)
+        response(Actito.shared.scannables().canStartNfcScannableSession)
     }
     
     private func startScannableSession(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
@@ -49,12 +49,12 @@ public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
             return
         }
         
-        Notificare.shared.scannables().startScannableSession(controller: rootViewController)
+        Actito.shared.scannables().startScannableSession(controller: rootViewController)
         response(nil)
     }
     
     private func startNfcScannableSession(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Notificare.shared.scannables().startNfcScannableSession()
+        Actito.shared.scannables().startNfcScannableSession()
         response(nil)
     }
     
@@ -64,14 +64,14 @@ public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
             return
         }
         
-        Notificare.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
+        Actito.shared.scannables().startQrCodeScannableSession(controller: rootViewController, modal: true)
         response(nil)
     }
     
     private func fetch(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let tag = call.arguments as! String
         
-        Notificare.shared.scannables().fetch(tag: tag) { result in
+        Actito.shared.scannables().fetch(tag: tag) { result in
             switch result {
             case let .success(scannable):
                 do {
@@ -87,12 +87,12 @@ public class SwiftNotificareScannablesPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftNotificareScannablesPlugin: NotificareScannablesDelegate {
-    public func notificare(_ notificareScannables: NotificareScannables, didDetectScannable scannable: NotificareScannable) {
-        events.emit(NotificareScannablesPluginEvents.OnScannableDetected(scannable: scannable))
+extension SwiftActitoScannablesPlugin: ActitoScannablesDelegate {
+    public func actito(_ actitoScannables: ActitoScannables, didDetectScannable scannable: ActitoScannable) {
+        events.emit(ActitoScannablesPluginEvents.OnScannableDetected(scannable: scannable))
     }
     
-    public func notificare(_ notificareScannables: NotificareScannables, didInvalidateScannerSession error: Error) {
-        events.emit(NotificareScannablesPluginEvents.OnScannableSessionFailed(error: error))
+    public func actito(_ actitoScannables: ActitoScannables, didInvalidateScannerSession error: Error) {
+        events.emit(ActitoScannablesPluginEvents.OnScannableSessionFailed(error: error))
     }
 }

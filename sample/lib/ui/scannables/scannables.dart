@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_scannables/notificare_scannables.dart';
+import 'package:notificare_scannables/actito_scannables.dart';
 
 import '../../logger/logger.dart';
 

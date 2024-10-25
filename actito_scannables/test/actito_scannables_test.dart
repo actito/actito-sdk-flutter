@@ -1,9 +1,9 @@
 // import 'package:flutter/services.dart';
 // import 'package:flutter_test/flutter_test.dart';
-// import 'package:notificare_scannables/notificare_scannables.dart';
+// import 'package:actito_scannables/actito_scannables.dart';
 
 void main() {
-  // const MethodChannel channel = MethodChannel('notificare_scannables');
+  // const MethodChannel channel = MethodChannel('actito_scannables');
   //
   // TestWidgetsFlutterBinding.ensureInitialized();
   //
@@ -18,6 +18,6 @@ void main() {
   // });
   //
   // test('getPlatformVersion', () async {
-  //   expect(await NotificareScannables.platformVersion, '42');
+  //   expect(await ActitoScannables.platformVersion, '42');
   // });
 }

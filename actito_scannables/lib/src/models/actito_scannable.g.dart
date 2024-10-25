@@ -1,25 +1,25 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notificare_scannable.dart';
+part of 'actito_scannable.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NotificareScannable _$NotificareScannableFromJson(Map json) =>
-    NotificareScannable(
+ActitoScannable _$ActitoScannableFromJson(Map json) =>
+    ActitoScannable(
       id: json['id'] as String,
       name: json['name'] as String,
       tag: json['tag'] as String,
       type: json['type'] as String,
       notification: json['notification'] == null
           ? null
-          : NotificareNotification.fromJson(
+          : ActitoNotification.fromJson(
               Map<String, dynamic>.from(json['notification'] as Map)),
     );
 
-Map<String, dynamic> _$NotificareScannableToJson(
-        NotificareScannable instance) =>
+Map<String, dynamic> _$ActitoScannableToJson(
+        ActitoScannable instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

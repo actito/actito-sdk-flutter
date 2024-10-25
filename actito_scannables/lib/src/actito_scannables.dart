@@ -1,11 +1,11 @@
 import 'package:flutter/services.dart';
-import 'package:notificare_scannables/src/models/notificare_scannable.dart';
+import 'package:actito_scannables/src/models/actito_scannable.dart';
 
-class NotificareScannables {
-  NotificareScannables._();
+class ActitoScannables {
+  ActitoScannables._();
 
   static const MethodChannel _channel = MethodChannel(
-    're.notifica.scannables.flutter/notificare_scannables',
+    'com.actito.scannables.flutter/actito_scannables',
     JSONMethodCodec(),
   );
 
@@ -30,15 +30,15 @@ class NotificareScannables {
     await _channel.invokeMethod('startQrCodeScannableSession');
   }
 
-  static Future<NotificareScannable> fetch({required String tag}) async {
+  static Future<ActitoScannable> fetch({required String tag}) async {
     final json = await _channel.invokeMapMethod<String, dynamic>('fetch', tag);
-    return NotificareScannable.fromJson(json!);
+    return ActitoScannable.fromJson(json!);
   }
 
   // Events
   static Stream<dynamic> _getEventStream(String eventType) {
     if (_eventChannels[eventType] == null) {
-      final name = 're.notifica.scannables.flutter/events/$eventType';
+      final name = 'com.actito.scannables.flutter/events/$eventType';
       _eventChannels[eventType] = EventChannel(name, const JSONMethodCodec());
     }
 
@@ -50,10 +50,10 @@ class NotificareScannables {
     return _eventStreams[eventType]!;
   }
 
-  static Stream<NotificareScannable> get onScannableDetected {
+  static Stream<ActitoScannable> get onScannableDetected {
     return _getEventStream('scannable_detected').map((result) {
       final Map<dynamic, dynamic> json = result;
-      return NotificareScannable.fromJson(json.cast());
+      return ActitoScannable.fromJson(json.cast());
     });
   }
 

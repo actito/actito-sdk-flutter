@@ -1,14 +1,14 @@
-package re.notifica.scannables.flutter
+package com.actito.scannables.flutter
 
 import android.os.Handler
 import android.os.Looper
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
-import re.notifica.scannables.models.NotificareScannable
-import re.notifica.scannables.models.toJson
+import com.actito.scannables.models.ActitoScannable
+import com.actito.scannables.models.toJson
 
-internal object NotificareScannablesPluginEventBroker {
+internal object ActitoScannablesPluginEventBroker {
 
     private val streams: Map<Event.Type, Stream> by lazy {
         Event.Type.values().associate {
@@ -41,7 +41,7 @@ internal object NotificareScannablesPluginEventBroker {
         }
 
         class ScannableDetected(
-            scannable: NotificareScannable,
+            scannable: ActitoScannable,
         ) : Event() {
             override val type = Type.SCANNABLE_DETECTED
             override val payload = scannable.toJson()
@@ -61,7 +61,7 @@ internal object NotificareScannablesPluginEventBroker {
         private var eventSink: EventChannel.EventSink? = null
         private val pendingEvents = mutableListOf<Event>()
 
-        val name = "re.notifica.scannables.flutter/events/${type.id}"
+        val name = "com.actito.scannables.flutter/events/${type.id}"
 
         fun emit(event: Event) {
             val eventSink = this.eventSink

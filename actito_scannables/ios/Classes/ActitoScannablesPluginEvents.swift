@@ -1,14 +1,14 @@
 //
-//  NotificareScannablesPluginEventBroker.swift
-//  notificare_scannables
+//  ActitoScannablesPluginEventBroker.swift
+//  actito_scannables
 //
 //  Created by Helder Pinhal on 25/11/2021.
 //
 
 import Foundation
-import NotificareScannablesKit
+import ActitoScannablesKit
 
-class NotificareScannablesPluginEvents {
+class ActitoScannablesPluginEvents {
     private let packageId: String
     
     private var channels: [EventType: FlutterEventChannel] = [:]
@@ -55,8 +55,8 @@ class NotificareScannablesPluginEvents {
     }
 }
 
-// NotificareScannablesPluginEvents.Stream
-extension NotificareScannablesPluginEvents {
+// ActitoScannablesPluginEvents.Stream
+extension ActitoScannablesPluginEvents {
     class Stream: NSObject, FlutterStreamHandler {
         let type: EventType
         let name: String
@@ -95,8 +95,8 @@ extension NotificareScannablesPluginEvents {
     }
 }
 
-// NotificareScannablesPluginEvents.Event
-extension NotificareScannablesPluginEvents {
+// ActitoScannablesPluginEvents.Event
+extension ActitoScannablesPluginEvents {
     enum EventType: String, CaseIterable {
         case scannableDetected = "scannable_detected"
         case scannableSessionFailed = "scannable_session_failed"
@@ -108,8 +108,8 @@ extension NotificareScannablesPluginEvents {
     }
 }
 
-extension NotificareScannablesPluginEvents {
-    static func OnScannableDetected(scannable: NotificareScannable) -> Event {
+extension ActitoScannablesPluginEvents {
+    static func OnScannableDetected(scannable: ActitoScannable) -> Event {
         return Event(
             type: .scannableDetected,
             payload: try! scannable.toJson()

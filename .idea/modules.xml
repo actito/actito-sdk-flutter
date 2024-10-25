@@ -18,9 +18,9 @@
       <module fileurl="file://$PROJECT_DIR$/actito_push/android/actito_push_android.iml" filepath="$PROJECT_DIR$/actito_push/android/actito_push_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_push_ui/actito_push_ui.iml" filepath="$PROJECT_DIR$/actito_push_ui/actito_push_ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_push_ui/android/actito_push_ui_android.iml" filepath="$PROJECT_DIR$/actito_push_ui/android/actito_push_ui_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_scannables/actito_scannables.iml" filepath="$PROJECT_DIR$/actito_scannables/actito_scannables.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_scannables/android/actito_scannables_android.iml" filepath="$PROJECT_DIR$/actito_scannables/android/actito_scannables_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_scannables/notificare_scannables.iml" filepath="$PROJECT_DIR$/notificare_scannables/notificare_scannables.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_scannables/android/notificare_scannables_android.iml" filepath="$PROJECT_DIR$/notificare_scannables/android/notificare_scannables_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_user_inbox/notificare_user_inbox.iml" filepath="$PROJECT_DIR$/notificare_user_inbox/notificare_user_inbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_user_inbox/android/notificare_user_inbox_android.iml" filepath="$PROJECT_DIR$/notificare_user_inbox/android/notificare_user_inbox_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
