@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_in_app_messaging/notificare_in_app_messaging.dart';
+import 'package:notificare_in_app_messaging/actito_in_app_messaging.dart';
 import 'package:sample/theme/theme.dart';
 
 import '../../../logger/logger.dart';

@@ -8,9 +8,9 @@
       <module fileurl="file://$PROJECT_DIR$/actito_flutter/actito_flutter.iml" filepath="$PROJECT_DIR$/actito_flutter/actito_flutter.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" filepath="$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_geo/actito_geo.iml" filepath="$PROJECT_DIR$/actito_geo/actito_geo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_in_app_messaging/actito_in_app_messaging.iml" filepath="$PROJECT_DIR$/actito_in_app_messaging/actito_in_app_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" filepath="$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_in_app_messaging/notificare_in_app_messaging.iml" filepath="$PROJECT_DIR$/notificare_in_app_messaging/notificare_in_app_messaging.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_in_app_messaging/android/notificare_in_app_messaging_android.iml" filepath="$PROJECT_DIR$/notificare_in_app_messaging/android/notificare_in_app_messaging_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_inbox/notificare_inbox.iml" filepath="$PROJECT_DIR$/notificare_inbox/notificare_inbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_inbox/android/notificare_inbox_android.iml" filepath="$PROJECT_DIR$/notificare_inbox/android/notificare_inbox_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_loyalty/notificare_loyalty.iml" filepath="$PROJECT_DIR$/notificare_loyalty/notificare_loyalty.iml" />
