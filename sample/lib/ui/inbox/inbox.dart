@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare_inbox/notificare_inbox.dart';
+import 'package:notificare_inbox/actito_inbox.dart';
 import 'package:notificare_push_ui/notificare_push_ui.dart';
 
 import '../../logger/logger.dart';
