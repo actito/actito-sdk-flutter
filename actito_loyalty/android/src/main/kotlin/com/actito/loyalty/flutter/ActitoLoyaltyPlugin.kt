@@ -1,4 +1,4 @@
-package re.notifica.loyalty.flutter
+package com.actito.loyalty.flutter
 
 import android.app.Activity
 import android.os.Handler
@@ -13,19 +13,19 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import re.notifica.Notificare
-import re.notifica.NotificareCallback
-import re.notifica.loyalty.ktx.loyalty
-import re.notifica.loyalty.models.NotificarePass
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.loyalty.ktx.loyalty
+import com.actito.loyalty.models.ActitoPass
 
-class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
+class ActitoLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel
     private var activity: Activity? = null
 
     override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
         channel = MethodChannel(
             flutterPluginBinding.binaryMessenger,
-            "re.notifica.loyalty.flutter/notificare_loyalty",
+            "com.actito.loyalty.flutter/actito_loyalty",
             JSONMethodCodec.INSTANCE
         )
         channel.setMethodCallHandler(this)
@@ -62,11 +62,11 @@ class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
     private fun fetchPassBySerial(@Suppress("UNUSED_PARAMETER") call: MethodCall, response: Result) {
         val serial = call.arguments<String>() ?: return onMainThread {
-            response.error(NOTIFICARE_ERROR, "Invalid request arguments.", null)
+            response.error(ACTITO_ERROR, "Invalid request arguments.", null)
         }
 
-        Notificare.loyalty().fetchPassBySerial(serial, object : NotificareCallback<NotificarePass> {
-            override fun onSuccess(result: NotificarePass) {
+        Actito.loyalty().fetchPassBySerial(serial, object : ActitoCallback<ActitoPass> {
+            override fun onSuccess(result: ActitoPass) {
                 onMainThread {
                     response.success(result.toJson())
                 }
@@ -74,7 +74,7 @@ class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
             override fun onFailure(e: Exception) {
                 onMainThread {
-                    response.error(NOTIFICARE_ERROR, e.localizedMessage, null)
+                    response.error(ACTITO_ERROR, e.localizedMessage, null)
                 }
             }
         })
@@ -82,11 +82,11 @@ class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
     private fun fetchPassByBarcode(@Suppress("UNUSED_PARAMETER") call: MethodCall, response: Result) {
         val barcode = call.arguments<String>() ?: return onMainThread {
-            response.error(NOTIFICARE_ERROR, "Invalid request arguments.", null)
+            response.error(ACTITO_ERROR, "Invalid request arguments.", null)
         }
 
-        Notificare.loyalty().fetchPassByBarcode(barcode, object : NotificareCallback<NotificarePass> {
-            override fun onSuccess(result: NotificarePass) {
+        Actito.loyalty().fetchPassByBarcode(barcode, object : ActitoCallback<ActitoPass> {
+            override fun onSuccess(result: ActitoPass) {
                 onMainThread {
                     response.success(result.toJson())
                 }
@@ -94,7 +94,7 @@ class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
             override fun onFailure(e: Exception) {
                 onMainThread {
-                    response.error(NOTIFICARE_ERROR, e.localizedMessage, null)
+                    response.error(ACTITO_ERROR, e.localizedMessage, null)
                 }
             }
         })
@@ -102,21 +102,21 @@ class NotificareLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware 
 
     private fun present(@Suppress("UNUSED_PARAMETER") call: MethodCall, response: Result) {
         val arguments = call.arguments<JSONObject>() ?: return onMainThread {
-            response.error(NOTIFICARE_ERROR, "Invalid request arguments.", null)
+            response.error(ACTITO_ERROR, "Invalid request arguments.", null)
         }
 
-        val pass = NotificarePass.fromJson(arguments)
+        val pass = ActitoPass.fromJson(arguments)
         val activity = activity ?: run {
-            response.error(NOTIFICARE_ERROR, "Cannot present a pass without an activity attached.", null)
+            response.error(ACTITO_ERROR, "Cannot present a pass without an activity attached.", null)
             return
         }
 
-        Notificare.loyalty().present(activity, pass)
+        Actito.loyalty().present(activity, pass)
         response.success(null)
     }
 
     internal companion object {
-        internal const val NOTIFICARE_ERROR = "notificare_error"
+        internal const val ACTITO_ERROR = "actito_error"
 
         internal fun onMainThread(action: () -> Unit) {
             Handler(Looper.getMainLooper()).post { action() }

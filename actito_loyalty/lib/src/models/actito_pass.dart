@@ -1,11 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:notificare/notificare.dart';
+import 'package:actito/actito.dart';
 
-part 'notificare_pass.g.dart';
+part 'actito_pass.g.dart';
 
 @JsonSerializable(anyMap: true, explicitToJson: true)
-@NotificareIsoDateTimeConverter()
-class NotificarePass {
+@ActitoIsoDateTimeConverter()
+class ActitoPass {
   final String id;
   final String? type;
   final int version;
@@ -14,14 +14,14 @@ class NotificarePass {
   final String serial;
   final String barcode;
   final String redeem;
-  final List<NotificarePassRedemption> redeemHistory;
+  final List<ActitoPassRedemption> redeemHistory;
   final int limit;
   final String token;
   final Map<String, dynamic> data;
   final DateTime date;
   final String? googlePaySaveLink;
 
-  NotificarePass({
+  ActitoPass({
     required this.id,
     required this.type,
     required this.version,
@@ -38,25 +38,25 @@ class NotificarePass {
     required this.googlePaySaveLink,
   });
 
-  factory NotificarePass.fromJson(Map<String, dynamic> json) =>
-      _$NotificarePassFromJson(json);
+  factory ActitoPass.fromJson(Map<String, dynamic> json) =>
+      _$ActitoPassFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificarePassToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoPassToJson(this);
 }
 
 @JsonSerializable(anyMap: true, explicitToJson: true)
-@NotificareIsoDateTimeConverter()
-class NotificarePassRedemption {
+@ActitoIsoDateTimeConverter()
+class ActitoPassRedemption {
   final String? comments;
   final DateTime date;
 
-  NotificarePassRedemption({
+  ActitoPassRedemption({
     required this.comments,
     required this.date,
   });
 
-  factory NotificarePassRedemption.fromJson(Map<String, dynamic> json) =>
-      _$NotificarePassRedemptionFromJson(json);
+  factory ActitoPassRedemption.fromJson(Map<String, dynamic> json) =>
+      _$ActitoPassRedemptionFromJson(json);
 
-  Map<String, dynamic> toJson() => _$NotificarePassRedemptionToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoPassRedemptionToJson(this);
 }

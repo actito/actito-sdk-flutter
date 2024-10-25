@@ -1,9 +1,9 @@
 // import 'package:flutter/services.dart';
 // import 'package:flutter_test/flutter_test.dart';
-// import 'package:notificare_loyalty/notificare_loyalty.dart';
+// import 'package:actito_loyalty/actito_loyalty.dart';
 
 void main() {
-  // const MethodChannel channel = MethodChannel('notificare_loyalty');
+  // const MethodChannel channel = MethodChannel('actito_loyalty');
   //
   // TestWidgetsFlutterBinding.ensureInitialized();
   //
@@ -18,6 +18,6 @@ void main() {
   // });
   //
   // test('getPlatformVersion', () async {
-  //   expect(await NotificareLoyalty.platformVersion, '42');
+  //   expect(await ActitoLoyalty.platformVersion, '42');
   // });
 }

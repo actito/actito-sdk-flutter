@@ -1,4 +1,4 @@
-group 're.notifica.loyalty.flutter'
+group 'com.actito.loyalty.flutter'
 
 buildscript {
     ext.kotlin_version = '1.9.10'
@@ -28,7 +28,7 @@ apply plugin: 'kotlin-android'
 
 android {
     if (project.android.hasProperty("namespace")) {
-        namespace 're.notifica.loyalty.flutter'
+        namespace 'com.actito.loyalty.flutter'
     }
 
     compileSdkVersion 34
@@ -52,7 +52,7 @@ android {
 }
 
 dependencies {
-    def notificare_version = '4.0.0'
-    api "re.notifica:notificare:$notificare_version"
-    api "re.notifica:notificare-loyalty:$notificare_version"
+    def actito_version = '4.0.0'
+    api "com.actito:actito:$actito_version"
+    api "com.actito:actito-loyalty:$actito_version"
 }

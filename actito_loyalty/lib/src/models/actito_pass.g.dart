@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'notificare_pass.dart';
+part of 'actito_pass.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NotificarePass _$NotificarePassFromJson(Map json) => NotificarePass(
+ActitoPass _$ActitoPassFromJson(Map json) => ActitoPass(
       id: json['id'] as String,
       type: json['type'] as String?,
       version: json['version'] as int,
@@ -16,18 +16,18 @@ NotificarePass _$NotificarePassFromJson(Map json) => NotificarePass(
       barcode: json['barcode'] as String,
       redeem: json['redeem'] as String,
       redeemHistory: (json['redeemHistory'] as List<dynamic>)
-          .map((e) => NotificarePassRedemption.fromJson(
+          .map((e) => ActitoPassRedemption.fromJson(
               Map<String, dynamic>.from(e as Map)))
           .toList(),
       limit: json['limit'] as int,
       token: json['token'] as String,
       data: Map<String, dynamic>.from(json['data'] as Map),
-      date: const NotificareIsoDateTimeConverter()
+      date: const ActitoIsoDateTimeConverter()
           .fromJson(json['date'] as String),
       googlePaySaveLink: json['googlePaySaveLink'] as String?,
     );
 
-Map<String, dynamic> _$NotificarePassToJson(NotificarePass instance) =>
+Map<String, dynamic> _$ActitoPassToJson(ActitoPass instance) =>
     <String, dynamic>{
       'id': instance.id,
       'type': instance.type,
@@ -41,20 +41,20 @@ Map<String, dynamic> _$NotificarePassToJson(NotificarePass instance) =>
       'limit': instance.limit,
       'token': instance.token,
       'data': instance.data,
-      'date': const NotificareIsoDateTimeConverter().toJson(instance.date),
+      'date': const ActitoIsoDateTimeConverter().toJson(instance.date),
       'googlePaySaveLink': instance.googlePaySaveLink,
     };
 
-NotificarePassRedemption _$NotificarePassRedemptionFromJson(Map json) =>
-    NotificarePassRedemption(
+ActitoPassRedemption _$ActitoPassRedemptionFromJson(Map json) =>
+    ActitoPassRedemption(
       comments: json['comments'] as String?,
-      date: const NotificareIsoDateTimeConverter()
+      date: const ActitoIsoDateTimeConverter()
           .fromJson(json['date'] as String),
     );
 
-Map<String, dynamic> _$NotificarePassRedemptionToJson(
-        NotificarePassRedemption instance) =>
+Map<String, dynamic> _$ActitoPassRedemptionToJson(
+        ActitoPassRedemption instance) =>
     <String, dynamic>{
       'comments': instance.comments,
-      'date': const NotificareIsoDateTimeConverter().toJson(instance.date),
+      'date': const ActitoIsoDateTimeConverter().toJson(instance.date),
     };

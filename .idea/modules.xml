@@ -12,9 +12,9 @@
       <module fileurl="file://$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" filepath="$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_inbox/actito_inbox.iml" filepath="$PROJECT_DIR$/actito_inbox/actito_inbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_inbox/android/actito_inbox_android.iml" filepath="$PROJECT_DIR$/actito_inbox/android/actito_inbox_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_loyalty/actito_loyalty.iml" filepath="$PROJECT_DIR$/actito_loyalty/actito_loyalty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_loyalty/android/actito_loyalty_android.iml" filepath="$PROJECT_DIR$/actito_loyalty/android/actito_loyalty_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_loyalty/notificare_loyalty.iml" filepath="$PROJECT_DIR$/notificare_loyalty/notificare_loyalty.iml" />
-      <module fileurl="file://$PROJECT_DIR$/notificare_loyalty/android/notificare_loyalty_android.iml" filepath="$PROJECT_DIR$/notificare_loyalty/android/notificare_loyalty_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_push/notificare_push.iml" filepath="$PROJECT_DIR$/notificare_push/notificare_push.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_push/android/notificare_push_android.iml" filepath="$PROJECT_DIR$/notificare_push/android/notificare_push_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/notificare_push_ui/notificare_push_ui.iml" filepath="$PROJECT_DIR$/notificare_push_ui/notificare_push_ui.iml" />

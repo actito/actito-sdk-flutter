@@ -1,17 +1,17 @@
 import Flutter
 import UIKit
-import NotificareKit
-import NotificareLoyaltyKit
+import ActitoKit
+import ActitoLoyaltyKit
 
 private typealias FlutterDictionary = [String: Any?]
-private let DEFAULT_ERROR_CODE = "notificare_error"
+private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftNotificareLoyaltyPlugin: NSObject, FlutterPlugin {
+public class SwiftActitoLoyaltyPlugin: NSObject, FlutterPlugin {
     
-    private static let instance = SwiftNotificareLoyaltyPlugin()
+    private static let instance = SwiftActitoLoyaltyPlugin()
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "re.notifica.loyalty.flutter/notificare_loyalty", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
+        let channel = FlutterMethodChannel(name: "com.actito.loyalty.flutter/actito_loyalty", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
     
@@ -31,7 +31,7 @@ public class SwiftNotificareLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassBySerial(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let serial = call.arguments as! String
         
-        Notificare.shared.loyalty().fetchPass(serial: serial) { result in
+        Actito.shared.loyalty().fetchPass(serial: serial) { result in
             switch result {
             case let .success(pass):
                 do {
@@ -49,7 +49,7 @@ public class SwiftNotificareLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassByBarcode(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let barcode = call.arguments as! String
         
-        Notificare.shared.loyalty().fetchPass(barcode: barcode) { result in
+        Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
             switch result {
             case let .success(pass):
                 do {
@@ -65,11 +65,11 @@ public class SwiftNotificareLoyaltyPlugin: NSObject, FlutterPlugin {
     }
     
     private func present(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        let pass: NotificarePass
+        let pass: ActitoPass
         
         do {
             let json = call.arguments as! [String: Any]
-            pass = try NotificarePass.fromJson(json: json)
+            pass = try ActitoPass.fromJson(json: json)
         } catch {
             response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             return
@@ -80,7 +80,7 @@ public class SwiftNotificareLoyaltyPlugin: NSObject, FlutterPlugin {
             return
         }
         
-        Notificare.shared.loyalty().present(pass: pass, in: rootViewController)
+        Actito.shared.loyalty().present(pass: pass, in: rootViewController)
         response(nil)
     }
 }
