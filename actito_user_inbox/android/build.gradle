@@ -59,7 +59,7 @@ android {
 }
 
 dependencies {
-    def actito_version = '4.0.0'
+    def actito_version = '4.0.0-canary.1'
     api "com.actito:actito:$actito_version"
     api "com.actito:actito-user-inbox:$actito_version"
 }
