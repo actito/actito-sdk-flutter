@@ -6,12 +6,12 @@
 //
 
 import UserNotifications
-import NotificareNotificationServiceExtensionKit
+import ActitoNotificationServiceExtensionKit
 
 class NotificationService: UNNotificationServiceExtension {
 
     override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
-        NotificareNotificationServiceExtension.handleNotificationRequest(request) { result in
+        ActitoNotificationServiceExtension.handleNotificationRequest(request) { result in
             switch result {
             case let .success(content):
                 contentHandler(content)

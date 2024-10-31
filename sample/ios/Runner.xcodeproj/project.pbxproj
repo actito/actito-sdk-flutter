@@ -17,7 +17,7 @@
 		A85890EA785906BDB84BE14A /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15B04799EF8315BE7BC95C2F /* Pods_Runner.framework */; };
 		F2A91C4329CDBEDB00191164 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A91C4229CDBEDB00191164 /* NotificationService.swift */; };
 		F2A91C4729CDBEDB00191164 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F2A91C4029CDBEDB00191164 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F2B685B2274D310F0099BEFC /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B685B0274D310F0099BEFC /* NotificareOptions.plist */; };
+		F2B685B2274D310F0099BEFC /* ActitoOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B685B0274D310F0099BEFC /* ActitoOptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,7 +94,7 @@
 		F2A91C4029CDBEDB00191164 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A91C4229CDBEDB00191164 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F2A91C4429CDBEDB00191164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2B685B0274D310F0099BEFC /* NotificareOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
+		F2B685B0274D310F0099BEFC /* ActitoOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ActitoOptions.plist; sourceTree = "<group>"; };
 		F2B685B3274D31BF0099BEFC /* Runner.test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.test.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -166,7 +166,7 @@
 				E519311D2B6031FD00ABF106 /* Runner.test.dev.entitlements */,
 				E519311C2B6031E200ABF106 /* Runner.dev.entitlements */,
 				F2B685B3274D31BF0099BEFC /* Runner.test.entitlements */,
-				F2B685B0274D310F0099BEFC /* NotificareOptions.plist */,
+				F2B685B0274D310F0099BEFC /* ActitoOptions.plist */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -303,7 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
-				F2B685B2274D310F0099BEFC /* NotificareOptions.plist in Resources */,
+				F2B685B2274D310F0099BEFC /* ActitoOptions.plist in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -607,7 +607,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.sample.app.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.actito.sample.app.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -633,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.sample.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.actito.sample.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -714,7 +714,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.sample.app.test.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.actito.sample.app.test.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -749,7 +749,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.sample.app.test.dev.notification-service-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.actito.sample.app.test.dev.notification-service-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -830,7 +830,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = re.notifica.sample.app.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.actito.sample.app.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -863,7 +863,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.sample.app.test.notification-service-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.actito.sample.app.test.notification-service-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -898,7 +898,7 @@
 				MARKETING_VERSION = 1.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.sample.app.dev.notification-service-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.actito.sample.app.dev.notification-service-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
@@ -934,7 +934,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = "re.notifica.sample.app.notification-service-extension";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.actito.sample.app.notification-service-extension";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

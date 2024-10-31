@@ -3,8 +3,8 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_inbox/actito_inbox.dart';
-import 'package:notificare_push/actito_push.dart';
+import 'package:actito_inbox/actito_inbox.dart';
+import 'package:actito_push/actito_push.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sample/theme/theme.dart';
 
@@ -179,13 +179,13 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
   }
 
   void _setupListeners() {
-    _inboxBadgeStreamSubscription = NotificareInbox.onBadgeUpdated.listen((badge) {
+    _inboxBadgeStreamSubscription = ActitoInbox.onBadgeUpdated.listen((badge) {
       setState(() {
         _inboxBadge = badge;
       });
     });
 
-    _notificationsSettingsStreamSubscription = NotificarePush.onNotificationSettingsChanged.listen((granted) {
+    _notificationsSettingsStreamSubscription = ActitoPush.onNotificationSettingsChanged.listen((granted) {
       _onNotificationSettingsChanged(granted);
     });
 
@@ -218,7 +218,7 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
 
   void _checkNotificationsStatus() async {
     try {
-      final enabled = await NotificarePush.hasRemoteNotificationsEnabled && await NotificarePush.allowedUI;
+      final enabled = await ActitoPush.hasRemoteNotificationsEnabled && await ActitoPush.allowedUI;
 
       setState(() {
         _hasNotificationsEnabled = enabled;
@@ -242,7 +242,7 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
 
     if (!checked) {
       try {
-        await NotificarePush.disableRemoteNotifications();
+        await ActitoPush.disableRemoteNotifications();
 
         logger.i('Disabling remote notifications finished.');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -265,7 +265,7 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
 
     try {
       if (await _ensureNotificationsPermission()) {
-        await NotificarePush.enableRemoteNotifications();
+        await ActitoPush.enableRemoteNotifications();
 
         logger.i('Enabling remote notifications finished.');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -380,10 +380,10 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
 
   Future<void> _showNotificationsStatusInfo() async {
     try {
-      final allowedUi = await NotificarePush.allowedUI;
-      final hasRemoteNotificationsEnabled = await NotificarePush.hasRemoteNotificationsEnabled;
-      final transport = await NotificarePush.transport;
-      final subscription = await NotificarePush.subscription;
+      final allowedUi = await ActitoPush.allowedUI;
+      final hasRemoteNotificationsEnabled = await ActitoPush.hasRemoteNotificationsEnabled;
+      final transport = await ActitoPush.transport;
+      final subscription = await ActitoPush.subscription;
 
       await showDialog(
         context: context,

@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_geo/actito_geo.dart';
+import 'package:actito_geo/actito_geo.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sample/theme/theme.dart';
 
@@ -143,7 +143,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
   void _checkLocationStatus() async {
     try {
-      final enabled = await NotificareGeo.hasLocationServicesEnabled && await Permission.locationWhenInUse.isGranted;
+      final enabled = await ActitoGeo.hasLocationServicesEnabled && await Permission.locationWhenInUse.isGranted;
       setState(() {
         _hasLocationEnabled = enabled;
       });
@@ -167,7 +167,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
     if (!checked) {
       try {
-        await NotificareGeo.disableLocationUpdates();
+        await ActitoGeo.disableLocationUpdates();
 
         logger.i('Disabled location updates successfully.');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -190,7 +190,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
     try {
       if (await _ensureForegroundLocationPermission()) {
-        await NotificareGeo.enableLocationUpdates();
+        await ActitoGeo.enableLocationUpdates();
 
         logger.i('Enabled foreground location updates successfully.');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -218,7 +218,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
     try {
       if (await _ensureBackgroundLocationPermission()) {
         await _ensureBluetoothScanPermission();
-        await NotificareGeo.enableLocationUpdates();
+        await ActitoGeo.enableLocationUpdates();
 
         logger.i('Enabled background location updates successfully.');
         ScaffoldMessenger.of(context).showSnackBar(
@@ -435,8 +435,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
   Future<void> _showGeoStatusInfo() async {
     try {
-      final hasLocationServiceEnabled = await NotificareGeo.hasLocationServicesEnabled;
-      final hasBluetoothEnabled = await NotificareGeo.hasBluetoothEnabled;
+      final hasLocationServiceEnabled = await ActitoGeo.hasLocationServicesEnabled;
+      final hasBluetoothEnabled = await ActitoGeo.hasBluetoothEnabled;
 
       await showDialog(
         context: context,

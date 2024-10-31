@@ -34,7 +34,7 @@
             </intent-filter>
 
             <intent-filter>
-                <action android:name="re.notifica.intent.action.RemoteMessageOpened" />
+                <action android:name="com.actito.intent.action.RemoteMessageOpened" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -70,12 +70,12 @@
         </activity>
 
         <activity
-            android:name="re.notifica.push.ui.NotificationActivity"
+            android:name="com.actito.push.ui.NotificationActivity"
             android:exported="false"
             android:theme="@style/Theme.Sample.Translucent" />
 
 <!--        <activity-->
-<!--            android:name="re.notifica.scannables.ScannableActivity"-->
+<!--            android:name="com.actito.scannables.ScannableActivity"-->
 <!--            android:theme="@style/Theme.Sample" />-->
 
         <!-- Don't delete the meta-data below.
@@ -85,11 +85,11 @@
             android:value="2" />
 
         <meta-data
-            android:name="re.notifica.debug_logging_enabled"
+            android:name="com.actito.debug_logging_enabled"
             android:value="true" />
 
         <meta-data
-            android:name="re.notifica.push.ui.notification_url_schemes"
+            android:name="com.actito.push.ui.notification_url_schemes"
             android:resource="@array/notification_url_schemes" />
 
         <meta-data

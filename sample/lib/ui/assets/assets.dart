@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_assets/actito_assets.dart';
+import 'package:actito_assets/actito_assets.dart';
 import 'package:sample/ui/assets/views/assets_list_view.dart';
 
 import '../../logger/logger.dart';
@@ -13,7 +13,7 @@ class AssetsView extends StatefulWidget {
 
 class _AssetsViewState extends State<AssetsView> {
   final _controller = TextEditingController();
-  List<NotificareAsset> _assets = <NotificareAsset>[];
+  List<ActitoAsset> _assets = <ActitoAsset>[];
   String _assetName = "";
 
   @override
@@ -82,7 +82,7 @@ class _AssetsViewState extends State<AssetsView> {
   void _onFetchAssetsClicked() async {
     try {
       logger.i('Fetch assets clicked.');
-      final assets = await NotificareAssets.fetch(group: _assetName);
+      final assets = await ActitoAssets.fetch(group: _assetName);
 
       _controller.clear();
       setState(() {

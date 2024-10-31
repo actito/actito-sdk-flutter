@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_scannables/actito_scannables.dart';
+import 'package:actito_scannables/actito_scannables.dart';
 
 import '../../logger/logger.dart';
 
@@ -60,7 +60,7 @@ class _ScannablesViewState extends State<ScannablesView> {
 
   void _checkNfcAvailable() async {
     try {
-      final nfcAvailable = await NotificareScannables.canStartNfcScannableSession;
+      final nfcAvailable = await ActitoScannables.canStartNfcScannableSession;
 
       setState(() {
         _nfcAvailable = nfcAvailable;
@@ -79,7 +79,7 @@ class _ScannablesViewState extends State<ScannablesView> {
   void _onStartQrCodeScannableSessionClicked() async {
     try {
       logger.i('QR Code scannable session clicked.');
-      await NotificareScannables.startQrCodeScannableSession();
+      await ActitoScannables.startQrCodeScannableSession();
     } catch (error) {
       logger.e('QR code scannable session failed.', error);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -94,7 +94,7 @@ class _ScannablesViewState extends State<ScannablesView> {
   void _onStartNfcScannableSessionClicked() async {
     try {
       logger.i('NFC scannable session clicked.');
-      await NotificareScannables.startNfcScannableSession();
+      await ActitoScannables.startNfcScannableSession();
     } catch (error) {
       logger.e('NFC scannable session failed.', error);
       ScaffoldMessenger.of(context).showSnackBar(

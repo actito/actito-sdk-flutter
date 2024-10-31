@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:sample/theme/theme.dart';
 
 import '../../logger/logger.dart';
@@ -108,9 +108,9 @@ class _CustomEventsViewState extends State<CustomEventsView> {
       logger.i('Register custom event clicked.');
 
       if (_shouldIncludeFields) {
-        await Notificare.events().logCustom(_eventName, data: _dataFields);
+        await Actito.events().logCustom(_eventName, data: _dataFields);
       } else {
-        await Notificare.events().logCustom(_eventName);
+        await Actito.events().logCustom(_eventName);
       }
 
       _controller.clear();

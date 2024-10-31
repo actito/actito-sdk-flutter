@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 
 import '../../../logger/logger.dart';
 
@@ -27,7 +27,7 @@ class LaunchFlowCardView extends StatelessWidget {
               IconButton(
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
-                onPressed: () => _showNotificareStatusInfo(context),
+                onPressed: () => _showActitoStatusInfo(context),
                 icon: const Icon(Icons.info),
               ),
             ],
@@ -44,14 +44,14 @@ class LaunchFlowCardView extends StatelessWidget {
               children: [
                 Expanded(
                   child: TextButton(
-                    onPressed: !isReady ? null : () => _unLaunchNotificare(context),
+                    onPressed: !isReady ? null : () => _unLaunchActito(context),
                     child: const Text("Unlaunch"),
                   ),
                 ),
                 const VerticalDivider(width: 1),
                 Expanded(
                   child: TextButton(
-                    onPressed: isReady ? null : () => _launchNotificare(context),
+                    onPressed: isReady ? null : () => _launchActito(context),
                     child: const Text("Launch"),
                   ),
                 ),
@@ -65,19 +65,19 @@ class LaunchFlowCardView extends StatelessWidget {
 
   // Launch Flow
 
-  void _launchNotificare(BuildContext context) async {
+  void _launchActito(BuildContext context) async {
     try {
-      logger.i('Launching Notificare.');
-      await Notificare.launch();
+      logger.i('Launching Actito.');
+      await Actito.launch();
 
-      logger.i('Launching Notificare finished.');
+      logger.i('Launching Actito finished.');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Notificare launched successfully.'),
+          content: Text('Actito launched successfully.'),
         ),
       );
     } catch (error) {
-      logger.e('Notificare launch failed.', error);
+      logger.e('Actito launch failed.', error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -87,19 +87,19 @@ class LaunchFlowCardView extends StatelessWidget {
     }
   }
 
-  void _unLaunchNotificare(BuildContext context) async {
+  void _unLaunchActito(BuildContext context) async {
     try {
-      logger.i('Unlaunching Notificare.');
-      await Notificare.unlaunch();
+      logger.i('Unlaunching Actito.');
+      await Actito.unlaunch();
 
-      logger.i('Unlaunching Notificare finished.');
+      logger.i('Unlaunching Actito finished.');
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Notificare unlaunched successfully.'),
+          content: Text('Actito unlaunched successfully.'),
         ),
       );
     } catch (error) {
-      logger.e('Notificare unlaunch failed.', error);
+      logger.e('Actito unlaunch failed.', error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -109,16 +109,16 @@ class LaunchFlowCardView extends StatelessWidget {
     }
   }
 
-  Future<void> _showNotificareStatusInfo(BuildContext context) async {
+  Future<void> _showActitoStatusInfo(BuildContext context) async {
     try {
-      final isConfigured = await Notificare.isConfigured;
-      final isReady = await Notificare.isReady;
+      final isConfigured = await Actito.isConfigured;
+      final isReady = await Actito.isReady;
 
       await showDialog(
         context: context,
         builder: (context) {
           return AlertDialog(
-            title: const Text("Notificare"),
+            title: const Text("Actito"),
             content: Wrap(
               children: [
                 Row(

@@ -12,3 +12,5 @@ NotificareServices.plist
 **/fastlane/Preview.html
 **/fastlane/screenshots
 **/fastlane/test_output
+
+sample/android/app/build/

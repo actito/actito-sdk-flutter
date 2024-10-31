@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:http/http.dart' as http;
 
 import '../utils/enviroment_variables.dart';
 import 'logger.dart';
 
 void logCustomEvent(String event, Map<String, dynamic>? data) async {
-  final device = await Notificare.device().currentDevice;
+  final device = await Actito.device().currentDevice;
   final env = await parseEnvVariablesToMap(assetsFileName: '.env');
 
   if (device == null || env.isEmpty) {

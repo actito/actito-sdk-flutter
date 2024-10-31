@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_assets/actito_assets.dart';
+import 'package:actito_assets/actito_assets.dart';
 
 import 'asset_view.dart';
 
 class AssetsListView extends StatelessWidget {
-  final List<NotificareAsset> assets;
+  final List<ActitoAsset> assets;
 
   const AssetsListView({
     super.key,

@@ -1,54 +1,54 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
-import 'package:notificare_geo/actito_geo.dart';
-import 'package:notificare_in_app_messaging/actito_in_app_messaging.dart';
-import 'package:notificare_push/actito_push.dart';
-import 'package:notificare_push_ui/actito_push_ui.dart';
-import 'package:notificare_scannables/actito_scannables.dart';
+import 'package:actito/actito.dart';
+import 'package:actito_geo/actito_geo.dart';
+import 'package:actito_in_app_messaging/actito_in_app_messaging.dart';
+import 'package:actito_push/actito_push.dart';
+import 'package:actito_push_ui/actito_push_ui.dart';
+import 'package:actito_scannables/actito_scannables.dart';
 import 'package:sample/ui/home/home.dart';
 
 import 'logger/custom_event_logger.dart';
 import 'logger/logger.dart';
 
 @pragma('vm:entry-point')
-Future<void> _onLocationUpdatedCallback(NotificareLocation location) async {
+Future<void> _onLocationUpdatedCallback(ActitoLocation location) async {
   logger.i('onLocationUpdatedCallback');
 
   logCustomEvent("onLocationUpdatedCallback", location.toJson());
 }
 
 @pragma('vm:entry-point')
-Future<void> _onRegionEnteredCallback(NotificareRegion region) async {
+Future<void> _onRegionEnteredCallback(ActitoRegion region) async {
   logger.i('onRegionEnteredCallback');
 
   logCustomEvent("onRegionEnteredCallback", region.toJson());
 }
 
 @pragma('vm:entry-point')
-Future<void> _onRegionExitedCallback(NotificareRegion region) async {
+Future<void> _onRegionExitedCallback(ActitoRegion region) async {
   logger.i('onRegionExitedCallback in app side');
 
   logCustomEvent("onRegionExitedCallback", region.toJson());
 }
 
 @pragma('vm:entry-point')
-Future<void> _onBeaconEnteredCallback(NotificareBeacon beacon) async {
+Future<void> _onBeaconEnteredCallback(ActitoBeacon beacon) async {
   logger.i('onBeaconEnteredCallback in app side');
 
   logCustomEvent("onBeaconEnteredCallback", beacon.toJson());
 }
 
 @pragma('vm:entry-point')
-Future<void> _onBeaconExitedCallback(NotificareBeacon beacon) async {
+Future<void> _onBeaconExitedCallback(ActitoBeacon beacon) async {
   logger.i('onBeaconExitedCallback in app side');
 
   logCustomEvent("onBeaconExitedCallback", beacon.toJson());
 }
 
 @pragma('vm:entry-point')
-Future<void> _onBeaconsRangedCallback(NotificareRangedBeaconsEvent event) async {
+Future<void> _onBeaconsRangedCallback(ActitoRangedBeaconsEvent event) async {
   logger.i('onBeaconsRangedCallback in app side');
 
   logCustomEvent("onBeaconsRangedCallback", event.toJson());
@@ -78,39 +78,39 @@ class _AppState extends State<App> {
   void initState() {
     super.initState();
 
-    _configureNotificare();
+    _configureActito();
   }
 
-  void _configureNotificare() async {
-    await NotificareGeo.setLocationUpdatedBackgroundCallback(_onLocationUpdatedCallback);
-    await NotificareGeo.setRegionEnteredBackgroundCallback(_onRegionEnteredCallback);
-    await NotificareGeo.setRegionExitedBackgroundCallback(_onRegionExitedCallback);
-    await NotificareGeo.setBeaconEnteredBackgroundCallback(_onBeaconEnteredCallback);
-    await NotificareGeo.setBeaconExitedBackgroundCallback(_onBeaconExitedCallback);
-    await NotificareGeo.setBeaconsRangedBackgroundCallback(_onBeaconsRangedCallback);
+  void _configureActito() async {
+    await ActitoGeo.setLocationUpdatedBackgroundCallback(_onLocationUpdatedCallback);
+    await ActitoGeo.setRegionEnteredBackgroundCallback(_onRegionEnteredCallback);
+    await ActitoGeo.setRegionExitedBackgroundCallback(_onRegionExitedCallback);
+    await ActitoGeo.setBeaconEnteredBackgroundCallback(_onBeaconEnteredCallback);
+    await ActitoGeo.setBeaconExitedBackgroundCallback(_onBeaconExitedCallback);
+    await ActitoGeo.setBeaconsRangedBackgroundCallback(_onBeaconsRangedCallback);
 
-    // region Notificare events
+    // region Actito events
 
-    Notificare.onReady.listen((application) async {
-      logger.i('Notificare onReady event.');
+    Actito.onReady.listen((application) async {
+      logger.i('Actito onReady event.');
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
-          content: Text('Notificare: ${application.name}'),
+          content: Text('Actito: ${application.name}'),
         ),
       );
 
       _handleDeferredLink();
     });
 
-    Notificare.onUnlaunched.listen((event) {
+    Actito.onUnlaunched.listen((event) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
-          content: Text('Notificare finished un-launching.'),
+          content: Text('Actito finished un-launching.'),
         ),
       );
     });
 
-    Notificare.onDeviceRegistered.listen((device) {
+    Actito.onDeviceRegistered.listen((device) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
           content: Text('Device registered: ${device.id}'),
@@ -118,7 +118,7 @@ class _AppState extends State<App> {
       );
     });
 
-    Notificare.onUrlOpened.listen((url) {
+    Actito.onUrlOpened.listen((url) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
           content: Text('URL opened: $url'),
@@ -128,9 +128,9 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Notificare Push events
+    // region Actito Push events
 
-    NotificarePush.onNotificationInfoReceived.listen((event) {
+    ActitoPush.onNotificationInfoReceived.listen((event) {
       logger.i('Notification received (${event.deliveryMechanism}): ${event.notification.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -140,7 +140,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onSystemNotificationReceived.listen((notification) {
+    ActitoPush.onSystemNotificationReceived.listen((notification) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('System notification received.'),
@@ -148,7 +148,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onUnknownNotificationReceived.listen((notification) {
+    ActitoPush.onUnknownNotificationReceived.listen((notification) {
       logger.i('Unknown notification received: $notification');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -158,11 +158,11 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onNotificationOpened.listen((notification) async {
-      await NotificarePushUI.presentNotification(notification);
+    ActitoPush.onNotificationOpened.listen((notification) async {
+      await ActitoPushUI.presentNotification(notification);
     });
 
-    NotificarePush.onUnknownNotificationOpened.listen((notification) {
+    ActitoPush.onUnknownNotificationOpened.listen((notification) {
       logger.i('Unknown notification opened: $notification');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -172,11 +172,11 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onNotificationActionOpened.listen((data) async {
-      await NotificarePushUI.presentAction(data.notification, data.action);
+    ActitoPush.onNotificationActionOpened.listen((data) async {
+      await ActitoPushUI.presentAction(data.notification, data.action);
     });
 
-    NotificarePush.onUnknownNotificationActionOpened.listen((data) {
+    ActitoPush.onUnknownNotificationActionOpened.listen((data) {
       logger.i('Unknown notification action opened: $data');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -186,7 +186,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onNotificationSettingsChanged.listen((granted) {
+    ActitoPush.onNotificationSettingsChanged.listen((granted) {
       logger.i('Notification settings changed: $granted');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -196,7 +196,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePush.onSubscriptionChanged.listen((subscription) {
+    ActitoPush.onSubscriptionChanged.listen((subscription) {
       logger.i('Subscription changed: ${subscription?.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -208,9 +208,9 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Notificare Push UI events
+    // region Actito Push UI events
 
-    NotificarePushUI.onNotificationWillPresent.listen((notification) {
+    ActitoPushUI.onNotificationWillPresent.listen((notification) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification will present.'),
@@ -218,7 +218,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onNotificationPresented.listen((notification) {
+    ActitoPushUI.onNotificationPresented.listen((notification) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification presented.'),
@@ -226,7 +226,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onNotificationFinishedPresenting.listen((notification) {
+    ActitoPushUI.onNotificationFinishedPresenting.listen((notification) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification finished presenting.'),
@@ -234,7 +234,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onNotificationFailedToPresent.listen((notification) {
+    ActitoPushUI.onNotificationFailedToPresent.listen((notification) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification failed to present.'),
@@ -242,7 +242,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onNotificationUrlClicked.listen((data) {
+    ActitoPushUI.onNotificationUrlClicked.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
           content: Text('Notification url clicked: ${data.url}'),
@@ -250,7 +250,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onActionWillExecute.listen((data) {
+    ActitoPushUI.onActionWillExecute.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification action will execute.'),
@@ -258,7 +258,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onActionExecuted.listen((data) {
+    ActitoPushUI.onActionExecuted.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification action executed.'),
@@ -266,7 +266,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onActionNotExecuted.listen((data) {
+    ActitoPushUI.onActionNotExecuted.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification action not executed.'),
@@ -274,7 +274,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onActionFailedToExecute.listen((data) {
+    ActitoPushUI.onActionFailedToExecute.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification action failed to execute.'),
@@ -282,7 +282,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificarePushUI.onCustomActionReceived.listen((data) {
+    ActitoPushUI.onCustomActionReceived.listen((data) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         const SnackBar(
           content: Text('Notification custom action received.'),
@@ -292,9 +292,9 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Notificare Geo events
+    // region Actito Geo events
 
-    NotificareGeo.onLocationUpdated.listen((location) {
+    ActitoGeo.onLocationUpdated.listen((location) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onLocationUpdated", location.toJson());
         return;
@@ -307,7 +307,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onRegionEntered.listen((region) {
+    ActitoGeo.onRegionEntered.listen((region) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onRegionEntered", region.toJson());
         return;
@@ -320,7 +320,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onRegionExited.listen((region) {
+    ActitoGeo.onRegionExited.listen((region) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onRegionExited", region.toJson());
         return;
@@ -333,7 +333,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onBeaconEntered.listen((beacon) {
+    ActitoGeo.onBeaconEntered.listen((beacon) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onBeaconEntered", beacon.toJson());
         return;
@@ -346,7 +346,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onBeaconExited.listen((beacon) {
+    ActitoGeo.onBeaconExited.listen((beacon) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onBeaconExited", beacon.toJson());
         return;
@@ -359,7 +359,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onBeaconsRanged.listen((event) {
+    ActitoGeo.onBeaconsRanged.listen((event) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onBeaconsRanged", event.toJson());
         return;
@@ -372,7 +372,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onVisit.listen((visit) {
+    ActitoGeo.onVisit.listen((visit) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onVisit", visit.toJson());
         return;
@@ -385,7 +385,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareGeo.onHeadingUpdated.listen((heading) {
+    ActitoGeo.onHeadingUpdated.listen((heading) {
       if (isIOSBackgroundEvent) {
         logCustomEvent("onHeading", heading.toJson());
         return;
@@ -400,9 +400,9 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Notificare Scannable events
+    // region Actito Scannable events
 
-    NotificareScannables.onScannableDetected.listen((scannable) async {
+    ActitoScannables.onScannableDetected.listen((scannable) async {
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
           content: Text('Scannable detected: ${scannable.toJson()}'),
@@ -411,11 +411,11 @@ class _AppState extends State<App> {
 
       final notification = scannable.notification;
       if (notification != null) {
-        await NotificarePushUI.presentNotification(notification);
+        await ActitoPushUI.presentNotification(notification);
       }
     });
 
-    NotificareScannables.onScannableSessionFailed.listen((error) {
+    ActitoScannables.onScannableSessionFailed.listen((error) {
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(
           content: Text('Scannable session failed: $error'),
@@ -426,9 +426,9 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Notificare In-App Messaging events
+    // region Actito In-App Messaging events
 
-    NotificareInAppMessaging.onMessagePresented.listen((message) {
+    ActitoInAppMessaging.onMessagePresented.listen((message) {
       logger.i('message presented = ${message.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -438,7 +438,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareInAppMessaging.onMessageFinishedPresenting.listen((message) {
+    ActitoInAppMessaging.onMessageFinishedPresenting.listen((message) {
       logger.i('message finished presenting = ${message.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -448,7 +448,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareInAppMessaging.onMessageFailedToPresent.listen((message) {
+    ActitoInAppMessaging.onMessageFailedToPresent.listen((message) {
       logger.i('message failed to present present = ${message.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -458,7 +458,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareInAppMessaging.onActionExecuted.listen((event) {
+    ActitoInAppMessaging.onActionExecuted.listen((event) {
       logger.i('action executed = ${event.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -468,7 +468,7 @@ class _AppState extends State<App> {
       );
     });
 
-    NotificareInAppMessaging.onActionFailedToExecute.listen((event) {
+    ActitoInAppMessaging.onActionFailedToExecute.listen((event) {
       logger.i('action failed to execute = ${event.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
@@ -481,8 +481,8 @@ class _AppState extends State<App> {
     // endregion
 
     try {
-      await NotificarePush.setPresentationOptions(['banner', 'badge', 'sound']);
-      await Notificare.launch();
+      await ActitoPush.setPresentationOptions(['banner', 'badge', 'sound']);
+      await Actito.launch();
     } catch (error) {
       logger.e('Something went wrong.', error);
     }
@@ -490,11 +490,11 @@ class _AppState extends State<App> {
 
   void _handleDeferredLink() async {
     try {
-      if (!await Notificare.canEvaluateDeferredLink) {
+      if (!await Actito.canEvaluateDeferredLink) {
         return;
       }
 
-      final evaluated = await Notificare.evaluateDeferredLink();
+      final evaluated = await Actito.evaluateDeferredLink();
       logger.i('Did evaluate deferred link: $evaluated');
 
       scaffoldMessengerKey.currentState!.showSnackBar(

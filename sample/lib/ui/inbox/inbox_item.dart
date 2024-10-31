@@ -1,10 +1,10 @@
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_inbox/actito_inbox.dart';
+import 'package:actito_inbox/actito_inbox.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class InboxItemView extends StatelessWidget {
-  final NotificareInboxItem item;
+  final ActitoInboxItem item;
 
   const InboxItemView({
     Key? key,

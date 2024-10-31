@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:notificare_assets/actito_assets.dart';
+import 'package:actito_assets/actito_assets.dart';
 import 'package:sample/theme/theme.dart';
 
 import 'asset_data_field_view.dart';
 
 class AssetView extends StatelessWidget {
-  final NotificareAsset asset;
+  final ActitoAsset asset;
 
   const AssetView({
     super.key,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:sample/ui/device/views/device_data_field_view.dart';
 
 import '../../logger/logger.dart';
@@ -236,7 +236,7 @@ class _DeviceViewState extends State<DeviceView> {
     try {
       logger.i('Getting current device data.');
 
-      final currentDevice = await Notificare.device().currentDevice;
+      final currentDevice = await Actito.device().currentDevice;
       if (currentDevice == null) {
         return;
       }
@@ -244,8 +244,8 @@ class _DeviceViewState extends State<DeviceView> {
       final userName = currentDevice.userName;
       final dnd = currentDevice.dnd;
       final currentDeviceData = <String, String>{};
-      final preferredLanguage = await Notificare.device().preferredLanguage;
-      final userData = await Notificare.device().fetchUserData();
+      final preferredLanguage = await Actito.device().preferredLanguage;
+      final userData = await Actito.device().fetchUserData();
 
       currentDeviceData["ID"] = currentDevice.id.length > 14
           ? "..." + currentDevice.id.substring(currentDevice.id.length - 14)
@@ -275,7 +275,7 @@ class _DeviceViewState extends State<DeviceView> {
   void _onUpdateUserClicked() async {
     try {
       logger.i('Update user clicked.');
-      await Notificare.device().updateUser(
+      await Actito.device().updateUser(
         userId: 'notificarista@notifica.re',
         userName: 'Notificarista',
       );
@@ -302,7 +302,7 @@ class _DeviceViewState extends State<DeviceView> {
   void _onUpdateUserAsAnonymousClicked() async {
     try {
       logger.i('Update user as anonymous clicked.');
-      await Notificare.device().updateUser(
+      await Actito.device().updateUser(
         userId: null,
         userName: null,
       );
@@ -329,7 +329,7 @@ class _DeviceViewState extends State<DeviceView> {
   void _onUpdatePreferredLanguageClicked() async {
     try {
       logger.i('Update preferred language clicked.');
-      await Notificare.device().updatePreferredLanguage('nl-NL');
+      await Actito.device().updatePreferredLanguage('nl-NL');
 
       _loadDeviceData();
 
@@ -353,7 +353,7 @@ class _DeviceViewState extends State<DeviceView> {
   void _onClearPreferredLanguageClicked() async {
     try {
       logger.i('Clear preferred language clicked.');
-      await Notificare.device().updatePreferredLanguage(null);
+      await Actito.device().updatePreferredLanguage(null);
 
       _loadDeviceData();
 
@@ -377,7 +377,7 @@ class _DeviceViewState extends State<DeviceView> {
   void _onUpdateUserDataClicked() async {
     try {
       Logger().i('Update user data clicked.');
-      await Notificare.device().updateUserData({
+      await Actito.device().updateUserData({
         'firstName': 'FirstNameExample',
         'lastName': 'LastNameExample',
       });

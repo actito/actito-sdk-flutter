@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare_in_app_messaging/actito_in_app_messaging.dart';
+import 'package:actito_in_app_messaging/actito_in_app_messaging.dart';
 import 'package:sample/theme/theme.dart';
 
 import '../../../logger/logger.dart';
@@ -96,7 +96,7 @@ class InAppMessagingCardViewState extends State<InAppMessagingCardView> {
   Future<void> _setSuppressedStatus(bool suppressed) async {
     try {
       logger.i((suppressed ? 'Suppress' : 'Unsuppress') + ' in-app messages clicked.');
-      await NotificareInAppMessaging.setMessagesSuppressed(suppressed, evaluateContext: _evaluateContext);
+      await ActitoInAppMessaging.setMessagesSuppressed(suppressed, evaluateContext: _evaluateContext);
 
       logger.i((suppressed ? 'Suppress' : 'Unsuppress') + ' in-app messages successfully.');
       ScaffoldMessenger.of(context).showSnackBar(

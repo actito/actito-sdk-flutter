@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:sample/theme/theme.dart';
 
 import '../../../logger/logger.dart';
@@ -15,9 +15,9 @@ class DoNotDisturbCardView extends StatefulWidget {
 }
 
 class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
-  final NotificareDoNotDisturb _defaultDnd = NotificareDoNotDisturb(
-    start: NotificareTime(hours: 23, minutes: 00),
-    end: NotificareTime(hours: 08, minutes: 00),
+  final ActitoDoNotDisturb _defaultDnd = ActitoDoNotDisturb(
+    start: ActitoTime(hours: 23, minutes: 00),
+    end: ActitoTime(hours: 08, minutes: 00),
   );
 
   bool _hasDndEnabled = false;
@@ -69,7 +69,7 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
 
   void _checkDndStatus() async {
     try {
-      final dnd = await Notificare.device().fetchDoNotDisturb();
+      final dnd = await Actito.device().fetchDoNotDisturb();
 
       setState(() {
         _hasDndEnabled = dnd != null;
@@ -94,7 +94,7 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
     }
 
     try {
-      await Notificare.device().clearDoNotDisturb();
+      await Actito.device().clearDoNotDisturb();
 
       logger.i('Cleared do not disturb successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -117,9 +117,9 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
     });
   }
 
-  void _updateDndTime(NotificareDoNotDisturb dnd) async {
+  void _updateDndTime(ActitoDoNotDisturb dnd) async {
     try {
-      await Notificare.device().updateDoNotDisturb(dnd);
+      await Actito.device().updateDoNotDisturb(dnd);
 
       logger.i('Updated do not disturb successfully.');
       ScaffoldMessenger.of(context).showSnackBar(

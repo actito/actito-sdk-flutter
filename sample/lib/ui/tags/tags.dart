@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:sample/logger/logger.dart';
 
 class TagsView extends StatefulWidget {
@@ -110,7 +110,7 @@ class _TagsViewState extends State<TagsView> {
   void _onFetchTagsClicked() async {
     try {
       logger.i('Fetch tags clicked.');
-      final tags = await Notificare.device().fetchTags();
+      final tags = await Actito.device().fetchTags();
 
       logger.i('Fetched tags successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -134,7 +134,7 @@ class _TagsViewState extends State<TagsView> {
   void _onAddTagsClicked() async {
     try {
       logger.i('Add tags clicked.');
-      await Notificare.device().addTags(['flutter', 'hpinhal', 'remove-me']);
+      await Actito.device().addTags(['flutter', 'hpinhal', 'remove-me']);
 
       logger.i('Added tags successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -156,7 +156,7 @@ class _TagsViewState extends State<TagsView> {
   void _onRemoveTagsClicked() async {
     try {
       logger.i('Remove tag clicked.');
-      await Notificare.device().removeTag('remove-me');
+      await Actito.device().removeTag('remove-me');
 
       logger.i('Removed tag successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -178,7 +178,7 @@ class _TagsViewState extends State<TagsView> {
   void _onClearTagsClicked() async {
     try {
       logger.i('Clear tags clicked.');
-      await Notificare.device().clearTags();
+      await Actito.device().clearTags();
 
       logger.i('Cleared tags successfully.');
       ScaffoldMessenger.of(context).showSnackBar(

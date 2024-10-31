@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare/actito.dart';
+import 'package:actito/actito.dart';
 import 'package:sample/ui/home/views/device_card_view.dart';
 import 'package:sample/ui/home/views/dnd_card_view.dart';
 import 'package:sample/ui/home/views/geo_card_view.dart';
@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  StreamSubscription<NotificareApplication>? _onReadyStreamSubscription;
+  StreamSubscription<ActitoApplication>? _onReadyStreamSubscription;
   StreamSubscription<void>? _onUnlaunchedStreamSubscription;
 
   bool _isReady = false;
@@ -69,13 +69,13 @@ class _HomeViewState extends State<HomeView> {
   }
 
   _setupListeners() {
-    _onReadyStreamSubscription = Notificare.onReady.listen((application) {
+    _onReadyStreamSubscription = Actito.onReady.listen((application) {
       setState(() {
         _isReady = true;
       });
     });
 
-    _onUnlaunchedStreamSubscription = Notificare.onUnlaunched.listen((event) {
+    _onUnlaunchedStreamSubscription = Actito.onUnlaunched.listen((event) {
       setState(() {
         _isReady = false;
       });

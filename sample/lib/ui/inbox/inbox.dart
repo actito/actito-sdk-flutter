@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare_inbox/actito_inbox.dart';
-import 'package:notificare_push_ui/actito_push_ui.dart';
+import 'package:actito_inbox/actito_inbox.dart';
+import 'package:actito_push_ui/actito_push_ui.dart';
 
 import '../../logger/logger.dart';
 import 'inbox_item.dart';
@@ -15,9 +15,9 @@ class InboxView extends StatefulWidget {
 }
 
 class _InboxViewState extends State<InboxView> {
-  StreamSubscription<List<NotificareInboxItem>>? _inboxItemsStream;
+  StreamSubscription<List<ActitoInboxItem>>? _inboxItemsStream;
 
-  List<NotificareInboxItem> _items = [];
+  List<ActitoInboxItem> _items = [];
 
   @override
   void initState() {
@@ -79,7 +79,7 @@ class _InboxViewState extends State<InboxView> {
     );
   }
 
-  void _showModalBottomSheet(NotificareInboxItem item) {
+  void _showModalBottomSheet(ActitoInboxItem item) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -117,7 +117,7 @@ class _InboxViewState extends State<InboxView> {
 
   void _loadInboxItems() async {
     try {
-      final loadedItems = await NotificareInbox.items;
+      final loadedItems = await ActitoInbox.items;
 
       setState(() {
         _items = loadedItems;
@@ -134,7 +134,7 @@ class _InboxViewState extends State<InboxView> {
   }
 
   void _observeItems() {
-    _inboxItemsStream = NotificareInbox.onInboxUpdated.listen((observedItems) {
+    _inboxItemsStream = ActitoInbox.onInboxUpdated.listen((observedItems) {
       setState(() {
         _items = observedItems;
       });
@@ -145,11 +145,11 @@ class _InboxViewState extends State<InboxView> {
     _inboxItemsStream?.cancel();
   }
 
-  void _onOpenClicked(NotificareInboxItem item) async {
+  void _onOpenClicked(ActitoInboxItem item) async {
     try {
       logger.i('Open inbox item clicked.');
-      final notification = await NotificareInbox.open(item);
-      await NotificarePushUI.presentNotification(notification);
+      final notification = await ActitoInbox.open(item);
+      await ActitoPushUI.presentNotification(notification);
 
       logger.i('Inbox item opened and presented successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -168,10 +168,10 @@ class _InboxViewState extends State<InboxView> {
     }
   }
 
-  void _onMarkAsReadClicked(NotificareInboxItem item) async {
+  void _onMarkAsReadClicked(ActitoInboxItem item) async {
     try {
       logger.i('Mark as read clicked.');
-      await NotificareInbox.markAsRead(item);
+      await ActitoInbox.markAsRead(item);
 
       logger.i('Marked as read successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -190,10 +190,10 @@ class _InboxViewState extends State<InboxView> {
     }
   }
 
-  void _onRemoveClicked(NotificareInboxItem item) async {
+  void _onRemoveClicked(ActitoInboxItem item) async {
     try {
       logger.i('Remove inbox item clicked.');
-      await NotificareInbox.remove(item);
+      await ActitoInbox.remove(item);
 
       logger.i('Removed inbox item successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -215,7 +215,7 @@ class _InboxViewState extends State<InboxView> {
   void _onRefreshClicked() async {
     try {
       logger.i('Refresh inbox clicked.');
-      await NotificareInbox.refresh();
+      await ActitoInbox.refresh();
 
       logger.i('Refreshed inbox successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -237,7 +237,7 @@ class _InboxViewState extends State<InboxView> {
   void _onMarkAllAsReadClicked() async {
     try {
       logger.i('Mark all as read clicked.');
-      await NotificareInbox.markAllAsRead();
+      await ActitoInbox.markAllAsRead();
 
       logger.i('Marked all as read successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
@@ -259,7 +259,7 @@ class _InboxViewState extends State<InboxView> {
   void _onClearClicked() async {
     try {
       logger.i('Clear inbox clicked.');
-      await NotificareInbox.clear();
+      await ActitoInbox.clear();
 
       logger.i('Cleared inbox successfully.');
       ScaffoldMessenger.of(context).showSnackBar(

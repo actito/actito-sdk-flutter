@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:notificare_geo/actito_geo.dart';
+import 'package:actito_geo/actito_geo.dart';
 
 import 'views/beacon_row_view.dart';
 
@@ -13,8 +13,8 @@ class BeaconsView extends StatefulWidget {
 }
 
 class _BeaconsViewState extends State<BeaconsView> {
-  NotificareRegion? _region;
-  List<NotificareBeacon> _beacons = [];
+  ActitoRegion? _region;
+  List<ActitoBeacon> _beacons = [];
 
   StreamSubscription? _rangedBeaconsSubscription;
 
@@ -22,7 +22,7 @@ class _BeaconsViewState extends State<BeaconsView> {
   void initState() {
     super.initState();
 
-    _rangedBeaconsSubscription = NotificareGeo.onBeaconsRanged.listen((event) {
+    _rangedBeaconsSubscription = ActitoGeo.onBeaconsRanged.listen((event) {
       setState(() {
         _region = event.region;
         _beacons = event.beacons;

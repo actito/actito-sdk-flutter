@@ -37,27 +37,27 @@ dependencies:
   permission_handler: ^10.4.5
   logger: ^1.1.0
 
-  # Notificare dependencies
-  notificare:
-    path: "../notificare"
-  notificare_push:
-    path: "../notificare_push"
-  notificare_push_ui:
-    path: "../notificare_push_ui"
-  notificare_inbox:
-    path: "../notificare_inbox"
-  notificare_in_app_messaging:
-    path: "../notificare_in_app_messaging"
-  notificare_assets:
-    path: "../notificare_assets"
-  notificare_geo:
-    path: "../notificare_geo"
-  notificare_scannables:
-    path: "../notificare_scannables"
-  notificare_loyalty:
-    path: "../notificare_loyalty"
-  notificare_user_inbox:
-    path: "../notificare_user_inbox"
+  # Actito dependencies
+  actito:
+    path: "../actito"
+  actito_push:
+    path: "../actito_push"
+  actito_push_ui:
+    path: "../actito_push_ui"
+  actito_inbox:
+    path: "../actito_inbox"
+  actito_in_app_messaging:
+    path: "../actito_in_app_messaging"
+  actito_assets:
+    path: "../actito_assets"
+  actito_geo:
+    path: "../actito_geo"
+  actito_scannables:
+    path: "../actito_scannables"
+  actito_loyalty:
+    path: "../actito_loyalty"
+  actito_user_inbox:
+    path: "../actito_user_inbox"
   http: ^1.2.0
 
 dev_dependencies:
@@ -72,9 +72,9 @@ dev_dependencies:
   flutter_lints: ^1.0.0
 
 dependency_overrides:
-  notificare:
-    path: '../notificare'
-  notificare_flutter:
+  actito:
+    path: '../actito'
+  actito_flutter:
     path: '../actito_flutter'
 
 # For information on the generic Dart part of this file, see the
