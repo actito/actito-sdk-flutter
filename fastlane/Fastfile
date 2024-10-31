@@ -49,7 +49,7 @@ lane :bump do |options|
     UI.user_error!("Missing required 'version' parameter.")
   end
 
-  files = Dir['../notificare*/pubspec.yaml']
+  files = Dir['../actito*/pubspec.yaml']
   regex = /^version: .*$/
   replacement = "version: #{version}"
 
@@ -74,7 +74,7 @@ lane :update_compile_sdk_version do |options|
     UI.user_error!("Missing required 'version' parameter.")
   end
 
-  files = Dir['../notificare*/android/build.gradle']
+  files = Dir['../actito*/android/build.gradle']
   regex = /compileSdkVersion .*$/
   replacement = "compileSdkVersion #{version}"
 
@@ -99,7 +99,7 @@ lane :update_kotlin_version do |options|
     UI.user_error!("Missing required 'version' parameter.")
   end
 
-  files = Dir['../notificare*/android/build.gradle']
+  files = Dir['../actito*/android/build.gradle']
   regex = /ext.kotlin_version = '.*'/
   replacement = "ext.kotlin_version = '#{version}'"
 
@@ -124,7 +124,7 @@ lane :update_android_gradle_plugin do |options|
     UI.user_error!("Missing required 'version' parameter.")
   end
 
-  files = Dir['../notificare*/android/build.gradle']
+  files = Dir['../actito*/android/build.gradle']
   regex = /classpath 'com.android.tools.build:gradle:.*'/
   replacement = "classpath 'com.android.tools.build:gradle:#{version}'"
 
@@ -168,13 +168,13 @@ lane :publish do |options|
 
   ensure_git_status_clean unless dry_run
 
-  # Prioritising the notificare_flutter package since it is used by the core
-  # notificare package.
+  # Prioritising the actito_flutter package since it is used by the core
+  # actito package.
   #
-  # order = notificare_flutter > notificare > remaining packages
-  directories = Dir["../notificare*"]
-  directories.delete('../notificare_flutter')
-  directories.unshift('../notificare_flutter')
+  # order = actito_flutter > actito > remaining packages
+  directories = Dir["../actito*"]
+  directories.delete('../actito_flutter')
+  directories.unshift('../actito_flutter')
 
   directories.each do |directory|
     if dry_run
@@ -195,23 +195,23 @@ def update_file(path, regex, replacement)
 end
 
 def update_native_android_libraries(version)
-  files = Dir['../notificare*/android/build.gradle']
-  regex = /def notificare_version = '.*'/
-  replacement = "def notificare_version = '#{version}'"
+  files = Dir['../actito*/android/build.gradle']
+  regex = /def actito_version = '.*'/
+  replacement = "def actito_version = '#{version}'"
 
   files.each { |file| update_file(file, regex, replacement) }
 end
 
 def update_native_ios_libraries(version)
-  files = Dir['../notificare*/ios/*.podspec']
-  regex = /notificare_version = '.*'/
-  replacement = "notificare_version = '#{version}'"
+  files = Dir['../actito*/ios/*.podspec']
+  regex = /actito_version = '.*'/
+  replacement = "actito_version = '#{version}'"
 
   files.each { |file| update_file(file, regex, replacement) }
 end
 
 def fetch_packages
-  directories = Dir['../notificare*', '../sample']
+  directories = Dir['../actito*', '../sample']
 
   directories.each do |directory|
     stream_shell_command("cd #{directory} && flutter pub get")
