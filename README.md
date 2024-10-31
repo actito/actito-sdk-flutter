@@ -1,11 +1,11 @@
-[<img src="https://raw.githubusercontent.com/notificare/notificare-sdk-flutter/main/assets/logo.png"/>](https://notificare.com)
+[<img src="./assets/logo.png"/>](https://actito.com)
 
-# Notificare Flutter SDK
+# Actito Flutter SDK
 
-[![GitHub release](https://img.shields.io/github/v/release/notificare/notificare-sdk-flutter)](https://github.com/notificare/notificare-sdk-flutter/releases)
-[![License](https://img.shields.io/github/license/notificare/notificare-sdk-flutter)](https://github.com/notificare/notificare-sdk-flutter/blob/main/LICENSE)
+[![GitHub release](https://img.shields.io/github/v/release/actito/actito-sdk-flutter)](https://github.com/actito/actito-sdk-flutter/releases)
+[![License](https://img.shields.io/github/license/actito/actito-sdk-flutter)](https://github.com/actito/actito-sdk-flutter/blob/main/LICENSE)
 
-The Notificare Flutter SDK makes it quick and easy to communicate efficiently with many of the Notificare API services and enables you to seamlessly integrate our various features, from Push Notifications to Contextualised Storage.
+The Actito Flutter SDK makes it quick and easy to communicate efficiently with many of the Actito API services and enables you to seamlessly integrate our various features, from Push Notifications to Contextualised Storage.
 
 Get started with our [📚 integration guides](https://docs.notifica.re/sdk/v4/flutter/setup) and [example projects](#examples).
 
@@ -54,16 +54,16 @@ Add the Flutter packages to your `pubspec.yaml` and follow the Getting Started g
 ```yaml
 dependencies:
   # Required
-  notificare: ^4.0.0
+  actito: ^4.0.0
 
   # Optional modules
-  notificare_assets: ^4.0.0
-  notificare_geo: ^4.0.0
-  notificare_inbox: ^4.0.0
-  notificare_loyalty: ^4.0.0
-  notificare_push: ^4.0.0
-  notificare_push_ui: ^4.0.0
-  notificare_scannables: ^4.0.0
+  actito_assets: ^4.0.0
+  actito_geo: ^4.0.0
+  actito_inbox: ^4.0.0
+  actito_loyalty: ^4.0.0
+  actito_push: ^4.0.0
+  actito_push_ui: ^4.0.0
+  actito_scannables: ^4.0.0
 ```
 
 ## Getting Started
@@ -73,4 +73,4 @@ Get started with our [📚 integration guides](https://docs.notifica.re/sdk/v4/f
 
 
 ### Examples
-- The [example project](https://github.com/Notificare/notificare-sdk-flutter/tree/main/sample) demonstrates other integrations in a simplified fashion, to quickly understand how a given feature should be implemented.
+- The [example project](https://github.com/actito/actito-sdk-flutter/tree/main/sample) demonstrates other integrations in a simplified fashion, to quickly understand how a given feature should be implemented.
