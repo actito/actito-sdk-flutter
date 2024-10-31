@@ -39,7 +39,7 @@ class ActitoAssetsPlugin : FlutterPlugin, MethodCallHandler {
 
     private fun fetch(@Suppress("UNUSED_PARAMETER") call: MethodCall, pluginResult: MethodChannel.Result) {
         val group = call.arguments<String>() ?: return onMainThread {
-            pluginResult.error(NOTIFICARE_ERROR, "Invalid request arguments.", null)
+            pluginResult.error(ACTITO_ERROR, "Invalid request arguments.", null)
         }
 
         Actito.assets().fetch(group, object : ActitoCallback<List<ActitoAsset>> {
@@ -51,14 +51,14 @@ class ActitoAssetsPlugin : FlutterPlugin, MethodCallHandler {
 
             override fun onFailure(e: Exception) {
                 onMainThread {
-                    pluginResult.error(NOTIFICARE_ERROR, e.localizedMessage, null)
+                    pluginResult.error(ACTITO_ERROR, e.localizedMessage, null)
                 }
             }
         })
     }
 
     internal companion object {
-        internal const val NOTIFICARE_ERROR = "actito_error"
+        internal const val ACTITO_ERROR = "actito_error"
 
         internal fun onMainThread(action: () -> Unit) {
             Handler(Looper.getMainLooper()).post { action() }

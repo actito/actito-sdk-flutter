@@ -3,6 +3,7 @@ package com.actito.inbox.flutter
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
+import androidx.lifecycle.Observer
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall

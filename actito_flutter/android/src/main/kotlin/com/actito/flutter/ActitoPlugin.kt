@@ -573,7 +573,7 @@ class ActitoPlugin : FlutterPlugin, ActivityAware, PluginRegistry.NewIntentListe
         try {
             event = requireNotNull(arguments.getString("event"))
             data = if (!arguments.isNull("data")) {
-                arguments.getJSONObject("data").let { re.notifica.models.ActitoEvent.createData(it) }
+                arguments.getJSONObject("data").let { com.actito.models.ActitoEvent.createData(it) }
             } else {
                 null
             }
