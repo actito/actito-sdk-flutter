@@ -34,7 +34,7 @@ android {
         namespace 'com.actito.inbox.user.flutter'
     }
 
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
