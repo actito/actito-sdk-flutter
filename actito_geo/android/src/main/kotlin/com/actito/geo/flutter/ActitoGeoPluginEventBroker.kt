@@ -8,7 +8,6 @@ import io.flutter.plugin.common.JSONMethodCodec
 import com.actito.geo.models.ActitoBeacon
 import com.actito.geo.models.ActitoLocation
 import com.actito.geo.models.ActitoRegion
-import com.actito.geo.models.toJson
 
 internal object ActitoGeoPluginEventBroker {
 

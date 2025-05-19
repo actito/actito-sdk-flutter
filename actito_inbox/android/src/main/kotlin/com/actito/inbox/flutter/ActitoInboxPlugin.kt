@@ -17,8 +17,6 @@ import com.actito.inbox.flutter.events.ActitoEvent
 import com.actito.inbox.flutter.events.ActitoEventManager
 import com.actito.inbox.ktx.inbox
 import com.actito.inbox.models.ActitoInboxItem
-import com.actito.inbox.models.fromJson
-import com.actito.inbox.models.toJson
 import com.actito.models.ActitoNotification
 import java.util.*
 

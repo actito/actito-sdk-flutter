@@ -16,7 +16,6 @@ import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.BackgroundEvent.C
 import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.Companion.isAttachedToActivity
 import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.updateCallback
 import com.actito.geo.ktx.geo
-import com.actito.geo.models.toJson
 
 class ActitoGeoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 

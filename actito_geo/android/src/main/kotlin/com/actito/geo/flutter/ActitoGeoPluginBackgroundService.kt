@@ -16,7 +16,6 @@ import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.getCallbackDispatch
 import com.actito.geo.models.ActitoBeacon
 import com.actito.geo.models.ActitoLocation
 import com.actito.geo.models.ActitoRegion
-import com.actito.geo.models.toJson
 import java.util.LinkedList
 import java.util.Queue
 import java.util.concurrent.atomic.AtomicBoolean

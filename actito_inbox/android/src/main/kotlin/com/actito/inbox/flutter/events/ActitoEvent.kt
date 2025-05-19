@@ -1,7 +1,6 @@
 package com.actito.inbox.flutter.events
 
 import com.actito.inbox.models.ActitoInboxItem
-import com.actito.inbox.models.toJson
 import java.util.*
 
 internal sealed class ActitoEvent {

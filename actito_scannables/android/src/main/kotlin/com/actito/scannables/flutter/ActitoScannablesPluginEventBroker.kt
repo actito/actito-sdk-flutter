@@ -6,7 +6,6 @@ import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
 import com.actito.scannables.models.ActitoScannable
-import com.actito.scannables.models.toJson
 
 internal object ActitoScannablesPluginEventBroker {
 
