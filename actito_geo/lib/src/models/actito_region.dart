@@ -13,7 +13,7 @@ class ActitoRegion {
   final int? major;
   final double distance;
   final String timeZone;
-  final int timeZoneOffset;
+  final double timeZoneOffset;
 
   ActitoRegion({
     required this.id,
