@@ -11,6 +11,12 @@ class ActitoAssets {
   );
 
   // Methods
+
+  /// Fetches a list of [ActitoAsset] for a specified group.
+  ///
+  /// - `group`: The name of the group whose assets are to be fetched.
+  ///
+  /// Returns a list of [ActitoAsset] belonging to the specified group.
   static Future<List<ActitoAsset>> fetch({required String group}) async {
     final json =
         await _channel.invokeListMethod<Map<String, dynamic>>('fetch', group);
