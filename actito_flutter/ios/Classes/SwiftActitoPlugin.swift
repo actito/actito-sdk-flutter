@@ -438,7 +438,7 @@ extension SwiftActitoPlugin: ActitoDelegate {
         ActitoEventManager.shared.send(ActitoEventOnReady(application: application))
     }
 
-    public func actito(_ actito: Actito) {
+    public func actitoDidUnlaunch(_ actito: Actito) {
         ActitoEventManager.shared.send(ActitoEventOnUnlaunched())
     }
 
