@@ -1,71 +1,71 @@
 PODS:
-  - Actito/ActitoAssetsKit (4.0.0-canary.1):
+  - Actito/ActitoAssetsKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoGeoKit (4.0.0-canary.1):
+  - Actito/ActitoGeoKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoInAppMessagingKit (4.0.0-canary.1):
+  - Actito/ActitoInAppMessagingKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoInboxKit (4.0.0-canary.1):
+  - Actito/ActitoInboxKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoKit (4.0.0-canary.1):
+  - Actito/ActitoKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoLoyaltyKit (4.0.0-canary.1):
+  - Actito/ActitoLoyaltyKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoNotificationServiceExtensionKit (4.0.0-canary.1)
-  - Actito/ActitoPushKit (4.0.0-canary.1):
+  - Actito/ActitoNotificationServiceExtensionKit (5.0.0-canary.1)
+  - Actito/ActitoPushKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoPushUIKit (4.0.0-canary.1):
+  - Actito/ActitoPushUIKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoScannablesKit (4.0.0-canary.1):
+  - Actito/ActitoScannablesKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUserInboxKit (4.0.0-canary.1):
+  - Actito/ActitoUserInboxKit (5.0.0-canary.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUtilitiesKit (4.0.0-canary.1)
+  - Actito/ActitoUtilitiesKit (5.0.0-canary.1)
   - actito_assets (4.0.0):
-    - Actito/ActitoAssetsKit (= 4.0.0-canary.1)
-    - Actito/ActitoKit (= 4.0.0-canary.1)
+    - Actito/ActitoAssetsKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Flutter
   - actito_flutter (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Flutter
   - actito_geo (4.0.0):
-    - Actito/ActitoGeoKit (= 4.0.0-canary.1)
-    - Actito/ActitoKit (= 4.0.0-canary.1)
+    - Actito/ActitoGeoKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Flutter
   - actito_in_app_messaging (4.0.0):
-    - Actito/ActitoInAppMessagingKit (= 4.0.0-canary.1)
-    - Actito/ActitoKit (= 4.0.0-canary.1)
+    - Actito/ActitoInAppMessagingKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Flutter
   - actito_inbox (4.0.0):
-    - Actito/ActitoInboxKit (= 4.0.0-canary.1)
-    - Actito/ActitoKit (= 4.0.0-canary.1)
+    - Actito/ActitoInboxKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
     - Flutter
   - actito_loyalty (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
-    - Actito/ActitoLoyaltyKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoLoyaltyKit (= 5.0.0-canary.1)
     - Flutter
   - actito_push (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
-    - Actito/ActitoPushKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoPushKit (= 5.0.0-canary.1)
     - Flutter
   - actito_push_ui (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
-    - Actito/ActitoPushUIKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoPushUIKit (= 5.0.0-canary.1)
     - Flutter
   - actito_scannables (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
-    - Actito/ActitoScannablesKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoScannablesKit (= 5.0.0-canary.1)
     - Flutter
   - actito_user_inbox (4.0.0):
-    - Actito/ActitoKit (= 4.0.0-canary.1)
-    - Actito/ActitoUserInboxKit (= 4.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoUserInboxKit (= 5.0.0-canary.1)
     - Flutter
   - Flutter (1.0.0)
-  - permission_handler_apple (9.1.1):
+  - permission_handler_apple (9.3.0):
     - Flutter
 
 DEPENDENCIES:
-  - Actito/ActitoNotificationServiceExtensionKit (= 4.0.0-canary.1)
+  - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-canary.1)
   - actito_assets (from `.symlinks/plugins/actito_assets/ios`)
   - actito_flutter (from `.symlinks/plugins/actito_flutter/ios`)
   - actito_geo (from `.symlinks/plugins/actito_geo/ios`)
@@ -110,20 +110,20 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
-  Actito: da1df1cf06c593fe02b65b1e2500c7095a809819
-  actito_assets: 56b5bc045de8c08a0abff6ad56383aacae05d657
-  actito_flutter: bbea24b85e7f0a90a8aad086f1e27ed687303962
-  actito_geo: f47ead89c505c18471469625168df7b8f1015fc2
-  actito_in_app_messaging: 034692eb9efcadf5b36dc5791f090df2b112a5bd
-  actito_inbox: ad820374a4d5db905776d9487e6fbbfb0665109d
-  actito_loyalty: f04b01871b9509c0fc32bbf3cb9112914d03cb25
-  actito_push: 29f4877aa43a4b61ada9574041783e02d63124de
-  actito_push_ui: dcdcab7b27a83d767e757eb11d705fd700626082
-  actito_scannables: fbb7c74fc9525e739f0c55094cd46828fa3b1bcd
-  actito_user_inbox: 88adda79738a350cf0381f5113fe201a4291a75d
+  Actito: 93c5844668acb24df54e83131ca364abbe52d375
+  actito_assets: 9c848d34b83c3b0c066845ba36c7c06857e40875
+  actito_flutter: a287df2cf836ffbf959eccc6921ef9cf51708469
+  actito_geo: 9d42a4f64c9cc812f2021b12cc7a078b0d4f8351
+  actito_in_app_messaging: 69f5fe68df31bcbc37637f14837563ae7893ffcc
+  actito_inbox: 64da5b51b2645eaa4eac13c065e710f9205fe367
+  actito_loyalty: 937f2c35695ab4999925ee578c3d182b75aaa510
+  actito_push: a3a930326e7b38619180822d82fcf03826c17f41
+  actito_push_ui: 962dda7d0b416936d5d2ba61f2c8934167918a4b
+  actito_scannables: 4ee6c7874ef0b8073439cda45ca92b9801f3b73a
+  actito_user_inbox: 0120e94aaba0e87df4ae9b68f3f65110e0c10548
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  permission_handler_apple: e76247795d700c14ea09e3a2d8855d41ee80a2e6
+  permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
 
-PODFILE CHECKSUM: 4f59b172eddefd1de702aa59fcf030c13e2596b0
+PODFILE CHECKSUM: dd002d89161f01043211430b5af4d6e775caa218
 
-COCOAPODS: 1.16.1
+COCOAPODS: 1.16.2
