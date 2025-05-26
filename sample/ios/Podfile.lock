@@ -111,16 +111,16 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Actito: 93c5844668acb24df54e83131ca364abbe52d375
-  actito_assets: 9c848d34b83c3b0c066845ba36c7c06857e40875
-  actito_flutter: a287df2cf836ffbf959eccc6921ef9cf51708469
-  actito_geo: 9d42a4f64c9cc812f2021b12cc7a078b0d4f8351
-  actito_in_app_messaging: 69f5fe68df31bcbc37637f14837563ae7893ffcc
-  actito_inbox: 64da5b51b2645eaa4eac13c065e710f9205fe367
-  actito_loyalty: 937f2c35695ab4999925ee578c3d182b75aaa510
-  actito_push: a3a930326e7b38619180822d82fcf03826c17f41
-  actito_push_ui: 962dda7d0b416936d5d2ba61f2c8934167918a4b
-  actito_scannables: 4ee6c7874ef0b8073439cda45ca92b9801f3b73a
-  actito_user_inbox: 0120e94aaba0e87df4ae9b68f3f65110e0c10548
+  actito_assets: b6195d668f1fb14248c6f89b97ac2faec1518c0c
+  actito_flutter: 48e196bcbf98432b4b9ff582aefc9e14a1c86db0
+  actito_geo: ca4610f2cca18b93050b763c1e4492d109ecd8b1
+  actito_in_app_messaging: 560fb7bb324ee8c6675ceb649019b48deafd9bad
+  actito_inbox: d5fc98929637b3666076a2ab77397a1330f457d7
+  actito_loyalty: a96616336b2cdc21bbed6b9b6df458e72d1aa429
+  actito_push: e0668fe4bb4c0de71adf01014c699ed042a87343
+  actito_push_ui: 66a9c4d2664867720faca6b281f607f111603739
+  actito_scannables: 05fc7db61a3bdd17a049c6657641113b04faed47
+  actito_user_inbox: 24c77a05494d1790d0cb517f4fb623f0e2f4bdd4
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
 
