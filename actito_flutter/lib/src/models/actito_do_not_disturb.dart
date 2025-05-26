@@ -14,7 +14,8 @@ class ActitoDoNotDisturb {
     required this.end,
   });
 
-  factory ActitoDoNotDisturb.fromJson(Map<String, dynamic> json) => _$ActitoDoNotDisturbFromJson(json);
+  factory ActitoDoNotDisturb.fromJson(Map<String, dynamic> json) =>
+      _$ActitoDoNotDisturbFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoDoNotDisturbToJson(this);
 }

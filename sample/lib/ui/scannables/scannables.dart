@@ -46,7 +46,9 @@ class _ScannablesViewState extends State<ScannablesView> {
                   ),
                   const Divider(height: 0),
                   TextButton(
-                    onPressed: _nfcAvailable ? _onStartNfcScannableSessionClicked : null,
+                    onPressed: _nfcAvailable
+                        ? _onStartNfcScannableSessionClicked
+                        : null,
                     child: const Text("NFC Scanning"),
                   ),
                 ],

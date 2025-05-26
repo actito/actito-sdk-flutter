@@ -6,8 +6,7 @@ part of 'actito_action_executed_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoActionExecutedEvent _$ActitoActionExecutedEventFromJson(
-        Map json) =>
+ActitoActionExecutedEvent _$ActitoActionExecutedEventFromJson(Map json) =>
     ActitoActionExecutedEvent(
       message: ActitoInAppMessage.fromJson(
           Map<String, dynamic>.from(json['message'] as Map)),

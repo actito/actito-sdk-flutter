@@ -185,8 +185,7 @@ class ActitoPushUI {
   /// [ActitoNotificationAction] that was failed to execute and the
   /// [ActitoNotification] containing it. It may also contain the error that
   /// caused the failure.
-  static Stream<ActitoActionFailedToExecuteEvent>
-      get onActionFailedToExecute {
+  static Stream<ActitoActionFailedToExecuteEvent> get onActionFailedToExecute {
     return _getEventStream('action_failed_to_execute').map((result) {
       final Map<dynamic, dynamic> json = result;
       return ActitoActionFailedToExecuteEvent.fromJson(json.cast());
@@ -202,8 +201,7 @@ class ActitoPushUI {
   /// [ActitoNotificationAction] that triggered the custom action and the
   /// [ActitoNotification] containing it. It also provides the URL
   /// representing the custom action.
-  static Stream<ActitoCustomActionReceivedEvent>
-      get onCustomActionReceived {
+  static Stream<ActitoCustomActionReceivedEvent> get onCustomActionReceived {
     return _getEventStream('custom_action_received').map((result) {
       final Map<dynamic, dynamic> json = result;
       return ActitoCustomActionReceivedEvent.fromJson(json.cast());

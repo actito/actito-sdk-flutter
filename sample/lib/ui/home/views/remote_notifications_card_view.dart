@@ -16,10 +16,12 @@ class RemoteNotificationsCardView extends StatefulWidget {
   const RemoteNotificationsCardView({super.key});
 
   @override
-  RemoteNotificationsCardViewState createState() => RemoteNotificationsCardViewState();
+  RemoteNotificationsCardViewState createState() =>
+      RemoteNotificationsCardViewState();
 }
 
-class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView> with WidgetsBindingObserver {
+class RemoteNotificationsCardViewState
+    extends State<RemoteNotificationsCardView> with WidgetsBindingObserver {
   StreamSubscription<int>? _inboxBadgeStreamSubscription;
   StreamSubscription<bool>? _notificationsSettingsStreamSubscription;
 
@@ -91,7 +93,7 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
                     ),
                     const Spacer(),
                     CupertinoSwitch(
-                      activeColor: AppTheme.primaryBlue,
+                      activeTrackColor: AppTheme.primaryBlue,
                       value: _hasNotificationsEnabled,
                       onChanged: (value) => _updateNotificationsStatus(value),
                     ),
@@ -185,7 +187,8 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
       });
     });
 
-    _notificationsSettingsStreamSubscription = ActitoPush.onNotificationSettingsChanged.listen((granted) {
+    _notificationsSettingsStreamSubscription =
+        ActitoPush.onNotificationSettingsChanged.listen((granted) {
       _onNotificationSettingsChanged(granted);
     });
 
@@ -218,7 +221,8 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
 
   void _checkNotificationsStatus() async {
     try {
-      final enabled = await ActitoPush.hasRemoteNotificationsEnabled && await ActitoPush.allowedUI;
+      final enabled = await ActitoPush.hasRemoteNotificationsEnabled &&
+          await ActitoPush.allowedUI;
 
       setState(() {
         _hasNotificationsEnabled = enabled;
@@ -307,7 +311,8 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
         builder: (context) {
           return AlertDialog(
             title: const Text("Sample"),
-            content: const Text("Allow notifications in order to receive relevant content."),
+            content: const Text(
+                "Allow notifications in order to receive relevant content."),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
@@ -349,7 +354,8 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
           content: const SingleChildScrollView(
             child: ListBody(
               children: <Widget>[
-                Text("Allow notifications in order to receive relevant content."),
+                Text(
+                    "Allow notifications in order to receive relevant content."),
               ],
             ),
           ),
@@ -381,7 +387,8 @@ class RemoteNotificationsCardViewState extends State<RemoteNotificationsCardView
   Future<void> _showNotificationsStatusInfo() async {
     try {
       final allowedUi = await ActitoPush.allowedUI;
-      final hasRemoteNotificationsEnabled = await ActitoPush.hasRemoteNotificationsEnabled;
+      final hasRemoteNotificationsEnabled =
+          await ActitoPush.hasRemoteNotificationsEnabled;
       final transport = await ActitoPush.transport;
       final subscription = await ActitoPush.subscription;
 

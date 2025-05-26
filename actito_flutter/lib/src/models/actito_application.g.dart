@@ -6,8 +6,7 @@ part of 'actito_application.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoApplication _$ActitoApplicationFromJson(Map json) =>
-    ActitoApplication(
+ActitoApplication _$ActitoApplicationFromJson(Map json) => ActitoApplication(
       id: json['id'] as String,
       name: json['name'] as String,
       category: json['category'] as String,
@@ -21,8 +20,8 @@ ActitoApplication _$ActitoApplicationFromJson(Map json) =>
           : ActitoRegionConfig.fromJson(
               Map<String, dynamic>.from(json['regionConfig'] as Map)),
       userDataFields: (json['userDataFields'] as List<dynamic>)
-          .map((e) => ActitoUserDataField.fromJson(
-              Map<String, dynamic>.from(e as Map)))
+          .map((e) =>
+              ActitoUserDataField.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
       actionCategories: (json['actionCategories'] as List<dynamic>)
           .map((e) => ActitoActionCategory.fromJson(
@@ -30,8 +29,7 @@ ActitoApplication _$ActitoApplicationFromJson(Map json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$ActitoApplicationToJson(
-        ActitoApplication instance) =>
+Map<String, dynamic> _$ActitoApplicationToJson(ActitoApplication instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
@@ -44,26 +42,22 @@ Map<String, dynamic> _$ActitoApplicationToJson(
           instance.actionCategories.map((e) => e.toJson()).toList(),
     };
 
-ActitoInboxConfig _$ActitoInboxConfigFromJson(Map json) =>
-    ActitoInboxConfig(
+ActitoInboxConfig _$ActitoInboxConfigFromJson(Map json) => ActitoInboxConfig(
       useInbox: json['useInbox'] as bool,
       autoBadge: json['autoBadge'] as bool,
     );
 
-Map<String, dynamic> _$ActitoInboxConfigToJson(
-        ActitoInboxConfig instance) =>
+Map<String, dynamic> _$ActitoInboxConfigToJson(ActitoInboxConfig instance) =>
     <String, dynamic>{
       'useInbox': instance.useInbox,
       'autoBadge': instance.autoBadge,
     };
 
-ActitoRegionConfig _$ActitoRegionConfigFromJson(Map json) =>
-    ActitoRegionConfig(
+ActitoRegionConfig _$ActitoRegionConfigFromJson(Map json) => ActitoRegionConfig(
       proximityUUID: json['proximityUUID'] as String?,
     );
 
-Map<String, dynamic> _$ActitoRegionConfigToJson(
-        ActitoRegionConfig instance) =>
+Map<String, dynamic> _$ActitoRegionConfigToJson(ActitoRegionConfig instance) =>
     <String, dynamic>{
       'proximityUUID': instance.proximityUUID,
     };

@@ -72,7 +72,8 @@ class _TagsViewState extends State<TagsView> {
               children: [
                 Row(
                   children: [
-                    Text("Fetched Tags", style: Theme.of(context).textTheme.titleMedium),
+                    Text("Fetched Tags",
+                        style: Theme.of(context).textTheme.titleMedium),
                   ],
                 ),
                 Row(

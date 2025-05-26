@@ -65,8 +65,7 @@ class ActitoRegionAdvancedGeometry {
   ) =>
       _$ActitoRegionAdvancedGeometryFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ActitoRegionAdvancedGeometryToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoRegionAdvancedGeometryToJson(this);
 }
 
 @JsonSerializable(anyMap: true, explicitToJson: true)

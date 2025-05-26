@@ -62,12 +62,17 @@ class _DeviceViewState extends State<DeviceView> {
                             shrinkWrap: true,
                             itemCount: _currentDeviceData.length,
                             itemBuilder: (context, i) {
-                              final dataKey = _currentDeviceData.keys.elementAt(i);
-                              final dataValue = _currentDeviceData.values.elementAt(i);
+                              final dataKey =
+                                  _currentDeviceData.keys.elementAt(i);
+                              final dataValue =
+                                  _currentDeviceData.values.elementAt(i);
                               return Column(
                                 children: [
-                                  DeviceDataFieldView(dataKey: dataKey, dataValue: dataValue),
-                                  _currentDeviceData.length > i ? const Divider(height: 0) : Container(),
+                                  DeviceDataFieldView(
+                                      dataKey: dataKey, dataValue: dataValue),
+                                  _currentDeviceData.length > i
+                                      ? const Divider(height: 0)
+                                      : Container(),
                                 ],
                               );
                             },
@@ -255,8 +260,9 @@ class _DeviceViewState extends State<DeviceView> {
       currentDeviceData["ID"] = currentDevice.id.length > 14
           ? "..." + currentDevice.id.substring(currentDevice.id.length - 14)
           : currentDevice.id;
-      currentDeviceData["User Name"] =
-          userName != null && userName.length > 14 ? userName.substring(0, 14) + "..." : userName.toString();
+      currentDeviceData["User Name"] = userName != null && userName.length > 14
+          ? userName.substring(0, 14) + "..."
+          : userName.toString();
       currentDeviceData["DnD"] = dnd != null ? "${dnd.start} - ${dnd.end}" : "";
       currentDeviceData["Preferred Language"] = preferredLanguage.toString();
 

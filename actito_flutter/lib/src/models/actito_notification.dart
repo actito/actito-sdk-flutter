@@ -34,7 +34,8 @@ class ActitoNotification {
     required this.targetContentIdentifier,
   });
 
-  factory ActitoNotification.fromJson(Map<String, dynamic> json) => _$ActitoNotificationFromJson(json);
+  factory ActitoNotification.fromJson(Map<String, dynamic> json) =>
+      _$ActitoNotificationFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoNotificationToJson(this);
 }

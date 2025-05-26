@@ -120,8 +120,7 @@ class ActitoInAppMessaging {
   /// It will provide a [ActitoActionFailedToExecuteEvent] containing the
   /// [ActitoInAppMessageAction] that failed to execute and the
   /// [ActitoInAppMessage] for which the action was attempted.
-  static Stream<ActitoActionFailedToExecuteEvent>
-      get onActionFailedToExecute {
+  static Stream<ActitoActionFailedToExecuteEvent> get onActionFailedToExecute {
     return _getEventStream('action_failed_to_execute').map((result) {
       final Map<dynamic, dynamic> json = result;
       return ActitoActionFailedToExecuteEvent.fromJson(json.cast());

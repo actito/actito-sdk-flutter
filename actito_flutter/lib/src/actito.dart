@@ -12,7 +12,8 @@ class Actito {
   Actito._();
 
   // Channels
-  static const MethodChannel _channel = MethodChannel('com.actito.flutter/actito', JSONMethodCodec());
+  static const MethodChannel _channel =
+      MethodChannel('com.actito.flutter/actito', JSONMethodCodec());
 
   // Events
   static final Map<String, EventChannel> _eventChannels = {};
@@ -49,7 +50,8 @@ class Actito {
   /// Returns the [ActitoApplication] object representing the configured
   /// application, or `null` if the application is not yet available.
   static Future<ActitoApplication?> get application async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('getApplication');
+    final json =
+        await _channel.invokeMapMethod<String, dynamic>('getApplication');
     return json != null ? ActitoApplication.fromJson(json) : null;
   }
 
@@ -71,7 +73,8 @@ class Actito {
   ///
   /// Returns the [ActitoApplication] metadata.
   static Future<ActitoApplication> fetchApplication() async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('fetchApplication');
+    final json =
+        await _channel.invokeMapMethod<String, dynamic>('fetchApplication');
     return ActitoApplication.fromJson(json!);
   }
 
@@ -82,7 +85,8 @@ class Actito {
   /// Returns the [ActitoNotification] object associated with the
   /// provided ID.
   static Future<ActitoNotification> fetchNotification(String id) async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('fetchNotification', id);
+    final json = await _channel.invokeMapMethod<String, dynamic>(
+        'fetchNotification', id);
     return ActitoNotification.fromJson(json!);
   }
 
@@ -92,7 +96,8 @@ class Actito {
   ///
   /// Returns the [ActitoDynamicLink] object.
   static Future<ActitoDynamicLink> fetchDynamicLink(String url) async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('fetchDynamicLink', url);
+    final json = await _channel.invokeMapMethod<String, dynamic>(
+        'fetchDynamicLink', url);
     return ActitoDynamicLink.fromJson(json!);
   }
 
@@ -120,7 +125,8 @@ class Actito {
     }
 
     if (_eventStreams[eventType] == null) {
-      _eventStreams[eventType] = _eventChannels[eventType]!.receiveBroadcastStream();
+      _eventStreams[eventType] =
+          _eventChannels[eventType]!.receiveBroadcastStream();
     }
 
     return _eventStreams[eventType]!;

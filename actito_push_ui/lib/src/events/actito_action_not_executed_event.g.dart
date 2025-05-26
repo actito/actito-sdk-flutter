@@ -6,8 +6,7 @@ part of 'actito_action_not_executed_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoActionNotExecutedEvent _$ActitoActionNotExecutedEventFromJson(
-        Map json) =>
+ActitoActionNotExecutedEvent _$ActitoActionNotExecutedEventFromJson(Map json) =>
     ActitoActionNotExecutedEvent(
       notification: ActitoNotification.fromJson(
           Map<String, dynamic>.from(json['notification'] as Map)),

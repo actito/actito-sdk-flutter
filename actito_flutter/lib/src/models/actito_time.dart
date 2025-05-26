@@ -17,7 +17,8 @@ class ActitoTime {
 
   factory ActitoTime.fromString(String time) {
     final parts = time.split(":");
-    if (parts.length != 2) throw ArgumentError.value(time, 'time', 'Invalid time string');
+    if (parts.length != 2)
+      throw ArgumentError.value(time, 'time', 'Invalid time string');
 
     try {
       final hours = int.parse(parts[0]);

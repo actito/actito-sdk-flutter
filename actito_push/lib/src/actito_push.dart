@@ -224,9 +224,7 @@ class ActitoPush {
   static Stream<ActitoPushSubscription?> get onSubscriptionChanged {
     return _getEventStream('subscription_changed').map((result) {
       final Map<dynamic, dynamic>? json = result;
-      return json != null
-          ? ActitoPushSubscription.fromJson(json.cast())
-          : null;
+      return json != null ? ActitoPushSubscription.fromJson(json.cast()) : null;
     });
   }
 

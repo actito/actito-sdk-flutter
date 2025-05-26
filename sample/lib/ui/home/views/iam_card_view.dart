@@ -73,7 +73,7 @@ class InAppMessagingCardViewState extends State<InAppMessagingCardView> {
                     ),
                     const Spacer(),
                     CupertinoSwitch(
-                      activeColor: AppTheme.primaryBlue,
+                      activeTrackColor: AppTheme.primaryBlue,
                       value: _suppressed,
                       onChanged: (value) => _setSuppressedStatus(value),
                     ),
@@ -95,13 +95,17 @@ class InAppMessagingCardViewState extends State<InAppMessagingCardView> {
 
   Future<void> _setSuppressedStatus(bool suppressed) async {
     try {
-      logger.i((suppressed ? 'Suppress' : 'Unsuppress') + ' in-app messages clicked.');
-      await ActitoInAppMessaging.setMessagesSuppressed(suppressed, evaluateContext: _evaluateContext);
+      logger.i((suppressed ? 'Suppress' : 'Unsuppress') +
+          ' in-app messages clicked.');
+      await ActitoInAppMessaging.setMessagesSuppressed(suppressed,
+          evaluateContext: _evaluateContext);
 
-      logger.i((suppressed ? 'Suppress' : 'Unsuppress') + ' in-app messages successfully.');
+      logger.i((suppressed ? 'Suppress' : 'Unsuppress') +
+          ' in-app messages successfully.');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text((suppressed ? 'Suppress' : 'Unsuppress') + ' in-app messages successfully.'),
+          content: Text((suppressed ? 'Suppress' : 'Unsuppress') +
+              ' in-app messages successfully.'),
         ),
       );
     } catch (error) {

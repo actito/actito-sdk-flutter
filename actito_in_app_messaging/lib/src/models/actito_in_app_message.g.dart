@@ -6,8 +6,7 @@ part of 'actito_in_app_message.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoInAppMessage _$ActitoInAppMessageFromJson(Map json) =>
-    ActitoInAppMessage(
+ActitoInAppMessage _$ActitoInAppMessageFromJson(Map json) => ActitoInAppMessage(
       id: json['id'] as String,
       name: json['name'] as String,
       type: json['type'] as String,
@@ -28,8 +27,7 @@ ActitoInAppMessage _$ActitoInAppMessageFromJson(Map json) =>
               Map<String, dynamic>.from(json['secondaryAction'] as Map)),
     );
 
-Map<String, dynamic> _$ActitoInAppMessageToJson(
-        ActitoInAppMessage instance) =>
+Map<String, dynamic> _$ActitoInAppMessageToJson(ActitoInAppMessage instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

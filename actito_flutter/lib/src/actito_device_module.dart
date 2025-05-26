@@ -9,7 +9,8 @@ class ActitoDeviceModule {
 
   /// Returns the current [ActitoDevice] information.
   Future<ActitoDevice?> get currentDevice async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('getCurrentDevice');
+    final json =
+        await _channel.invokeMapMethod<String, dynamic>('getCurrentDevice');
     return json != null ? ActitoDevice.fromJson(json) : null;
   }
 
@@ -39,7 +40,8 @@ class ActitoDeviceModule {
     required String? userId,
     required String? userName,
   }) async {
-    await _channel.invokeMethod('register', {'userId': userId, 'userName': userName});
+    await _channel
+        .invokeMethod('register', {'userId': userId, 'userName': userName});
   }
 
   /// Updates the user information for the device.
@@ -52,7 +54,8 @@ class ActitoDeviceModule {
     required String? userId,
     required String? userName,
   }) async {
-    await _channel.invokeMethod('updateUser', {'userId': userId, 'userName': userName});
+    await _channel
+        .invokeMethod('updateUser', {'userId': userId, 'userName': userName});
   }
 
   /// Fetches the tags associated with the device.
@@ -101,7 +104,8 @@ class ActitoDeviceModule {
   /// Returns the current [ActitoDoNotDisturb] settings, or `null` if
   /// none are set.
   Future<ActitoDoNotDisturb?> fetchDoNotDisturb() async {
-    final json = await _channel.invokeMapMethod<String, dynamic>('fetchDoNotDisturb');
+    final json =
+        await _channel.invokeMapMethod<String, dynamic>('fetchDoNotDisturb');
     return json != null ? ActitoDoNotDisturb.fromJson(json) : null;
   }
 

@@ -71,7 +71,9 @@ class _AppState extends State<App> {
   bool get isIOSBackgroundEvent {
     final appState = WidgetsBinding.instance.lifecycleState;
 
-    return Platform.isIOS && (appState == AppLifecycleState.inactive || appState == AppLifecycleState.detached);
+    return Platform.isIOS &&
+        (appState == AppLifecycleState.inactive ||
+            appState == AppLifecycleState.detached);
   }
 
   @override
@@ -82,12 +84,16 @@ class _AppState extends State<App> {
   }
 
   void _configureActito() async {
-    await ActitoGeo.setLocationUpdatedBackgroundCallback(_onLocationUpdatedCallback);
-    await ActitoGeo.setRegionEnteredBackgroundCallback(_onRegionEnteredCallback);
+    await ActitoGeo.setLocationUpdatedBackgroundCallback(
+        _onLocationUpdatedCallback);
+    await ActitoGeo.setRegionEnteredBackgroundCallback(
+        _onRegionEnteredCallback);
     await ActitoGeo.setRegionExitedBackgroundCallback(_onRegionExitedCallback);
-    await ActitoGeo.setBeaconEnteredBackgroundCallback(_onBeaconEnteredCallback);
+    await ActitoGeo.setBeaconEnteredBackgroundCallback(
+        _onBeaconEnteredCallback);
     await ActitoGeo.setBeaconExitedBackgroundCallback(_onBeaconExitedCallback);
-    await ActitoGeo.setBeaconsRangedBackgroundCallback(_onBeaconsRangedCallback);
+    await ActitoGeo.setBeaconsRangedBackgroundCallback(
+        _onBeaconsRangedCallback);
 
     // region Actito events
 
@@ -131,7 +137,8 @@ class _AppState extends State<App> {
     // region Actito Push events
 
     ActitoPush.onNotificationInfoReceived.listen((event) {
-      logger.i('Notification received (${event.deliveryMechanism}): ${event.notification.toJson()}');
+      logger.i(
+          'Notification received (${event.deliveryMechanism}): ${event.notification.toJson()}');
 
       scaffoldMessengerKey.currentState!.showSnackBar(
         SnackBar(

@@ -6,20 +6,17 @@ part of 'actito_inbox_item.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoInboxItem _$ActitoInboxItemFromJson(Map json) =>
-    ActitoInboxItem(
+ActitoInboxItem _$ActitoInboxItemFromJson(Map json) => ActitoInboxItem(
       id: json['id'] as String,
       notification: ActitoNotification.fromJson(
           Map<String, dynamic>.from(json['notification'] as Map)),
-      time: const ActitoIsoDateTimeConverter()
-          .fromJson(json['time'] as String),
+      time: const ActitoIsoDateTimeConverter().fromJson(json['time'] as String),
       opened: json['opened'] as bool,
       expires: _$JsonConverterFromJson<String, DateTime>(
           json['expires'], const ActitoIsoDateTimeConverter().fromJson),
     );
 
-Map<String, dynamic> _$ActitoInboxItemToJson(
-        ActitoInboxItem instance) =>
+Map<String, dynamic> _$ActitoInboxItemToJson(ActitoInboxItem instance) =>
     <String, dynamic>{
       'id': instance.id,
       'notification': instance.notification.toJson(),

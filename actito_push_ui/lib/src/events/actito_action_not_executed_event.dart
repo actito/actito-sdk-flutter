@@ -18,6 +18,5 @@ class ActitoActionNotExecutedEvent {
   ) =>
       _$ActitoActionNotExecutedEventFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ActitoActionNotExecutedEventToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoActionNotExecutedEventToJson(this);
 }

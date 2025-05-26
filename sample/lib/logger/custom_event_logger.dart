@@ -22,15 +22,16 @@ void logCustomEvent(String event, Map<String, dynamic>? data) async {
   }
 
   Codec<String, String> stringToBase64 = utf8.fuse(base64);
-  String encodedKeyAndSecret = stringToBase64.encode('$applicationKey:$applicationSecret');
+  String encodedKeyAndSecret =
+      stringToBase64.encode('$applicationKey:$applicationSecret');
 
   var headers = {
     'Content-Type': 'application/json',
-    'Authorization':
-    'Basic ' + encodedKeyAndSecret
+    'Authorization': 'Basic ' + encodedKeyAndSecret
   };
 
-  var request = http.Request('POST', Uri.parse('https://push.notifica.re/event'));
+  var request =
+      http.Request('POST', Uri.parse('https://push.notifica.re/event'));
 
   request.body = json.encode({
     "type": "BackgroundEvent_$event",
