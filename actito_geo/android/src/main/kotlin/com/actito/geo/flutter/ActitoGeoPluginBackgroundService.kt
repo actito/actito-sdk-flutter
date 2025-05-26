@@ -3,6 +3,11 @@ package com.actito.geo.flutter
 import android.content.Context
 import android.os.Handler
 import android.util.Log
+import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.getCallback
+import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.getCallbackDispatcher
+import com.actito.geo.models.ActitoBeacon
+import com.actito.geo.models.ActitoLocation
+import com.actito.geo.models.ActitoRegion
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.dart.DartExecutor
 import io.flutter.embedding.engine.loader.FlutterLoader
@@ -11,11 +16,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.view.FlutterCallbackInformation
-import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.getCallback
-import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.getCallbackDispatcher
-import com.actito.geo.models.ActitoBeacon
-import com.actito.geo.models.ActitoLocation
-import com.actito.geo.models.ActitoRegion
 import java.util.LinkedList
 import java.util.Queue
 import java.util.concurrent.atomic.AtomicBoolean

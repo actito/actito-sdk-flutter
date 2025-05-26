@@ -6,16 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
-import io.flutter.embedding.engine.plugins.FlutterPlugin
-import io.flutter.embedding.engine.plugins.activity.ActivityAware
-import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
-import io.flutter.plugin.common.JSONMethodCodec
-import io.flutter.plugin.common.MethodCall
-import io.flutter.plugin.common.MethodChannel
-import io.flutter.plugin.common.MethodChannel.Result
-import io.flutter.plugin.common.PluginRegistry
-import org.json.JSONArray
-import org.json.JSONObject
 import com.actito.Actito
 import com.actito.ActitoCallback
 import com.actito.flutter.events.ActitoEvent
@@ -28,6 +18,16 @@ import com.actito.models.ActitoDynamicLink
 import com.actito.models.ActitoEventData
 import com.actito.models.ActitoNotification
 import com.actito.models.ActitoUserData
+import io.flutter.embedding.engine.plugins.FlutterPlugin
+import io.flutter.embedding.engine.plugins.activity.ActivityAware
+import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
+import io.flutter.plugin.common.JSONMethodCodec
+import io.flutter.plugin.common.MethodCall
+import io.flutter.plugin.common.MethodChannel
+import io.flutter.plugin.common.MethodChannel.Result
+import io.flutter.plugin.common.PluginRegistry
+import org.json.JSONArray
+import org.json.JSONObject
 
 class ActitoPlugin : FlutterPlugin, ActivityAware, PluginRegistry.NewIntentListener {
 

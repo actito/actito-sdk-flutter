@@ -2,14 +2,14 @@ package com.actito.push.flutter
 
 import android.os.Handler
 import android.os.Looper
-import io.flutter.plugin.common.BinaryMessenger
-import io.flutter.plugin.common.EventChannel
-import io.flutter.plugin.common.JSONMethodCodec
 import com.actito.models.ActitoNotification
 import com.actito.push.models.ActitoNotificationDeliveryMechanism
 import com.actito.push.models.ActitoPushSubscription
 import com.actito.push.models.ActitoSystemNotification
 import com.actito.push.models.ActitoUnknownNotification
+import io.flutter.plugin.common.BinaryMessenger
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.JSONMethodCodec
 
 internal object ActitoPushPluginEventBroker {
 

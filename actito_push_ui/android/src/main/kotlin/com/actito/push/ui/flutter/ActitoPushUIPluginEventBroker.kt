@@ -3,10 +3,10 @@ package com.actito.push.ui.flutter
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
+import com.actito.models.ActitoNotification
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
-import com.actito.models.ActitoNotification
 
 internal object ActitoPushUIPluginEventBroker {
 

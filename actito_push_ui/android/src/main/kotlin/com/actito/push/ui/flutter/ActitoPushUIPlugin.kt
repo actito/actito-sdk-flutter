@@ -3,6 +3,10 @@ package com.actito.push.ui.flutter
 import android.app.Activity
 import android.net.Uri
 import androidx.annotation.NonNull
+import com.actito.Actito
+import com.actito.models.ActitoNotification
+import com.actito.push.ui.ActitoPushUI
+import com.actito.push.ui.ktx.pushUI
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -12,10 +16,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.models.ActitoNotification
-import com.actito.push.ui.ActitoPushUI
-import com.actito.push.ui.ktx.pushUI
 
 public class ActitoPushUIPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     ActitoPushUI.NotificationLifecycleListener {

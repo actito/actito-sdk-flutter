@@ -1,15 +1,15 @@
 package com.actito.iam.flutter
 
 import androidx.annotation.NonNull
+import com.actito.Actito
+import com.actito.iam.ActitoInAppMessaging
+import com.actito.iam.ktx.inAppMessaging
+import com.actito.iam.models.ActitoInAppMessage
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.iam.ActitoInAppMessaging
-import com.actito.iam.ktx.inAppMessaging
-import com.actito.iam.models.ActitoInAppMessage
 
 class ActitoInAppMessagingPlugin : FlutterPlugin, MethodChannel.MethodCallHandler,
     ActitoInAppMessaging.MessageLifecycleListener {

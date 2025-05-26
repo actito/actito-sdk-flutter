@@ -2,6 +2,11 @@ package com.actito.scannables.flutter
 
 import android.app.Activity
 import androidx.annotation.NonNull
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.scannables.ActitoScannables
+import com.actito.scannables.ktx.scannables
+import com.actito.scannables.models.ActitoScannable
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -10,11 +15,6 @@ import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.scannables.ActitoScannables
-import com.actito.scannables.ktx.scannables
-import com.actito.scannables.models.ActitoScannable
 
 class ActitoScannablesPlugin : FlutterPlugin, MethodCallHandler, ActivityAware,
     ActitoScannables.ScannableSessionListener {

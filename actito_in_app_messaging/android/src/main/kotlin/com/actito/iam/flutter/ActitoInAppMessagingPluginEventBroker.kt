@@ -2,10 +2,10 @@ package com.actito.iam.flutter
 
 import android.os.Handler
 import android.os.Looper
+import com.actito.iam.models.ActitoInAppMessage
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.JSONMethodCodec
-import com.actito.iam.models.ActitoInAppMessage
 
 internal object ActitoInAppMessagingPluginEventBroker {
 
