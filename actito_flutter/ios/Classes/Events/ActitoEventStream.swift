@@ -31,7 +31,7 @@ class ActitoEventStream: NSObject, FlutterStreamHandler {
     func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         self.eventSink = events
 
-        if (self.eventSink != nil) {
+        if self.eventSink != nil {
             self.pendingEvents.forEach { send($0) }
             self.pendingEvents.removeAll()
         }

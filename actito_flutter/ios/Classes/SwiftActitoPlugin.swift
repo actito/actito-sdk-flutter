@@ -1,6 +1,6 @@
+import ActitoKit
 import Flutter
 import UIKit
-import ActitoKit
 
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
@@ -406,7 +406,7 @@ public class SwiftActitoPlugin: NSObject, FlutterPlugin {
 }
 
 extension SwiftActitoPlugin {
-    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if Actito.shared.handleTestDeviceUrl(url) {
             return true
         }

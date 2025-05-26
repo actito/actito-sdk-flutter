@@ -10,20 +10,20 @@ import ActitoPushKit
 
 class ActitoPushPluginEventBroker {
     private let namespace: String
-    
+
     private var channels: [EventType: FlutterEventChannel] = [:]
     private var streams: [EventType: Stream]
-    
+
     init(namespace: String) {
         var streams: [EventType: Stream] = [:]
         EventType.allCases.forEach { type in
             streams[type] = Stream(namespace: namespace, type: type)
         }
-        
+
         self.namespace = namespace
         self.streams = streams
     }
-    
+
     func setup(registrar: FlutterPluginRegistrar) {
         streams.values.forEach { stream in
             if let channel = channels[stream.type] {
@@ -34,20 +34,20 @@ class ActitoPushPluginEventBroker {
                     binaryMessenger: registrar.messenger(),
                     codec: FlutterJSONMethodCodec.sharedInstance()
                 )
-                
+
                 channel.setStreamHandler(stream)
 
                 channels[stream.type] = channel
             }
         }
     }
-    
+
     func cleanup() {
         channels.values.forEach { channel in
             channel.setStreamHandler(nil)
         }
     }
-    
+
     func emit(_ event: Event) {
         DispatchQueue.main.async { [weak self] in
             self?.streams[event.type]?.send(event)
@@ -80,7 +80,7 @@ extension ActitoPushPluginEventBroker {
         func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
             self.eventSink = events
 
-            if (self.eventSink != nil) {
+            if self.eventSink != nil {
                 self.pendingEvents.forEach { send($0) }
                 self.pendingEvents.removeAll()
             }
@@ -110,7 +110,7 @@ extension ActitoPushPluginEventBroker {
         case subscriptionChanged = "subscription_changed"
         case failedToRegisterForRemoteNotifications = "failed_to_register_for_remote_notifications"
     }
-    
+
     struct Event {
         let type: EventType
         let payload: Any?
@@ -123,72 +123,72 @@ extension ActitoPushPluginEventBroker {
             type: .notificationInfoReceived,
             payload: [
                 "notification": try! notification.toJson(),
-                "deliveryMechanism": deliveryMechanism.rawValue
+                "deliveryMechanism": deliveryMechanism.rawValue,
             ]
         )
     }
-    
+
     static func OnSystemNotificationReceived(notification: ActitoSystemNotification) -> Event {
         return Event(
             type: .systemNotificationReceived,
             payload: try! notification.toJson()
         )
     }
-    
+
     static func OnUnknownNotificationReceived(userInfo: [AnyHashable: Any]) -> Event {
         return Event(
             type: .unknownNotificationReceived,
             payload: userInfo.filter { $0.key is String } as! [String: Any]
         )
     }
-    
+
     static func OnNotificationOpened(notification: ActitoNotification) -> Event {
         return Event(
             type: .notificationOpened,
             payload: try! notification.toJson()
         )
     }
-    
+
     static func OnUnknownNotificationOpened(notification: [AnyHashable: Any]) -> Event {
         return Event(
             type: .unknownNotificationOpened,
             payload: notification.filter { $0.key is String } as! [String: Any]
         )
     }
-    
+
     static func OnNotificationActionOpened(notification: ActitoNotification, action: ActitoNotification.Action) -> Event {
         return Event(
             type: .notificationActionOpened,
             payload: [
                 "notification": try! notification.toJson(),
-                "action": try! action.toJson()
+                "action": try! action.toJson(),
             ]
         )
     }
-    
+
     static func OnUnknownNotificationActionOpened(notification: [AnyHashable: Any], action: String, responseText: String?) -> Event {
         var payload: [String: Any] = [
             "notification": notification.filter { $0.key is String } as! [String: Any],
             "action": action,
         ]
-        
+
         if let responseText = responseText {
             payload["responseText"] = responseText
         }
-        
+
         return Event(
             type: .unknownNotificationActionOpened,
             payload: payload
         )
     }
-    
+
     static func OnShouldOpenNotificationSettings(notification: ActitoNotification?) -> Event {
         return Event(
             type: .shouldOpenNotificationSettings,
             payload: try! notification?.toJson()
         )
     }
-    
+
     static func OnNotificationSettingsChanged(granted: Bool) -> Event {
         return Event(
             type: .notificationSettingsChanged,

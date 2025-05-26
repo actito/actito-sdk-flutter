@@ -1,24 +1,24 @@
+import ActitoGeoKit
+import ActitoKit
 import Flutter
 import UIKit
-import ActitoKit
-import ActitoGeoKit
 
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
 public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
-    
+
     private static let instance = SwiftActitoGeoPlugin()
     private let events = ActitoGeoPluginEvents(packageId: "com.actito.geo.flutter")
-    
+
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "com.actito.geo.flutter/actito_geo", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(instance, channel: channel)
-        
+
         instance.events.setup(registrar: registrar)
         Actito.shared.geo().delegate = instance
     }
-    
+
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         switch call.method {
         case "hasLocationServicesEnabled": hasLocationServicesEnabled(call, result)
@@ -32,13 +32,13 @@ public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
         default: result(FlutterMethodNotImplemented)
         }
     }
-    
+
     // MARK: - Methods
-    
+
     private func hasLocationServicesEnabled(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         response(Actito.shared.geo().hasLocationServicesEnabled)
     }
-    
+
     private func hasBluetoothEnabled(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         response(Actito.shared.geo().hasBluetoothEnabled)
     }
@@ -66,12 +66,12 @@ public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
             response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
         }
     }
-    
+
     private func enableLocationUpdates(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         Actito.shared.geo().enableLocationUpdates()
         response(nil)
     }
-    
+
     private func disableLocationUpdates(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         Actito.shared.geo().disableLocationUpdates()
         response(nil)
@@ -81,48 +81,48 @@ public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
 extension SwiftActitoGeoPlugin: ActitoGeoDelegate {
     public func actito(_ actitoGeo: ActitoGeo, didUpdateLocations locations: [ActitoLocation]) {
         guard let location = locations.first else { return }
-        
+
         events.emit(
             ActitoGeoPluginEvents.OnLocationUpdated(location: location)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didEnter region: ActitoRegion) {
         events.emit(
             ActitoGeoPluginEvents.OnRegionEntered(region: region)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didExit region: ActitoRegion) {
         events.emit(
             ActitoGeoPluginEvents.OnRegionExited(region: region)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didEnter beacon: ActitoBeacon) {
         events.emit(
             ActitoGeoPluginEvents.OnBeaconEntered(beacon: beacon)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didExit beacon: ActitoBeacon) {
         events.emit(
             ActitoGeoPluginEvents.OnBeaconExited(beacon: beacon)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didRange beacons: [ActitoBeacon], in region: ActitoRegion) {
         events.emit(
             ActitoGeoPluginEvents.OnBeaconsRanged(beacons: beacons, in: region)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didVisit visit: ActitoVisit) {
         events.emit(
             ActitoGeoPluginEvents.OnVisit(visit: visit)
         )
     }
-    
+
     public func actito(_ actitoGeo: ActitoGeo, didUpdateHeading heading: ActitoHeading) {
         events.emit(
             ActitoGeoPluginEvents.OnHeadingUpdated(heading: heading)
