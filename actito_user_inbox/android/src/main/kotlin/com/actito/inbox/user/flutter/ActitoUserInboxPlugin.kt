@@ -2,6 +2,11 @@ package com.actito.inbox.user.flutter
 
 import android.os.Handler
 import android.os.Looper
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.inbox.user.ktx.userInbox
+import com.actito.inbox.user.models.ActitoUserInboxItem
+import com.actito.models.ActitoNotification
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
@@ -9,11 +14,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.inbox.user.ktx.userInbox
-import com.actito.inbox.user.models.ActitoUserInboxItem
-import com.actito.models.ActitoNotification
 
 class ActitoUserInboxPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel

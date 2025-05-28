@@ -62,12 +62,17 @@ class _DeviceViewState extends State<DeviceView> {
                             shrinkWrap: true,
                             itemCount: _currentDeviceData.length,
                             itemBuilder: (context, i) {
-                              final dataKey = _currentDeviceData.keys.elementAt(i);
-                              final dataValue = _currentDeviceData.values.elementAt(i);
+                              final dataKey =
+                                  _currentDeviceData.keys.elementAt(i);
+                              final dataValue =
+                                  _currentDeviceData.values.elementAt(i);
                               return Column(
                                 children: [
-                                  DeviceDataFieldView(dataKey: dataKey, dataValue: dataValue),
-                                  _currentDeviceData.length > i ? const Divider(height: 0) : Container(),
+                                  DeviceDataFieldView(
+                                      dataKey: dataKey, dataValue: dataValue),
+                                  _currentDeviceData.length > i
+                                      ? const Divider(height: 0)
+                                      : Container(),
                                 ],
                               );
                             },
@@ -223,6 +228,11 @@ class _DeviceViewState extends State<DeviceView> {
                     onPressed: _onUpdateUserDataClicked,
                     child: const Text("Update user data"),
                   ),
+                  const Divider(height: 0),
+                  TextButton(
+                    onPressed: _onUnsetUserDataClicked,
+                    child: const Text("Unset user data field"),
+                  ),
                 ],
               ),
             ),
@@ -250,8 +260,9 @@ class _DeviceViewState extends State<DeviceView> {
       currentDeviceData["ID"] = currentDevice.id.length > 14
           ? "..." + currentDevice.id.substring(currentDevice.id.length - 14)
           : currentDevice.id;
-      currentDeviceData["User Name"] =
-          userName != null && userName.length > 14 ? userName.substring(0, 14) + "..." : userName.toString();
+      currentDeviceData["User Name"] = userName != null && userName.length > 14
+          ? userName.substring(0, 14) + "..."
+          : userName.toString();
       currentDeviceData["DnD"] = dnd != null ? "${dnd.start} - ${dnd.end}" : "";
       currentDeviceData["Preferred Language"] = preferredLanguage.toString();
 
@@ -276,7 +287,7 @@ class _DeviceViewState extends State<DeviceView> {
     try {
       logger.i('Update user clicked.');
       await Actito.device().updateUser(
-        userId: 'notificarista@notifica.re',
+        userId: 'notificarista@actito.com',
         userName: 'Notificarista',
       );
 
@@ -392,6 +403,33 @@ class _DeviceViewState extends State<DeviceView> {
       );
     } catch (error) {
       Logger().e('Updated user data error.', error);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('$error'),
+          backgroundColor: Colors.red.shade900,
+        ),
+      );
+    }
+  }
+
+  void _onUnsetUserDataClicked() async {
+    try {
+      Logger().i('Unset user data clicked.');
+      await Actito.device().updateUserData({
+        'firstName': null,
+        'lastName': 'LastNameExample',
+      });
+
+      _loadDeviceData();
+
+      Logger().i('Unset user data successfully.');
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Unset user data successfully.'),
+        ),
+      );
+    } catch (error) {
+      Logger().e('Unset user data error.', error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

@@ -11,8 +11,8 @@ ActitoUserInboxResponse _$ActitoUserInboxResponseFromJson(Map json) =>
       count: json['count'] as int,
       unread: json['unread'] as int,
       items: (json['items'] as List<dynamic>)
-          .map((e) => ActitoUserInboxItem.fromJson(
-              Map<String, dynamic>.from(e as Map)))
+          .map((e) =>
+              ActitoUserInboxItem.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
     );
 

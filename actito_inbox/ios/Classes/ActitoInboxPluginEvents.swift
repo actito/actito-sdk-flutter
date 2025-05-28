@@ -9,20 +9,20 @@ import ActitoInboxKit
 
 class ActitoInboxPluginEvents {
     private let packageId: String
-    
+
     private var channels: [EventType: FlutterEventChannel] = [:]
     private var streams: [EventType: Stream]
-    
+
     init(packageId: String) {
         var streams: [EventType: Stream] = [:]
         EventType.allCases.forEach { type in
             streams[type] = Stream(packageId: packageId, type: type)
         }
-        
+
         self.packageId = packageId
         self.streams = streams
     }
-    
+
     func setup(registrar: FlutterPluginRegistrar) {
         streams.values.forEach { stream in
             if let channel = channels[stream.type] {
@@ -33,20 +33,20 @@ class ActitoInboxPluginEvents {
                     binaryMessenger: registrar.messenger(),
                     codec: FlutterJSONMethodCodec.sharedInstance()
                 )
-                
+
                 channel.setStreamHandler(stream)
 
                 channels[stream.type] = channel
             }
         }
     }
-    
+
     func cleanup() {
         channels.values.forEach { channel in
             channel.setStreamHandler(nil)
         }
     }
-    
+
     func emit(_ event: Event) {
         DispatchQueue.main.async { [weak self] in
             self?.streams[event.type]?.send(event)
@@ -79,7 +79,7 @@ extension ActitoInboxPluginEvents {
         func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
             self.eventSink = events
 
-            if (self.eventSink != nil) {
+            if self.eventSink != nil {
                 self.pendingEvents.forEach { send($0) }
                 self.pendingEvents.removeAll()
             }
@@ -100,7 +100,7 @@ extension ActitoInboxPluginEvents {
         case inboxUpdated = "inbox_updated"
         case badgeUpdated = "badge_updated"
     }
-    
+
     struct Event {
         let type: EventType
         let payload: Any?
@@ -110,13 +110,13 @@ extension ActitoInboxPluginEvents {
 extension ActitoInboxPluginEvents {
     static func OnInboxUpdated(items: [ActitoInboxItem]) -> Event {
         let payload = items.map({ try! $0.toJson() })
-        
+
         return Event(
             type: .inboxUpdated,
             payload: payload
         )
     }
-    
+
     static func OnBadgeUpdated(badge: Int) -> Event {
         Event(
             type: .badgeUpdated,

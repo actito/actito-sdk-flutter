@@ -22,8 +22,7 @@ ActitoPass _$ActitoPassFromJson(Map json) => ActitoPass(
       limit: json['limit'] as int,
       token: json['token'] as String,
       data: Map<String, dynamic>.from(json['data'] as Map),
-      date: const ActitoIsoDateTimeConverter()
-          .fromJson(json['date'] as String),
+      date: const ActitoIsoDateTimeConverter().fromJson(json['date'] as String),
       googlePaySaveLink: json['googlePaySaveLink'] as String?,
     );
 
@@ -48,8 +47,7 @@ Map<String, dynamic> _$ActitoPassToJson(ActitoPass instance) =>
 ActitoPassRedemption _$ActitoPassRedemptionFromJson(Map json) =>
     ActitoPassRedemption(
       comments: json['comments'] as String?,
-      date: const ActitoIsoDateTimeConverter()
-          .fromJson(json['date'] as String),
+      date: const ActitoIsoDateTimeConverter().fromJson(json['date'] as String),
     );
 
 Map<String, dynamic> _$ActitoPassRedemptionToJson(

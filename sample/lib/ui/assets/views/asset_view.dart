@@ -64,8 +64,9 @@ class AssetView extends StatelessWidget {
                   const Divider(height: 0),
                   AssetDataFieldView(
                       dataKey: "Key",
-                      dataValue:
-                          key != null && key.length > 14 ? "..." + key.substring(key.length - 14) : key.toString()),
+                      dataValue: key != null && key.length > 14
+                          ? "..." + key.substring(key.length - 14)
+                          : key.toString()),
                   const Divider(height: 0),
                   Row(
                     children: [
@@ -75,18 +76,28 @@ class AssetView extends StatelessWidget {
                     ],
                   ),
                   const Divider(height: 0),
-                  AssetDataFieldView(dataKey: "Button Label", dataValue: buttonLabel.toString()),
+                  AssetDataFieldView(
+                      dataKey: "Button Label",
+                      dataValue: buttonLabel.toString()),
                   const Divider(height: 0),
-                  AssetDataFieldView(dataKey: "Button Action", dataValue: buttonAction.toString()),
+                  AssetDataFieldView(
+                      dataKey: "Button Action",
+                      dataValue: buttonAction.toString()),
                   const Divider(height: 0),
-                  AssetDataFieldView(dataKey: "Meta Content Type", dataValue: metaType.toString()),
+                  AssetDataFieldView(
+                      dataKey: "Meta Content Type",
+                      dataValue: metaType.toString()),
                   const Divider(height: 0),
-                  AssetDataFieldView(dataKey: "Meta Content Length", dataValue: metaLength.toString()),
+                  AssetDataFieldView(
+                      dataKey: "Meta Content Length",
+                      dataValue: metaLength.toString()),
                   const Divider(height: 0),
                   AssetDataFieldView(
                       dataKey: "Meta File Name",
-                      dataValue: metaFileName != null && metaFileName.length > 14
-                          ? "..." + metaFileName.substring(metaFileName.length - 14)
+                      dataValue: metaFileName != null &&
+                              metaFileName.length > 14
+                          ? "..." +
+                              metaFileName.substring(metaFileName.length - 14)
                           : metaFileName.toString())
                 ],
               ),

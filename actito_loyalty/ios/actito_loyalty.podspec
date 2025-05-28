@@ -1,7 +1,7 @@
 require 'yaml'
 
 pubspec = YAML.load(File.read(File.join(__dir__, "..", "pubspec.yaml")))
-actito_version = '4.0.0-canary.1'
+actito_version = '5.0.0-canary.1'
 
 Pod::Spec.new do |s|
   s.name             = pubspec['name']
@@ -15,7 +15,7 @@ For support please use: http://support.notifica.re
                        DESC
   s.homepage         = 'https://actito.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Notificare' => 'info@notificare.com' }
+  s.author           = { 'Actito' => 'product@actito.com' }
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'

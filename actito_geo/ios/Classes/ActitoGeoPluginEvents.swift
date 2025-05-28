@@ -5,25 +5,25 @@
 //  Created by Helder Pinhal on 24/11/2021.
 //
 
-import Foundation
 import ActitoGeoKit
+import Foundation
 
 class ActitoGeoPluginEvents {
     private let packageId: String
-    
+
     private var channels: [EventType: FlutterEventChannel] = [:]
     private var streams: [EventType: Stream]
-    
+
     init(packageId: String) {
         var streams: [EventType: Stream] = [:]
         EventType.allCases.forEach { type in
             streams[type] = Stream(packageId: packageId, type: type)
         }
-        
+
         self.packageId = packageId
         self.streams = streams
     }
-    
+
     func setup(registrar: FlutterPluginRegistrar) {
         streams.values.forEach { stream in
             if let channel = channels[stream.type] {
@@ -34,20 +34,20 @@ class ActitoGeoPluginEvents {
                     binaryMessenger: registrar.messenger(),
                     codec: FlutterJSONMethodCodec.sharedInstance()
                 )
-                
+
                 channel.setStreamHandler(stream)
 
                 channels[stream.type] = channel
             }
         }
     }
-    
+
     func cleanup() {
         channels.values.forEach { channel in
             channel.setStreamHandler(nil)
         }
     }
-    
+
     func emit(_ event: Event) {
         DispatchQueue.main.async { [weak self] in
             self?.streams[event.type]?.send(event)
@@ -80,7 +80,7 @@ extension ActitoGeoPluginEvents {
         func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
             self.eventSink = events
 
-            if (self.eventSink != nil) {
+            if self.eventSink != nil {
                 self.pendingEvents.forEach { send($0) }
                 self.pendingEvents.removeAll()
             }
@@ -107,7 +107,7 @@ extension ActitoGeoPluginEvents {
         case visit = "visit"
         case headingUpdated = "heading_updated"
     }
-    
+
     struct Event {
         let type: EventType
         let payload: Any?
@@ -121,52 +121,52 @@ extension ActitoGeoPluginEvents {
             payload: try! location.toJson()
         )
     }
-    
+
     static func OnRegionEntered(region: ActitoRegion) -> Event {
         return Event(
             type: .regionEntered,
             payload: try! region.toJson()
         )
     }
-    
+
     static func OnRegionExited(region: ActitoRegion) -> Event {
         return Event(
             type: .regionExited,
             payload: try! region.toJson()
         )
     }
-    
+
     static func OnBeaconEntered(beacon: ActitoBeacon) -> Event {
         return Event(
             type: .beaconEntered,
             payload: try! beacon.toJson()
         )
     }
-    
+
     static func OnBeaconExited(beacon: ActitoBeacon) -> Event {
         return Event(
             type: .beaconExited,
             payload: try! beacon.toJson()
         )
     }
-    
+
     static func OnBeaconsRanged(beacons: [ActitoBeacon], in region: ActitoRegion) -> Event {
         return Event(
             type: .beaconsRanged,
             payload: [
                 "region": try! region.toJson(),
-                "beacons": try! beacons.map { try $0.toJson() }
+                "beacons": try! beacons.map { try $0.toJson() },
             ]
         )
     }
-    
+
     static func OnVisit(visit: ActitoVisit) -> Event {
         return Event(
             type: .visit,
             payload: try! visit.toJson()
         )
     }
-    
+
     static func OnHeadingUpdated(heading: ActitoHeading) -> Event {
         return Event(
             type: .headingUpdated,

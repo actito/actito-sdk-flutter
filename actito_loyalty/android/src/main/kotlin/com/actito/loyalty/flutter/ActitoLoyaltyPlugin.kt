@@ -4,6 +4,10 @@ import android.app.Activity
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.loyalty.ktx.loyalty
+import com.actito.loyalty.models.ActitoPass
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -13,10 +17,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.loyalty.ktx.loyalty
-import com.actito.loyalty.models.ActitoPass
 
 class ActitoLoyaltyPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
     private lateinit var channel: MethodChannel

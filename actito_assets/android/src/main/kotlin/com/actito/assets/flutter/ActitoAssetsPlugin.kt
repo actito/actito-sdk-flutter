@@ -3,16 +3,15 @@ package com.actito.assets.flutter
 import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
-
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.assets.ktx.assets
+import com.actito.assets.models.ActitoAsset
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.assets.ktx.assets
-import com.actito.assets.models.ActitoAsset
 
 class ActitoAssetsPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel

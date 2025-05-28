@@ -5,8 +5,8 @@
 //  Created by Helder Pinhal on 24/03/2023.
 //
 
-import UserNotifications
 import ActitoNotificationServiceExtensionKit
+import UserNotifications
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -22,7 +22,7 @@ class NotificationService: UNNotificationServiceExtension {
             }
         }
     }
-    
+
     override func serviceExtensionTimeWillExpire() {
         // Called just before the extension will be terminated by the system.
         // Use this as an opportunity to deliver your "best attempt" at modified content, otherwise the original push payload will be used.

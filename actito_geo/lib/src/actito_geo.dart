@@ -25,36 +25,80 @@ class ActitoGeo {
   static final Map<String, Stream<dynamic>> _eventStreams = {};
 
   // Methods
+
+  /// Indicates whether location services are enabled.
+  ///
+  /// Returns `true` if the location services are enabled by the application, and
+  /// `false` otherwise.
   static Future<bool> get hasLocationServicesEnabled async {
     return await _channel.invokeMethod('hasLocationServicesEnabled');
   }
 
+  /// Indicates whether Bluetooth is enabled.
+  ///
+  /// Returns `true` if Bluetooth is enabled and available for beacon detection
+  /// and ranging, and `false` otherwise.
   static Future<bool> get hasBluetoothEnabled async {
     return await _channel.invokeMethod('hasBluetoothEnabled');
   }
 
+  /// Provides a list of regions currently being monitored.
+  ///
+  /// Returns a list of [ActitoRegion] objects representing the geographical
+  /// regions being actively monitored for entry and exit events.
   static Future<List<ActitoRegion>> get monitoredRegions async {
     final json = await _channel
         .invokeListMethod<Map<String, dynamic>>('getMonitoredRegions');
     return json!.map((e) => ActitoRegion.fromJson(e)).toList();
   }
 
+  /// Provides a list of regions the user has entered.
+  ///
+  /// Returns a list of [ActitoRegion] objects representing the regions that
+  /// the user has entered and not yet exited.
   static Future<List<ActitoRegion>> get enteredRegions async {
     final json = await _channel
         .invokeListMethod<Map<String, dynamic>>('getEnteredRegions');
     return json!.map((e) => ActitoRegion.fromJson(e)).toList();
   }
 
+  /// Enables location updates, activating location tracking, region monitoring,
+  /// and beacon detection.
+  ///
+  /// **Note**: This function requires explicit location permissions from the
+  /// user. Starting with Android 10 (API level 29), background location access
+  /// requires the ACCESS_BACKGROUND_LOCATION permission. For beacon detection,
+  /// Bluetooth permissions are also necessary. Ensure all permissions are
+  /// requested before invoking this method.
+  ///
+  /// The behavior varies based on granted permissions:
+  /// - **Permission denied**: Clears the device's location information.
+  /// - **When In Use permission granted**: Tracks location only while
+  /// the app is in use.
+  /// - **Always permission granted**: Enables geofencing
+  /// capabilities.
+  /// - **Always + Bluetooth permissions granted**: Enables
+  /// geofencing and beacon detection.
   static Future<void> enableLocationUpdates() async {
     await _channel.invokeMethod('enableLocationUpdates');
   }
 
+  /// Disables location updates.
+  ///
+  /// This method stops receiving location updates, monitoring regions, and
+  /// detecting nearby beacons.
   static Future<void> disableLocationUpdates() async {
     await _channel.invokeMethod('disableLocationUpdates');
   }
 
   // Background callback methods
 
+  /// Sets a callback that will be invoked when an onLocationUpdated event is
+  /// triggered in the background.
+  ///
+  /// - `onLocationUpdated`: A callback that will be invoked with the result of
+  /// the onLocationUpdated event, when in background. It will provide the updated
+  /// [ActitoLocation] object representing the user's new location.
   static Future<void> setLocationUpdatedBackgroundCallback(
       void Function(ActitoLocation location) onLocationUpdated) async {
     if (!Platform.isAndroid) {
@@ -79,6 +123,12 @@ class ActitoGeo {
     });
   }
 
+  /// Sets a callback that will be invoked when an onRegionEntered event is
+  /// triggered in the background.
+  ///
+  /// - `onRegionEntered`: A callback that will be invoked with the result of the
+  /// onRegionEntered event. It will provide [ActitoRegion] representing the
+  /// region the user has entered.
   static Future<void> setRegionEnteredBackgroundCallback(
       void Function(ActitoRegion region) onRegionEntered) async {
     if (!Platform.isAndroid) {
@@ -102,6 +152,12 @@ class ActitoGeo {
     });
   }
 
+  /// Sets a callback that will be invoked when an onRegionExited event is
+  /// triggered in the background.
+  ///
+  /// - `onRegionExit`: A callback that will be invoked with the result of the
+  /// onRegionExited event. It will provide the [ActitoRegion] representing
+  /// the region the user has exited.
   static Future<void> setRegionExitedBackgroundCallback(
       void Function(ActitoRegion region) onRegionExited) async {
     if (!Platform.isAndroid) {
@@ -125,6 +181,12 @@ class ActitoGeo {
     });
   }
 
+  /// Sets a callback that will be invoked when an onBeaconEntered event is
+  /// triggered in the background.
+  ///
+  /// - `onBeaconsEntered` A callback that will be invoked with the result of the
+  /// onBeaconEntered event. It will provide the [ActitoBeacon] representing
+  /// the beacon the user has entered the proximity of.
   static Future<void> setBeaconEnteredBackgroundCallback(
       void Function(ActitoBeacon beacon) onBeaconEntered) async {
     if (!Platform.isAndroid) {
@@ -148,6 +210,12 @@ class ActitoGeo {
     });
   }
 
+  /// Sets a callback that will be invoked when an onBeaconExited event is
+  /// triggered in the background.
+  ///
+  /// - `onBeaconExited`: A callback that will be invoked with the result of the
+  /// onBeaconExited event. It will provide the [ActitoBeacon]
+  /// representing the beacon the user has exited the proximity of.
   static Future<void> setBeaconExitedBackgroundCallback(
       void Function(ActitoBeacon beacon) onBeaconExited) async {
     if (!Platform.isAndroid) {
@@ -171,6 +239,13 @@ class ActitoGeo {
     });
   }
 
+  /// Sets a callback that will be invoked when an onBeaconsRanged event is
+  /// triggered in the background.
+  ///
+  /// - `event`: A callback that will be invoked with the result of the
+  /// onBeaconsRanged event. It will provide a [ActitoRangedBeaconsEvent]
+  /// containing a list of [ActitoBeacon] that were detected and the
+  /// [ActitoRegion] where they were detected.
   static Future<void> setBeaconsRangedBackgroundCallback(
       void Function(ActitoRangedBeaconsEvent event) onBeaconsRanged) async {
     if (!Platform.isAndroid) {
@@ -209,6 +284,10 @@ class ActitoGeo {
     return _eventStreams[eventType]!;
   }
 
+  /// Called when a new location update is received.
+  ///
+  /// It will provide the updated [ActitoLocation] object representing the
+  /// user's new location.
   static Stream<ActitoLocation> get onLocationUpdated {
     return _getEventStream('location_updated').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -216,6 +295,10 @@ class ActitoGeo {
     });
   }
 
+  /// Called when the user enters a monitored region.
+  ///
+  /// It will provide the [ActitoRegion] representing the region the user has
+  /// entered.
   static Stream<ActitoRegion> get onRegionEntered {
     return _getEventStream('region_entered').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -223,6 +306,10 @@ class ActitoGeo {
     });
   }
 
+  /// Called when the user exits a monitored region.
+  ///
+  /// It will provide the [ActitoRegion] representing the region the user has
+  /// exited.
   static Stream<ActitoRegion> get onRegionExited {
     return _getEventStream('region_exited').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -230,6 +317,10 @@ class ActitoGeo {
     });
   }
 
+  /// Called when the user enters the proximity of a beacon.
+  ///
+  /// It will provide the [ActitoBeacon] representing the beacon the user has
+  /// entered the proximity of.
   static Stream<ActitoBeacon> get onBeaconEntered {
     return _getEventStream('beacon_entered').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -237,6 +328,10 @@ class ActitoGeo {
     });
   }
 
+  /// Called when the user exits the proximity of a beacon.
+  ///
+  /// It will provide the [ActitoBeacon] representing the beacon the user
+  /// has exited the proximity of.
   static Stream<ActitoBeacon> get onBeaconExited {
     return _getEventStream('beacon_exited').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -244,6 +339,14 @@ class ActitoGeo {
     });
   }
 
+  /// Called when beacons are ranged in a monitored region.
+  ///
+  /// This method provides the list of beacons currently detected within the given
+  /// region.
+  ///
+  /// It will provide a [ActitoRangedBeaconsEvent] containing a list of
+  /// [ActitoBeacon] that were detected and the [ActitoRegion] where they
+  /// were detected.
   static Stream<ActitoRangedBeaconsEvent> get onBeaconsRanged {
     return _getEventStream('beacons_ranged').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -251,6 +354,12 @@ class ActitoGeo {
     });
   }
 
+  /// Called when the device registers a location visit.
+  ///
+  /// **Note**: This method is only supported on iOS.
+  ///
+  /// It will provide a [ActitoVisit] object representing the details of the
+  /// visit.
   static Stream<ActitoVisit> get onVisit {
     return _getEventStream('visit').map((result) {
       final Map<dynamic, dynamic> json = result;
@@ -258,6 +367,12 @@ class ActitoGeo {
     });
   }
 
+  /// Called when there is an update to the device’s heading.
+  ///
+  /// **Note**: This method is only supported on iOS.
+  ///
+  /// It will provide a [ActitoHeading] object containing the details of the
+  /// updated heading.
   static Stream<ActitoHeading> get onHeadingUpdated {
     return _getEventStream('heading_updated').map((result) {
       final Map<dynamic, dynamic> json = result;

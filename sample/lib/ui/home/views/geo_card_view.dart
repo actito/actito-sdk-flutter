@@ -143,7 +143,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
   void _checkLocationStatus() async {
     try {
-      final enabled = await ActitoGeo.hasLocationServicesEnabled && await Permission.locationWhenInUse.isGranted;
+      final enabled = await ActitoGeo.hasLocationServicesEnabled &&
+          await Permission.locationWhenInUse.isGranted;
       setState(() {
         _hasLocationEnabled = enabled;
       });
@@ -254,7 +255,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         builder: (context) {
           return AlertDialog(
             title: const Text("Sample"),
-            content: const Text("We need access to foreground location in order to show relevant content."),
+            content: const Text(
+                "We need access to foreground location in order to show relevant content."),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
@@ -296,7 +298,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         builder: (context) {
           return AlertDialog(
             title: const Text("Sample"),
-            content: const Text("We need access to background location in order to show relevant content."),
+            content: const Text(
+                "We need access to background location in order to show relevant content."),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
@@ -334,7 +337,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         builder: (context) {
           return AlertDialog(
             title: const Text("Sample"),
-            content: const Text("We need access to bluetooth in order to show relevant content."),
+            content: const Text(
+                "We need access to bluetooth in order to show relevant content."),
             actions: [
               TextButton(
                 style: TextButton.styleFrom(
@@ -395,7 +399,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
             child: ListBody(
               children: <Widget>[
                 Text((() {
-                  if (permission == Permission.locationWhenInUse || permission == Permission.location) {
+                  if (permission == Permission.locationWhenInUse ||
+                      permission == Permission.location) {
                     return "We need access to location in order to show relevant content.";
                   }
 
@@ -435,7 +440,8 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
 
   Future<void> _showGeoStatusInfo() async {
     try {
-      final hasLocationServiceEnabled = await ActitoGeo.hasLocationServicesEnabled;
+      final hasLocationServiceEnabled =
+          await ActitoGeo.hasLocationServicesEnabled;
       final hasBluetoothEnabled = await ActitoGeo.hasBluetoothEnabled;
 
       await showDialog(

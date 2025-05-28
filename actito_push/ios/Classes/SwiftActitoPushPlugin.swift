@@ -1,7 +1,7 @@
-import Flutter
-import UIKit
 import ActitoKit
 import ActitoPushKit
+import Flutter
+import UIKit
 
 fileprivate let DEFAULT_ERROR_CODE = "actito_error"
 fileprivate let NAMESPACE = "com.actito.push.flutter"
@@ -249,7 +249,7 @@ extension SwiftActitoPushPlugin: ActitoPushDelegate {
         )
     }
 
-    public func actito(_ actitoPush: ActitoPush, didReceiveUnknownNotification userInfo: [AnyHashable : Any]) {
+    public func actito(_ actitoPush: ActitoPush, didReceiveUnknownNotification userInfo: [AnyHashable: Any]) {
         eventBroker.emit(
             ActitoPushPluginEventBroker.OnUnknownNotificationReceived(
                 userInfo: userInfo
@@ -273,7 +273,7 @@ extension SwiftActitoPushPlugin: ActitoPushDelegate {
         )
     }
 
-    public func actito(_ actitoPush: ActitoPush, didOpenUnknownNotification userInfo: [AnyHashable : Any]) {
+    public func actito(_ actitoPush: ActitoPush, didOpenUnknownNotification userInfo: [AnyHashable: Any]) {
         eventBroker.emit(
             ActitoPushPluginEventBroker.OnUnknownNotificationOpened(
                 notification: userInfo
@@ -290,7 +290,7 @@ extension SwiftActitoPushPlugin: ActitoPushDelegate {
         )
     }
 
-    public func actito(_ actitoPush: ActitoPush, didOpenUnknownAction action: String, for notification: [AnyHashable : Any], responseText: String?) {
+    public func actito(_ actitoPush: ActitoPush, didOpenUnknownAction action: String, for notification: [AnyHashable: Any], responseText: String?) {
         eventBroker.emit(
             ActitoPushPluginEventBroker.OnUnknownNotificationActionOpened(
                 notification: notification,
@@ -302,7 +302,7 @@ extension SwiftActitoPushPlugin: ActitoPushDelegate {
 }
 
 extension SwiftActitoPushPlugin: FlutterApplicationLifeCycleDelegate {
-    public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
+    public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
         // This method is never called. The swizzling performed on the native side takes care of it.
         return true
     }

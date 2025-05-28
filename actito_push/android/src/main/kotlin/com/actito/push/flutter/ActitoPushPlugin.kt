@@ -3,6 +3,10 @@ package com.actito.push.flutter
 import android.content.Intent
 import androidx.annotation.NonNull
 import androidx.lifecycle.Observer
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.push.ktx.push
+import com.actito.push.models.ActitoPushSubscription
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -12,10 +16,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import io.flutter.plugin.common.PluginRegistry
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.push.ktx.push
-import com.actito.push.models.ActitoPushSubscription
 
 class ActitoPushPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, PluginRegistry.NewIntentListener {
 

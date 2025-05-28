@@ -1,6 +1,6 @@
+import ActitoKit
 import Flutter
 import UIKit
-import ActitoKit
 
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
@@ -374,7 +374,7 @@ public class SwiftActitoPlugin: NSObject, FlutterPlugin {
     }
 
     private func updateUserData(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        let userData = call.arguments as! [String: String]
+        let userData = call.arguments as! [String: String?]
 
         Actito.shared.device().updateUserData(userData) { result in
             switch result {
@@ -406,7 +406,7 @@ public class SwiftActitoPlugin: NSObject, FlutterPlugin {
 }
 
 extension SwiftActitoPlugin {
-    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if Actito.shared.handleTestDeviceUrl(url) {
             return true
         }
@@ -438,7 +438,7 @@ extension SwiftActitoPlugin: ActitoDelegate {
         ActitoEventManager.shared.send(ActitoEventOnReady(application: application))
     }
 
-    public func actito(_ actito: Actito) {
+    public func actitoDidUnlaunch(_ actito: Actito) {
         ActitoEventManager.shared.send(ActitoEventOnUnlaunched())
     }
 

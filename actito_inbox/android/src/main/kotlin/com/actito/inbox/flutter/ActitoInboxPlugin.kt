@@ -4,6 +4,13 @@ import android.os.Handler
 import android.os.Looper
 import androidx.annotation.NonNull
 import androidx.lifecycle.Observer
+import com.actito.Actito
+import com.actito.ActitoCallback
+import com.actito.inbox.flutter.events.ActitoEvent
+import com.actito.inbox.flutter.events.ActitoEventManager
+import com.actito.inbox.ktx.inbox
+import com.actito.inbox.models.ActitoInboxItem
+import com.actito.models.ActitoNotification
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.JSONMethodCodec
 import io.flutter.plugin.common.MethodCall
@@ -11,16 +18,7 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.ActitoCallback
-import com.actito.inbox.flutter.events.ActitoEvent
-import com.actito.inbox.flutter.events.ActitoEventManager
-import com.actito.inbox.ktx.inbox
-import com.actito.inbox.models.ActitoInboxItem
-import com.actito.inbox.models.fromJson
-import com.actito.inbox.models.toJson
-import com.actito.models.ActitoNotification
-import java.util.*
+import java.util.SortedSet
 
 class ActitoInboxPlugin : FlutterPlugin, MethodCallHandler {
     private lateinit var channel: MethodChannel

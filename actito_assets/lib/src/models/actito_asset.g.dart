@@ -33,14 +33,12 @@ Map<String, dynamic> _$ActitoAssetToJson(ActitoAsset instance) =>
       'extra': instance.extra,
     };
 
-ActitoAssetButton _$ActitoAssetButtonFromJson(Map json) =>
-    ActitoAssetButton(
+ActitoAssetButton _$ActitoAssetButtonFromJson(Map json) => ActitoAssetButton(
       label: json['label'] as String?,
       action: json['action'] as String?,
     );
 
-Map<String, dynamic> _$ActitoAssetButtonToJson(
-        ActitoAssetButton instance) =>
+Map<String, dynamic> _$ActitoAssetButtonToJson(ActitoAssetButton instance) =>
     <String, dynamic>{
       'label': instance.label,
       'action': instance.action,

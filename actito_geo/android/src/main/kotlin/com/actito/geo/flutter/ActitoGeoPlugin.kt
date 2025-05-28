@@ -2,6 +2,11 @@ package com.actito.geo.flutter
 
 import android.content.Context
 import androidx.annotation.NonNull
+import com.actito.Actito
+import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.BackgroundEvent.CallbackType
+import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.Companion.isAttachedToActivity
+import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.updateCallback
+import com.actito.geo.ktx.geo
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -11,12 +16,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 import org.json.JSONObject
-import com.actito.Actito
-import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.BackgroundEvent.CallbackType
-import com.actito.geo.flutter.ActitoGeoPluginBackgroundService.Companion.isAttachedToActivity
-import com.actito.geo.flutter.storage.ActitoGeoPluginStorage.updateCallback
-import com.actito.geo.ktx.geo
-import com.actito.geo.models.toJson
 
 class ActitoGeoPlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
 

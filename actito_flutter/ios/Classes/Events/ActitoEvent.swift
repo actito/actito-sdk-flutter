@@ -5,8 +5,8 @@
 //  Created by Helder Pinhal on 03/12/2020.
 //
 
-import Foundation
 import ActitoKit
+import Foundation
 
 enum ActitoEventType: String, CaseIterable {
     case ready

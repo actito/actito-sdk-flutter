@@ -10,7 +10,8 @@ class ActitoDynamicLink {
     required this.target,
   });
 
-  factory ActitoDynamicLink.fromJson(Map<String, dynamic> json) => _$ActitoDynamicLinkFromJson(json);
+  factory ActitoDynamicLink.fromJson(Map<String, dynamic> json) =>
+      _$ActitoDynamicLinkFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoDynamicLinkToJson(this);
 }

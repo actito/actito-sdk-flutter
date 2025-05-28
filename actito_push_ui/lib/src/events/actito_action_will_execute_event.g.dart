@@ -6,8 +6,7 @@ part of 'actito_action_will_execute_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoActionWillExecuteEvent _$ActitoActionWillExecuteEventFromJson(
-        Map json) =>
+ActitoActionWillExecuteEvent _$ActitoActionWillExecuteEventFromJson(Map json) =>
     ActitoActionWillExecuteEvent(
       notification: ActitoNotification.fromJson(
           Map<String, dynamic>.from(json['notification'] as Map)),

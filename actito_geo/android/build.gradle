@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.7.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -31,19 +31,19 @@ android {
         namespace 'com.actito.geo.flutter'
     }
 
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     defaultConfig {
         minSdkVersion 23
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11
     }
 
     sourceSets {
@@ -52,8 +52,11 @@ android {
 }
 
 dependencies {
-    def actito_version = '4.0.0-canary.1'
+    def actito_version = '5.0.0-canary.2'
     api "com.actito:actito:$actito_version"
     api "com.actito:actito-geo:$actito_version"
-    implementation "com.actito:actito-geo-beacons:$actito_version"
+
+    if ((project.findProperty('actitoBeaconsSupportEnabled') ?: true).toBoolean()) {
+        implementation "com.actito:actito-geo-beacons:$actito_version"
+    }
 }

@@ -5,25 +5,25 @@
 //  Created by Helder Pinhal on 25/11/2021.
 //
 
-import Foundation
 import ActitoScannablesKit
+import Foundation
 
 class ActitoScannablesPluginEvents {
     private let packageId: String
-    
+
     private var channels: [EventType: FlutterEventChannel] = [:]
     private var streams: [EventType: Stream]
-    
+
     init(packageId: String) {
         var streams: [EventType: Stream] = [:]
         EventType.allCases.forEach { type in
             streams[type] = Stream(packageId: packageId, type: type)
         }
-        
+
         self.packageId = packageId
         self.streams = streams
     }
-    
+
     func setup(registrar: FlutterPluginRegistrar) {
         streams.values.forEach { stream in
             if let channel = channels[stream.type] {
@@ -34,20 +34,20 @@ class ActitoScannablesPluginEvents {
                     binaryMessenger: registrar.messenger(),
                     codec: FlutterJSONMethodCodec.sharedInstance()
                 )
-                
+
                 channel.setStreamHandler(stream)
 
                 channels[stream.type] = channel
             }
         }
     }
-    
+
     func cleanup() {
         channels.values.forEach { channel in
             channel.setStreamHandler(nil)
         }
     }
-    
+
     func emit(_ event: Event) {
         DispatchQueue.main.async { [weak self] in
             self?.streams[event.type]?.send(event)
@@ -80,7 +80,7 @@ extension ActitoScannablesPluginEvents {
         func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
             self.eventSink = events
 
-            if (self.eventSink != nil) {
+            if self.eventSink != nil {
                 self.pendingEvents.forEach { send($0) }
                 self.pendingEvents.removeAll()
             }
@@ -101,7 +101,7 @@ extension ActitoScannablesPluginEvents {
         case scannableDetected = "scannable_detected"
         case scannableSessionFailed = "scannable_session_failed"
     }
-    
+
     struct Event {
         let type: EventType
         let payload: Any?
@@ -115,7 +115,7 @@ extension ActitoScannablesPluginEvents {
             payload: try! scannable.toJson()
         )
     }
-    
+
     static func OnScannableSessionFailed(error: Error) -> Event {
         Event(
             type: .scannableSessionFailed,

@@ -1,14 +1,17 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    id "re.notifica.gradle.notificare-services"
+}
+
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,23 +24,17 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 're.notifica.gradle.notificare-services'
-apply plugin: 'com.google.gms.google-services'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
-
 android {
     namespace 'com.actito.sample'
-    compileSdkVersion 34
+    compileSdkVersion 35
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
 
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11
     }
 
     sourceSets {
@@ -47,13 +44,13 @@ android {
     defaultConfig {
         applicationId "com.actito.sample.app"
         minSdkVersion 23
-        targetSdkVersion 34
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
 
         manifestPlaceholders = [
                 googleMapsApiKey: localProperties.getProperty('google.maps.key'),
-                notificareApplicationId: localProperties.getProperty('notificare.application.id'),
+                actitoApplicationId: localProperties.getProperty('actito.application.id'),
         ]
     }
 
@@ -99,18 +96,22 @@ android {
 
     applicationVariants.configureEach {
         if (name == "developmentDebug") {
-            resValue("string", "notificare_app_links_hostname", "\"618d0f4edc09fbed1864e8d0.applinks-test.notifica.re\"")
-            resValue("string", "notificare_dynamic_link_hostname", "\"sample-app-dev.test.ntc.re\"")
+            resValue("string", "actito_app_links_hostname", "\"\"")
+            resValue("string", "actito_dynamic_link_hostname", "\"\"")
         } else if (name == "developmentRelease") {
-            resValue("string", "notificare_app_links_hostname", "\"654d017fc468efc19379921e.applinks-test.notifica.re\"")
-            resValue("string", "notificare_dynamic_link_hostname", "\"sample-app.test.ntc.re\"")
+            resValue("string", "actito_app_links_hostname", "\"\"")
+            resValue("string", "actito_dynamic_link_hostname", "\"\"")
         } else if (name == "productionDebug") {
-            resValue("string", "notificare_app_links_hostname", "\"61644511218adebf72c5449b.applinks.notifica.re\"")
-            resValue("string", "notificare_dynamic_link_hostname", "\"sample-app-dev.ntc.re\"")
+            resValue("string", "actito_app_links_hostname", "\"67092ff3d6bb84eac9e0fb51.applinks.notifica.re\"")
+            resValue("string", "actito_dynamic_link_hostname", "\"actito-sample-app-dev.ntc.re\"")
         } else if (name == "productionRelease") {
-            resValue("string", "notificare_app_links_hostname", "\"6511625f445cc1c81d47fd6f.applinks.notifica.re\"")
-            resValue("string", "notificare_dynamic_link_hostname", "\"sample-app.ntc.re\"")
+            resValue("string", "actito_app_links_hostname", "\"\"")
+            resValue("string", "actito_dynamic_link_hostname", "\"\"")
         }
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 }
 
@@ -119,5 +120,5 @@ flutter {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0'
 }

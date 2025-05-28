@@ -6,13 +6,11 @@ part of 'actito_notification.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoNotification _$ActitoNotificationFromJson(Map json) =>
-    ActitoNotification(
+ActitoNotification _$ActitoNotificationFromJson(Map json) => ActitoNotification(
       id: json['id'] as String,
       partial: json['partial'] as bool,
       type: json['type'] as String,
-      time: const ActitoIsoDateTimeConverter()
-          .fromJson(json['time'] as String),
+      time: const ActitoIsoDateTimeConverter().fromJson(json['time'] as String),
       title: json['title'] as String?,
       subtitle: json['subtitle'] as String?,
       message: json['message'] as String,
@@ -32,8 +30,7 @@ ActitoNotification _$ActitoNotificationFromJson(Map json) =>
       targetContentIdentifier: json['targetContentIdentifier'] as String?,
     );
 
-Map<String, dynamic> _$ActitoNotificationToJson(
-        ActitoNotification instance) =>
+Map<String, dynamic> _$ActitoNotificationToJson(ActitoNotification instance) =>
     <String, dynamic>{
       'id': instance.id,
       'partial': instance.partial,
@@ -49,8 +46,7 @@ Map<String, dynamic> _$ActitoNotificationToJson(
       'targetContentIdentifier': instance.targetContentIdentifier,
     };
 
-ActitoNotificationContent _$ActitoNotificationContentFromJson(
-        Map json) =>
+ActitoNotificationContent _$ActitoNotificationContentFromJson(Map json) =>
     ActitoNotificationContent(
       type: json['type'] as String,
       data: json['data'],
@@ -89,8 +85,7 @@ Map<String, dynamic> _$ActitoNotificationActionToJson(
       'icon': instance.icon?.toJson(),
     };
 
-ActitoNotificationActionIcon _$ActitoNotificationActionIconFromJson(
-        Map json) =>
+ActitoNotificationActionIcon _$ActitoNotificationActionIconFromJson(Map json) =>
     ActitoNotificationActionIcon(
       android: json['android'] as String?,
       ios: json['ios'] as String?,
@@ -105,8 +100,7 @@ Map<String, dynamic> _$ActitoNotificationActionIconToJson(
       'web': instance.web,
     };
 
-ActitoNotificationAttachment _$ActitoNotificationAttachmentFromJson(
-        Map json) =>
+ActitoNotificationAttachment _$ActitoNotificationAttachmentFromJson(Map json) =>
     ActitoNotificationAttachment(
       mimeType: json['mimeType'] as String,
       uri: json['uri'] as String,

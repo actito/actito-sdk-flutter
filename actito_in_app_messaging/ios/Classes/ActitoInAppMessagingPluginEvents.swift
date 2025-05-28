@@ -5,8 +5,8 @@
 //  Created by Helder Pinhal on 13/09/2022.
 //
 
-import Foundation
 import ActitoInAppMessagingKit
+import Foundation
 
 class ActitoInAppMessagingPluginEvents {
     private let packageId: String
@@ -80,7 +80,7 @@ extension ActitoInAppMessagingPluginEvents {
         func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
             self.eventSink = events
 
-            if (self.eventSink != nil) {
+            if self.eventSink != nil {
                 self.pendingEvents.forEach { send($0) }
                 self.pendingEvents.removeAll()
             }

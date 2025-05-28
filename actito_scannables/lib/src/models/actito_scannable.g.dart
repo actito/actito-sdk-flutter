@@ -6,8 +6,7 @@ part of 'actito_scannable.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoScannable _$ActitoScannableFromJson(Map json) =>
-    ActitoScannable(
+ActitoScannable _$ActitoScannableFromJson(Map json) => ActitoScannable(
       id: json['id'] as String,
       name: json['name'] as String,
       tag: json['tag'] as String,
@@ -18,8 +17,7 @@ ActitoScannable _$ActitoScannableFromJson(Map json) =>
               Map<String, dynamic>.from(json['notification'] as Map)),
     );
 
-Map<String, dynamic> _$ActitoScannableToJson(
-        ActitoScannable instance) =>
+Map<String, dynamic> _$ActitoScannableToJson(ActitoScannable instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,

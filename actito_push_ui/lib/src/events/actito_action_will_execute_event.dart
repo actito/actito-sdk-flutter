@@ -18,6 +18,5 @@ class ActitoActionWillExecuteEvent {
   ) =>
       _$ActitoActionWillExecuteEventFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ActitoActionWillExecuteEventToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoActionWillExecuteEventToJson(this);
 }

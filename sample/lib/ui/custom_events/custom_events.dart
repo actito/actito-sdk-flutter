@@ -80,7 +80,8 @@ class _CustomEventsViewState extends State<CustomEventsView> {
                   const Divider(height: 0),
                   TextButton(
                     child: const Text("Register"),
-                    onPressed: _eventName != "" ? _onRegisterCustomEventClicked : null,
+                    onPressed:
+                        _eventName != "" ? _onRegisterCustomEventClicked : null,
                   ),
                 ],
               ),

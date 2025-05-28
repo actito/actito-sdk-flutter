@@ -11,8 +11,8 @@ ActitoRangedBeaconsEvent _$ActitoRangedBeaconsEventFromJson(Map json) =>
       region: ActitoRegion.fromJson(
           Map<String, dynamic>.from(json['region'] as Map)),
       beacons: (json['beacons'] as List<dynamic>)
-          .map((e) =>
-              ActitoBeacon.fromJson(Map<String, dynamic>.from(e as Map)))
+          .map(
+              (e) => ActitoBeacon.fromJson(Map<String, dynamic>.from(e as Map)))
           .toList(),
     );
 

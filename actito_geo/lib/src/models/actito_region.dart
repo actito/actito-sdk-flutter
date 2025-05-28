@@ -13,7 +13,7 @@ class ActitoRegion {
   final int? major;
   final double distance;
   final String timeZone;
-  final int timeZoneOffset;
+  final double timeZoneOffset;
 
   ActitoRegion({
     required this.id,
@@ -65,8 +65,7 @@ class ActitoRegionAdvancedGeometry {
   ) =>
       _$ActitoRegionAdvancedGeometryFromJson(json);
 
-  Map<String, dynamic> toJson() =>
-      _$ActitoRegionAdvancedGeometryToJson(this);
+  Map<String, dynamic> toJson() => _$ActitoRegionAdvancedGeometryToJson(this);
 }
 
 @JsonSerializable(anyMap: true, explicitToJson: true)

@@ -21,7 +21,8 @@ class ActitoDevice {
     required this.userData,
   });
 
-  factory ActitoDevice.fromJson(Map<String, dynamic> json) => _$ActitoDeviceFromJson(json);
+  factory ActitoDevice.fromJson(Map<String, dynamic> json) =>
+      _$ActitoDeviceFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoDeviceToJson(this);
 }

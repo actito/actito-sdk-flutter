@@ -17,10 +17,10 @@ ActitoRegion _$ActitoRegionFromJson(Map json) => ActitoRegion(
           ? null
           : ActitoRegionAdvancedGeometry.fromJson(
               Map<String, dynamic>.from(json['advancedGeometry'] as Map)),
-      major: json['major'] as int?,
+      major: (json['major'] as num?)?.toInt(),
       distance: (json['distance'] as num).toDouble(),
       timeZone: json['timeZone'] as String,
-      timeZoneOffset: json['timeZoneOffset'] as int,
+      timeZoneOffset: (json['timeZoneOffset'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$ActitoRegionToJson(ActitoRegion instance) =>
@@ -51,8 +51,7 @@ Map<String, dynamic> _$ActitoRegionGeometryToJson(
       'coordinate': instance.coordinate.toJson(),
     };
 
-ActitoRegionAdvancedGeometry _$ActitoRegionAdvancedGeometryFromJson(
-        Map json) =>
+ActitoRegionAdvancedGeometry _$ActitoRegionAdvancedGeometryFromJson(Map json) =>
     ActitoRegionAdvancedGeometry(
       type: json['type'] as String,
       coordinates: (json['coordinates'] as List<dynamic>)

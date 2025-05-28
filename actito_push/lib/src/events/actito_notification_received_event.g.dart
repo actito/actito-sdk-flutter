@@ -6,15 +6,15 @@ part of 'actito_notification_received_event.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ActitoNotificationReceivedEvent
-    _$ActitoNotificationReceivedEventFromJson(Map json) =>
-        ActitoNotificationReceivedEvent(
-          notification: ActitoNotification.fromJson(
-              Map<String, dynamic>.from(json['notification'] as Map)),
-          deliveryMechanism: $enumDecode(
-              _$ActitoNotificationDeliveryMechanismEnumMap,
-              json['deliveryMechanism']),
-        );
+ActitoNotificationReceivedEvent _$ActitoNotificationReceivedEventFromJson(
+        Map json) =>
+    ActitoNotificationReceivedEvent(
+      notification: ActitoNotification.fromJson(
+          Map<String, dynamic>.from(json['notification'] as Map)),
+      deliveryMechanism: $enumDecode(
+          _$ActitoNotificationDeliveryMechanismEnumMap,
+          json['deliveryMechanism']),
+    );
 
 Map<String, dynamic> _$ActitoNotificationReceivedEventToJson(
         ActitoNotificationReceivedEvent instance) =>

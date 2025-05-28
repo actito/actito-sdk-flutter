@@ -25,7 +25,8 @@ class ActitoApplication {
     required this.actionCategories,
   });
 
-  factory ActitoApplication.fromJson(Map<String, dynamic> json) => _$ActitoApplicationFromJson(json);
+  factory ActitoApplication.fromJson(Map<String, dynamic> json) =>
+      _$ActitoApplicationFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoApplicationToJson(this);
 }
@@ -40,7 +41,8 @@ class ActitoInboxConfig {
     required this.autoBadge,
   });
 
-  factory ActitoInboxConfig.fromJson(Map<String, dynamic> json) => _$ActitoInboxConfigFromJson(json);
+  factory ActitoInboxConfig.fromJson(Map<String, dynamic> json) =>
+      _$ActitoInboxConfigFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoInboxConfigToJson(this);
 }
@@ -53,7 +55,8 @@ class ActitoRegionConfig {
     this.proximityUUID,
   });
 
-  factory ActitoRegionConfig.fromJson(Map<String, dynamic> json) => _$ActitoRegionConfigFromJson(json);
+  factory ActitoRegionConfig.fromJson(Map<String, dynamic> json) =>
+      _$ActitoRegionConfigFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoRegionConfigToJson(this);
 }
@@ -70,7 +73,8 @@ class ActitoUserDataField {
     required this.label,
   });
 
-  factory ActitoUserDataField.fromJson(Map<String, dynamic> json) => _$ActitoUserDataFieldFromJson(json);
+  factory ActitoUserDataField.fromJson(Map<String, dynamic> json) =>
+      _$ActitoUserDataFieldFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoUserDataFieldToJson(this);
 }
@@ -89,7 +93,8 @@ class ActitoActionCategory {
     required this.actions,
   });
 
-  factory ActitoActionCategory.fromJson(Map<String, dynamic> json) => _$ActitoActionCategoryFromJson(json);
+  factory ActitoActionCategory.fromJson(Map<String, dynamic> json) =>
+      _$ActitoActionCategoryFromJson(json);
 
   Map<String, dynamic> toJson() => _$ActitoActionCategoryToJson(this);
 }

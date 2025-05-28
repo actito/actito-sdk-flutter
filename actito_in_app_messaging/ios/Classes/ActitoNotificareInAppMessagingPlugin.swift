@@ -1,7 +1,7 @@
+import ActitoInAppMessagingKit
+import ActitoKit
 import Flutter
 import UIKit
-import ActitoKit
-import ActitoInAppMessagingKit
 
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
@@ -39,12 +39,12 @@ public class SwiftActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
             response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Invalid request parameters.", details: nil))
             return
         }
-        
+
         let suppressed = arguments["suppressed"] as! Bool
         let evaluateContext = arguments["evaluateContext"] as? Bool ?? false
-        
+
         Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
-        
+
         response(nil)
     }
 }
