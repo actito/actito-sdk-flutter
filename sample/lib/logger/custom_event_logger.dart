@@ -34,7 +34,7 @@ void logCustomEvent(String event, Map<String, dynamic>? data) async {
       http.Request('POST', Uri.parse('https://push.notifica.re/event'));
 
   request.body = json.encode({
-    "type": "BackgroundEvent_$event",
+    "type": "re.notifica.event.custom.BackgroundEvent_$event",
     "timestamp": DateTime.now().millisecondsSinceEpoch,
     "deviceID": device.id,
     "data": data
