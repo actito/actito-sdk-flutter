@@ -54,6 +54,14 @@ lane :bump do |options|
   replacement = "version: #{version}"
 
   files.each { |file| update_file(file, regex, replacement) }
+
+  # Update the actito_flutter dependency to ensure it matches the version of actito, as this dependency is not managed by the end user.
+  actito_pubspec = "../actito/pubspec.yaml"
+
+  dep_regex = /^\s*actito_flutter:\s*\d+\.\d+\.\d+.*$/
+  dep_replacement = "  actito_flutter: #{version}"
+
+  updated = update_file(actito_pubspec, dep_regex, dep_replacement)
 end
 
 desc <<-DESC
