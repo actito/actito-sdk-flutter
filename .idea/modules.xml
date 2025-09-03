@@ -24,6 +24,7 @@
       <module fileurl="file://$PROJECT_DIR$/actito_user_inbox/android/actito_user_inbox_android.iml" filepath="$PROJECT_DIR$/actito_user_inbox/android/actito_user_inbox_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" />
       <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-user-inbox/sample-user-inbox.iml" filepath="$PROJECT_DIR$/sample-user-inbox/sample-user-inbox.iml" />
     </modules>
   </component>
 </project>
