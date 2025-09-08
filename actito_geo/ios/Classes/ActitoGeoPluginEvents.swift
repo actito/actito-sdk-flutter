@@ -7,6 +7,7 @@
 
 import ActitoGeoKit
 import Foundation
+import Flutter
 
 class ActitoGeoPluginEvents {
     private let packageId: String

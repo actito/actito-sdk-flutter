@@ -6,9 +6,9 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoUserInboxPlugin: NSObject, FlutterPlugin {
+public class ActitoUserInboxPlugin: NSObject, FlutterPlugin {
 
-    static let instance = SwiftActitoUserInboxPlugin()
+    static let instance = ActitoUserInboxPlugin()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "com.actito.inbox.user.flutter/actito_user_inbox", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())

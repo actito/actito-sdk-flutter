@@ -6,9 +6,9 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoLoyaltyPlugin: NSObject, FlutterPlugin {
+public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
 
-    private static let instance = SwiftActitoLoyaltyPlugin()
+    private static let instance = ActitoLoyaltyPlugin()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         let channel = FlutterMethodChannel(name: "com.actito.loyalty.flutter/actito_loyalty", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())

@@ -7,6 +7,7 @@
 
 import ActitoInAppMessagingKit
 import Foundation
+import Flutter
 
 class ActitoInAppMessagingPluginEvents {
     private let packageId: String

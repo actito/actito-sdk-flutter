@@ -6,8 +6,8 @@ import UIKit
 private let DEFAULT_ERROR_CODE = "actito_error"
 private let NAMESPACE = "com.actito.push.ui.flutter"
 
-public class SwiftActitoPushUIPlugin: NSObject, FlutterPlugin {
-    static let instance = SwiftActitoPushUIPlugin()
+public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
+    static let instance = ActitoPushUIPlugin()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         instance.register(with: registrar)
@@ -118,7 +118,7 @@ public class SwiftActitoPushUIPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoPushUIPlugin: ActitoPushUIDelegate {
+extension ActitoPushUIPlugin: ActitoPushUIDelegate {
     public func actito(_ actitoPushUI: ActitoPushUI, willPresentNotification notification: ActitoNotification) {
         eventBroker.emit(
             ActitoPushUIPluginEventBroker.OnNotificationWillPresent(

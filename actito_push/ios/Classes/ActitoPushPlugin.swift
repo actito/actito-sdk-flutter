@@ -6,8 +6,8 @@ import UIKit
 fileprivate let DEFAULT_ERROR_CODE = "actito_error"
 fileprivate let NAMESPACE = "com.actito.push.flutter"
 
-public class SwiftActitoPushPlugin: NSObject, FlutterPlugin {
-    static let instance = SwiftActitoPushPlugin()
+public class ActitoPushPlugin: NSObject, FlutterPlugin {
+    static let instance = ActitoPushPlugin()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         instance.register(with: registrar)
@@ -207,7 +207,7 @@ public class SwiftActitoPushPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoPushPlugin: ActitoPushDelegate {
+extension ActitoPushPlugin: ActitoPushDelegate {
     public func actito(_ actitoPush: ActitoPush, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         eventBroker.emit(
             ActitoPushPluginEventBroker.OnFailedToRegisterForRemoteNotifications(
@@ -301,7 +301,7 @@ extension SwiftActitoPushPlugin: ActitoPushDelegate {
     }
 }
 
-extension SwiftActitoPushPlugin: FlutterApplicationLifeCycleDelegate {
+extension ActitoPushPlugin: FlutterApplicationLifeCycleDelegate {
     public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
         // This method is never called. The swizzling performed on the native side takes care of it.
         return true

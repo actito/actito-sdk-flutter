@@ -6,8 +6,8 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoScannablesPlugin: NSObject, FlutterPlugin {
-    private static let instance = SwiftActitoScannablesPlugin()
+public class ActitoScannablesPlugin: NSObject, FlutterPlugin {
+    private static let instance = ActitoScannablesPlugin()
     private let events = ActitoScannablesPluginEvents(packageId: "com.actito.scannables.flutter")
 
     private var rootViewController: UIViewController? {
@@ -87,7 +87,7 @@ public class SwiftActitoScannablesPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoScannablesPlugin: ActitoScannablesDelegate {
+extension ActitoScannablesPlugin: ActitoScannablesDelegate {
     public func actito(_ actitoScannables: ActitoScannables, didDetectScannable scannable: ActitoScannable) {
         events.emit(ActitoScannablesPluginEvents.OnScannableDetected(scannable: scannable))
     }

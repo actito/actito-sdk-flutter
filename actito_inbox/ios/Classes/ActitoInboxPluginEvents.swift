@@ -6,6 +6,7 @@
 //
 
 import ActitoInboxKit
+import Flutter
 
 class ActitoInboxPluginEvents {
     private let packageId: String

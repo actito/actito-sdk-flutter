@@ -5,8 +5,8 @@ import UIKit
 
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoInboxPlugin: NSObject, FlutterPlugin {
-    static let instance = SwiftActitoInboxPlugin()
+public class ActitoInboxPlugin: NSObject, FlutterPlugin {
+    static let instance = ActitoInboxPlugin()
 
     public static func register(with registrar: FlutterPluginRegistrar) {
         instance.register(with: registrar)
@@ -157,7 +157,7 @@ public class SwiftActitoInboxPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoInboxPlugin: ActitoInboxDelegate {
+extension ActitoInboxPlugin: ActitoInboxDelegate {
     public func actito(_ actitoInbox: ActitoInbox, didUpdateInbox items: [ActitoInboxItem]) {
         events.emit(
             ActitoInboxPluginEvents.OnInboxUpdated(items: items)

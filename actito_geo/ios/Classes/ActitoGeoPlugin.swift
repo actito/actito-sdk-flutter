@@ -6,9 +6,9 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
+public class ActitoGeoPlugin: NSObject, FlutterPlugin {
 
-    private static let instance = SwiftActitoGeoPlugin()
+    private static let instance = ActitoGeoPlugin()
     private let events = ActitoGeoPluginEvents(packageId: "com.actito.geo.flutter")
 
     public static func register(with registrar: FlutterPluginRegistrar) {
@@ -78,7 +78,7 @@ public class SwiftActitoGeoPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoGeoPlugin: ActitoGeoDelegate {
+extension ActitoGeoPlugin: ActitoGeoDelegate {
     public func actito(_ actitoGeo: ActitoGeo, didUpdateLocations locations: [ActitoLocation]) {
         guard let location = locations.first else { return }
 

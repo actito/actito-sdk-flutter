@@ -7,6 +7,7 @@
 
 import ActitoKit
 import ActitoPushUIKit
+import Flutter
 
 class ActitoPushUIPluginEventBroker {
     private let namespace: String

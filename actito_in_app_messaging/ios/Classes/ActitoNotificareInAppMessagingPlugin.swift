@@ -6,8 +6,8 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
-    private static let instance = SwiftActitoInAppMessagingPlugin()
+public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
+    private static let instance = ActitoInAppMessagingPlugin()
     private let events = ActitoInAppMessagingPluginEvents(packageId: "com.actito.iam.flutter")
 
     public static func register(with registrar: FlutterPluginRegistrar) {
@@ -49,7 +49,7 @@ public class SwiftActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoInAppMessagingPlugin: ActitoInAppMessagingDelegate {
+extension ActitoInAppMessagingPlugin: ActitoInAppMessagingDelegate {
     public func actito(_ actito: ActitoInAppMessaging, didPresentMessage message: ActitoInAppMessage) {
         events.emit(ActitoInAppMessagingPluginEvents.OnMessagePresented(message: message))
     }

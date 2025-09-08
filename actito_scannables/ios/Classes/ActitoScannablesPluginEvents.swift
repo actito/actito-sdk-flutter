@@ -7,6 +7,7 @@
 
 import ActitoScannablesKit
 import Foundation
+import Flutter
 
 class ActitoScannablesPluginEvents {
     private let packageId: String

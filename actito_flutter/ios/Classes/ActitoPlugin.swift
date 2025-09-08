@@ -5,9 +5,9 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class SwiftActitoPlugin: NSObject, FlutterPlugin {
+public class ActitoPlugin: NSObject, FlutterPlugin {
 
-    static let instance = SwiftActitoPlugin()
+    static let instance = ActitoPlugin()
 
     private var channel: FlutterMethodChannel!
 
@@ -405,7 +405,7 @@ public class SwiftActitoPlugin: NSObject, FlutterPlugin {
     }
 }
 
-extension SwiftActitoPlugin {
+extension ActitoPlugin {
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         if Actito.shared.handleTestDeviceUrl(url) {
             return true
@@ -432,7 +432,7 @@ extension SwiftActitoPlugin {
     }
 }
 
-extension SwiftActitoPlugin: ActitoDelegate {
+extension ActitoPlugin: ActitoDelegate {
 
     public func actito(_ actito: Actito, onReady application: ActitoApplication) {
         ActitoEventManager.shared.send(ActitoEventOnReady(application: application))
