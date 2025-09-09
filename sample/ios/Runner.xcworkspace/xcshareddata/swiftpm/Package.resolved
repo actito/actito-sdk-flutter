@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "actito-sdk-ios-in-house-releases",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/actito/actito-sdk-ios-in-house-releases",
+      "state" : {
+        "revision" : "7802061c4dbb87f056a76a8a8ba2684510bc699a",
+        "version" : "5.0.0-canary.1"
+      }
+    }
+  ],
+  "version" : 2
+}
