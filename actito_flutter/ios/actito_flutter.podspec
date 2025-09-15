@@ -17,7 +17,7 @@ For support please use: http://support.notifica.re
   s.license          = { :file => '../LICENSE' }
   s.author           = { 'Actito' => 'product@actito.com' }
   s.source           = { :path => '.' }
-  s.source_files = 'Classes/**/*'
+  s.source_files = 'actito_flutter/Sources/actito_flutter/**/*'
   s.dependency 'Flutter'
   s.dependency 'Actito/ActitoKit', actito_version
   s.platform = :ios, '13.0'

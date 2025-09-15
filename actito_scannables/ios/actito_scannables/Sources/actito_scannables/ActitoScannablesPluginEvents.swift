@@ -1,0 +1,126 @@
+//
+//  ActitoScannablesPluginEventBroker.swift
+//  actito_scannables
+//
+//  Created by Helder Pinhal on 25/11/2021.
+//
+
+import ActitoScannablesKit
+import Foundation
+import Flutter
+
+class ActitoScannablesPluginEvents {
+    private let packageId: String
+
+    private var channels: [EventType: FlutterEventChannel] = [:]
+    private var streams: [EventType: Stream]
+
+    init(packageId: String) {
+        var streams: [EventType: Stream] = [:]
+        EventType.allCases.forEach { type in
+            streams[type] = Stream(packageId: packageId, type: type)
+        }
+
+        self.packageId = packageId
+        self.streams = streams
+    }
+
+    func setup(registrar: FlutterPluginRegistrar) {
+        streams.values.forEach { stream in
+            if let channel = channels[stream.type] {
+                channel.setStreamHandler(stream)
+            } else {
+                let channel = FlutterEventChannel(
+                    name: stream.name,
+                    binaryMessenger: registrar.messenger(),
+                    codec: FlutterJSONMethodCodec.sharedInstance()
+                )
+
+                channel.setStreamHandler(stream)
+
+                channels[stream.type] = channel
+            }
+        }
+    }
+
+    func cleanup() {
+        channels.values.forEach { channel in
+            channel.setStreamHandler(nil)
+        }
+    }
+
+    func emit(_ event: Event) {
+        DispatchQueue.main.async { [weak self] in
+            self?.streams[event.type]?.send(event)
+        }
+    }
+}
+
+// ActitoScannablesPluginEvents.Stream
+extension ActitoScannablesPluginEvents {
+    class Stream: NSObject, FlutterStreamHandler {
+        let type: EventType
+        let name: String
+
+        private var eventSink: FlutterEventSink?
+        private var pendingEvents: [Event] = []
+
+        init(packageId: String, type: EventType) {
+            self.type = type
+            self.name = "\(packageId)/events/\(type.rawValue)"
+        }
+
+        func send(_ event: Event) {
+            if let sink = self.eventSink {
+                sink(event.payload)
+            } else {
+                pendingEvents.append(event)
+            }
+        }
+
+        func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
+            self.eventSink = events
+
+            if self.eventSink != nil {
+                self.pendingEvents.forEach { send($0) }
+                self.pendingEvents.removeAll()
+            }
+
+            return nil
+        }
+
+        func onCancel(withArguments arguments: Any?) -> FlutterError? {
+            self.eventSink = nil
+            return nil
+        }
+    }
+}
+
+// ActitoScannablesPluginEvents.Event
+extension ActitoScannablesPluginEvents {
+    enum EventType: String, CaseIterable {
+        case scannableDetected = "scannable_detected"
+        case scannableSessionFailed = "scannable_session_failed"
+    }
+
+    struct Event {
+        let type: EventType
+        let payload: Any?
+    }
+}
+
+extension ActitoScannablesPluginEvents {
+    static func OnScannableDetected(scannable: ActitoScannable) -> Event {
+        return Event(
+            type: .scannableDetected,
+            payload: try! scannable.toJson()
+        )
+    }
+
+    static func OnScannableSessionFailed(error: Error) -> Event {
+        Event(
+            type: .scannableSessionFailed,
+            payload: error.localizedDescription
+        )
+    }
+}
