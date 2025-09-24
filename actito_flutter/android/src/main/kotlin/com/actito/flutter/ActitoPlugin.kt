@@ -8,6 +8,7 @@ import android.os.Handler
 import android.os.Looper
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.ActitoIntentReceiver
 import com.actito.flutter.events.ActitoEvent
 import com.actito.flutter.events.ActitoEventManager
 import com.actito.ktx.device
@@ -41,7 +42,9 @@ class ActitoPlugin : FlutterPlugin, ActivityAware, PluginRegistry.NewIntentListe
         // Events
         ActitoEventManager.register(binding.binaryMessenger)
 
-        Actito.intentReceiver = ActitoPluginReceiver::class.java
+        if (Actito.intentReceiver == ActitoIntentReceiver::class.java) {
+            Actito.intentReceiver = ActitoPluginReceiver::class.java
+        }
 
         channel = MethodChannel(binding.binaryMessenger, "com.actito.flutter/actito", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler { call, result ->

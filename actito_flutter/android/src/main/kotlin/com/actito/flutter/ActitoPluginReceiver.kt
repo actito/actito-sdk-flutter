@@ -7,7 +7,7 @@ import com.actito.flutter.events.ActitoEventManager
 import com.actito.models.ActitoApplication
 import com.actito.models.ActitoDevice
 
-class ActitoPluginReceiver : ActitoIntentReceiver() {
+public open class ActitoPluginReceiver : ActitoIntentReceiver() {
 
     override fun onDeviceRegistered(context: Context, device: ActitoDevice) {
         ActitoEventManager.send(
