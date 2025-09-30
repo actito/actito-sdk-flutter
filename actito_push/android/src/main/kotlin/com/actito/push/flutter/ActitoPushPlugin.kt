@@ -5,6 +5,7 @@ import androidx.annotation.NonNull
 import androidx.lifecycle.Observer
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.push.ActitoPushIntentReceiver
 import com.actito.push.ktx.push
 import com.actito.push.models.ActitoPushSubscription
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -45,7 +46,9 @@ class ActitoPushPlugin : FlutterPlugin, MethodCallHandler, ActivityAware, Plugin
     }
 
     override fun onAttachedToEngine(@NonNull binding: FlutterPlugin.FlutterPluginBinding) {
-        Actito.push().intentReceiver = ActitoPushPluginReceiver::class.java
+        if (Actito.push().intentReceiver == ActitoPushIntentReceiver::class.java) {
+            Actito.push().intentReceiver = ActitoPushPluginReceiver::class.java
+        }
 
         channel = MethodChannel(binding.binaryMessenger, "$NAMESPACE/actito_push", JSONMethodCodec.INSTANCE)
         channel.setMethodCallHandler(this)

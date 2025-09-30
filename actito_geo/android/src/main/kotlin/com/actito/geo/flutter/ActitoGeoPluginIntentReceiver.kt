@@ -6,7 +6,7 @@ import com.actito.geo.models.ActitoBeacon
 import com.actito.geo.models.ActitoLocation
 import com.actito.geo.models.ActitoRegion
 
-internal class ActitoGeoPluginIntentReceiver : ActitoGeoIntentReceiver() {
+open class ActitoGeoPluginIntentReceiver : ActitoGeoIntentReceiver() {
     override fun onLocationUpdated(context: Context, location: ActitoLocation) {
         if (ActitoGeoPluginBackgroundService.shouldProcessAsBackgroundEvent()) {
             val event = ActitoGeoPluginBackgroundService.BackgroundEvent.LocationUpdated(context, location)
