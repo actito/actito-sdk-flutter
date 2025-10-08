@@ -23,9 +23,14 @@ class ActitoPush {
   /// **Note**: This method is only supported on iOS.
   ///
   /// - `options`: The authorization options to be set.
-  static Future<void> setAuthorizationOptions(List<String> options) async {
+  static Future<void> setAuthorizationOptions(
+    List<ActitoAuthorizationOptions> options,
+  ) async {
     if (Platform.isIOS) {
-      await _channel.invokeMapMethod('setAuthorizationOptions', options);
+      await _channel.invokeMapMethod(
+        'setAuthorizationOptions',
+        ActitoAuthorizationOptions.toJsonList(options),
+      );
     }
   }
 
@@ -34,9 +39,14 @@ class ActitoPush {
   /// **Note**: This method is only supported on iOS.
   ///
   /// - `options`: The category options to be set
-  static Future<void> setCategoryOptions(List<String> options) async {
+  static Future<void> setCategoryOptions(
+    List<ActitoCategoryOptions> options,
+  ) async {
     if (Platform.isIOS) {
-      await _channel.invokeMapMethod('setCategoryOptions', options);
+      await _channel.invokeMapMethod(
+        'setCategoryOptions',
+        ActitoCategoryOptions.toJsonList(options),
+      );
     }
   }
 
@@ -46,9 +56,14 @@ class ActitoPush {
   /// **Note**: This method is only supported on iOS.
   ///
   /// - `options`: The presentation options to be set.
-  static Future<void> setPresentationOptions(List<String> options) async {
+  static Future<void> setPresentationOptions(
+    List<ActitoPresentationOptions> options,
+  ) async {
     if (Platform.isIOS) {
-      await _channel.invokeMapMethod('setPresentationOptions', options);
+      await _channel.invokeMapMethod(
+        'setPresentationOptions',
+        ActitoPresentationOptions.toJsonList(options),
+      );
     }
   }
 
