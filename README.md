@@ -37,8 +37,6 @@ Table of contents
 
 **Assets**: Add powerful contextual marketing features to your apps. Show the right content to the right users at the right time or location. Maximise the content you're already creating without increasing development costs.
 
-**Scannables**: Unlock new content by scanning NFC tags or QR codes that integrate seamlessly in your mobile applications.
-
 
 ## Installation
 
@@ -63,7 +61,6 @@ dependencies:
   actito_loyalty: ^4.0.0
   actito_push: ^4.0.0
   actito_push_ui: ^4.0.0
-  actito_scannables: ^4.0.0
 ```
 
 ## Getting Started
