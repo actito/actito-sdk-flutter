@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../assets/assets.dart';
 import '../../custom_events/custom_events.dart';
-import '../../scannables/scannables.dart';
 
 class OtherFeaturesCardViewView extends StatelessWidget {
   const OtherFeaturesCardViewView({
@@ -29,39 +28,6 @@ class OtherFeaturesCardViewView extends StatelessWidget {
           ),
           child: Column(
             children: [
-              InkWell(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ScannablesView(),
-                    ),
-                  );
-                },
-                child: Container(
-                  margin: const EdgeInsets.fromLTRB(12, 12, 12, 12),
-                  child: Row(
-                    children: [
-                      const Icon(Icons.qr_code_scanner),
-                      const SizedBox(width: 12),
-                      Text(
-                        "Scannables",
-                        style: Theme.of(context).textTheme.titleSmall,
-                      ),
-                      const Spacer(),
-                      const Icon(
-                        Icons.arrow_forward_ios,
-                        size: 14,
-                        color: Colors.black26,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-              Container(
-                margin: const EdgeInsets.fromLTRB(48, 0, 0, 0),
-                child: const Divider(height: 0),
-              ),
               InkWell(
                 onTap: () {
                   Navigator.push(
