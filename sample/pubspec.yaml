@@ -52,8 +52,6 @@ dependencies:
     path: "../actito_assets"
   actito_geo:
     path: "../actito_geo"
-  actito_scannables:
-    path: "../actito_scannables"
   actito_loyalty:
     path: "../actito_loyalty"
   actito_user_inbox:

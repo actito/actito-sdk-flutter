@@ -6,7 +6,6 @@ import 'package:actito_geo/actito_geo.dart';
 import 'package:actito_in_app_messaging/actito_in_app_messaging.dart';
 import 'package:actito_push/actito_push.dart';
 import 'package:actito_push_ui/actito_push_ui.dart';
-import 'package:actito_scannables/actito_scannables.dart';
 import 'package:sample/ui/home/home.dart';
 
 import 'logger/custom_event_logger.dart';
@@ -407,32 +406,6 @@ class _AppState extends State<App> {
 
     // endregion
 
-    // region Actito Scannable events
-
-    ActitoScannables.onScannableDetected.listen((scannable) async {
-      scaffoldMessengerKey.currentState!.showSnackBar(
-        SnackBar(
-          content: Text('Scannable detected: ${scannable.toJson()}'),
-        ),
-      );
-
-      final notification = scannable.notification;
-      if (notification != null) {
-        await ActitoPushUI.presentNotification(notification);
-      }
-    });
-
-    ActitoScannables.onScannableSessionFailed.listen((error) {
-      scaffoldMessengerKey.currentState!.showSnackBar(
-        SnackBar(
-          content: Text('Scannable session failed: $error'),
-          backgroundColor: Colors.red.shade900,
-        ),
-      );
-    });
-
-    // endregion
-
     // region Actito In-App Messaging events
 
     ActitoInAppMessaging.onMessagePresented.listen((message) {
@@ -488,7 +461,12 @@ class _AppState extends State<App> {
     // endregion
 
     try {
-      await ActitoPush.setPresentationOptions(['banner', 'badge', 'sound']);
+      await ActitoPush.setPresentationOptions([
+        ActitoPresentationOptions.banner,
+        ActitoPresentationOptions.badge,
+        ActitoPresentationOptions.sound
+      ]);
+
       await Actito.launch();
     } catch (error) {
       logger.e('Something went wrong.', error);

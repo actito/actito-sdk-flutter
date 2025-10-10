@@ -231,7 +231,12 @@ class _AppState extends State<App> {
     // endregion
 
     try {
-      await ActitoPush.setPresentationOptions(['banner', 'badge', 'sound']);
+      await ActitoPush.setPresentationOptions([
+        ActitoPresentationOptions.banner,
+        ActitoPresentationOptions.badge,
+        ActitoPresentationOptions.sound
+      ]);
+
       await Actito.launch();
     } catch (error) {
       logger.e('Something went wrong.', error);
