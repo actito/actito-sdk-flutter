@@ -62,9 +62,15 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
         response(Actito.shared.inbox().badge)
     }
 
-    private func refresh(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        Actito.shared.inbox().refresh()
-        response(nil)
+    private func refresh(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        Actito.shared.inbox().refresh { result in
+            switch result {
+            case let .success:
+                response(nil)
+            case let .failure(error):
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
+        }
     }
 
     private func open(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
