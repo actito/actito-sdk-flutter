@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "actito-flutter", targets: ["actito_flutter"])
     ],
     dependencies: [
-        .package(url: "git@github.com:actito/actito-sdk-ios-in-house-releases.git", from: "5.0.0-canary.1"),
+        .package(url: "git@github.com:actito/actito-sdk-ios-in-house-releases.git", from: "5.0.0-canary.4"),
     ],
     targets: [
         .target(
