@@ -225,7 +225,7 @@ extension ActitoPushPlugin: ActitoPushDelegate {
         )
     }
 
-    public func actito(_ actitoPush: any ActitoPush, didChangeSubscription subscription: ActitoPushSubscription?) {
+    public func actito(_ actitoPush: ActitoPush, didChangeSubscription subscription: ActitoPushSubscription?) {
         eventBroker.emit(
             ActitoPushPluginEventBroker.OnSubscriptionChanged(
                 subscription: subscription
