@@ -5,6 +5,7 @@ import UIKit
 
 private let DEFAULT_ERROR_CODE = "actito_error"
 
+@MainActor
 public class ActitoInboxPlugin: NSObject, FlutterPlugin {
     static let instance = ActitoInboxPlugin()
 

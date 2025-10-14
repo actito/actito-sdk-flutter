@@ -6,6 +6,7 @@ import UIKit
 private let DEFAULT_ERROR_CODE = "actito_error"
 private let NAMESPACE = "com.actito.push.ui.flutter"
 
+@MainActor
 public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
     static let instance = ActitoPushUIPlugin()
 

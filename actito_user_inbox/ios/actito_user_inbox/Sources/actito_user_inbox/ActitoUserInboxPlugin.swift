@@ -6,6 +6,7 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
+@MainActor
 public class ActitoUserInboxPlugin: NSObject, FlutterPlugin {
 
     static let instance = ActitoUserInboxPlugin()
