@@ -8,15 +8,16 @@ import android.os.Handler
 import android.os.Looper
 import com.actito.Actito
 import com.actito.ActitoCallback
+import com.actito.ActitoEventData
 import com.actito.ActitoIntentReceiver
 import com.actito.flutter.events.ActitoEvent
 import com.actito.flutter.events.ActitoEventManager
+import com.actito.internal.ktx.toEventData
 import com.actito.ktx.device
 import com.actito.ktx.events
 import com.actito.models.ActitoApplication
 import com.actito.models.ActitoDoNotDisturb
 import com.actito.models.ActitoDynamicLink
-import com.actito.models.ActitoEventData
 import com.actito.models.ActitoNotification
 import com.actito.models.ActitoUserData
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -574,7 +575,7 @@ class ActitoPlugin : FlutterPlugin, ActivityAware, PluginRegistry.NewIntentListe
         try {
             event = requireNotNull(arguments.getString("event"))
             data = if (!arguments.isNull("data")) {
-                arguments.getJSONObject("data").let { com.actito.models.ActitoEvent.createData(it) }
+                arguments.getJSONObject("data").toEventData()
             } else {
                 null
             }
