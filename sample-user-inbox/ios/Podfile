@@ -38,7 +38,7 @@ end
 
 target 'NotificationServiceExtension' do
   use_frameworks!
-  pod 'Actito/ActitoNotificationServiceExtensionKit', '5.0.0-canary.1'
+  pod 'Actito/ActitoNotificationServiceExtensionKit', '5.0.0-canary.4'
 end
 
 post_install do |installer|
