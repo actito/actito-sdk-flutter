@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,7 +19,7 @@
 		E5573F722E702EC3002BE013 /* ActitoNotificationServiceExtensionKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5573F712E702EC3002BE013 /* ActitoNotificationServiceExtensionKit */; };
 		F2A91C4329CDBEDB00191164 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A91C4229CDBEDB00191164 /* NotificationService.swift */; };
 		F2A91C4729CDBEDB00191164 /* NotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F2A91C4029CDBEDB00191164 /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F2B685B2274D310F0099BEFC /* NotificareOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B685B0274D310F0099BEFC /* NotificareOptions.plist */; };
+		F2B685B2274D310F0099BEFC /* ActitoOptions.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2B685B0274D310F0099BEFC /* ActitoOptions.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +82,7 @@
 		F2A91C4029CDBEDB00191164 /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A91C4229CDBEDB00191164 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		F2A91C4429CDBEDB00191164 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2B685B0274D310F0099BEFC /* NotificareOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = NotificareOptions.plist; sourceTree = "<group>"; };
+		F2B685B0274D310F0099BEFC /* ActitoOptions.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ActitoOptions.plist; sourceTree = "<group>"; };
 		F2B685B3274D31BF0099BEFC /* Runner.test.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.test.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -156,7 +156,7 @@
 				E519311D2B6031FD00ABF106 /* Runner.test.dev.entitlements */,
 				E519311C2B6031E200ABF106 /* Runner.dev.entitlements */,
 				F2B685B3274D31BF0099BEFC /* Runner.test.entitlements */,
-				F2B685B0274D310F0099BEFC /* NotificareOptions.plist */,
+				F2B685B0274D310F0099BEFC /* ActitoOptions.plist */,
 				97C146FA1CF9000F007C117D /* Main.storyboard */,
 				97C146FD1CF9000F007C117D /* Assets.xcassets */,
 				97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */,
@@ -197,7 +197,7 @@
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
 				C0E40783EE804F10C56C6D0E /* [CP] Check Pods Manifest.lock */,
-				E519311F2B603BAB00ABF106 /* Copy Notificare configuration file */,
+				E519311F2B603BAB00ABF106 /* Copy Actito configuration file */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
@@ -267,7 +267,7 @@
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			packageReferences = (
-				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */,
+				781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage" */,
 				E5573F6E2E702C10002BE013 /* XCRemoteSwiftPackageReference "actito-sdk-ios-in-house-releases" */,
 			);
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -286,7 +286,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */,
-				F2B685B2274D310F0099BEFC /* NotificareOptions.plist in Resources */,
+				F2B685B2274D310F0099BEFC /* ActitoOptions.plist in Resources */,
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
@@ -327,9 +327,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -373,7 +377,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E519311F2B603BAB00ABF106 /* Copy Notificare configuration file */ = {
+		E519311F2B603BAB00ABF106 /* Copy Actito configuration file */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -383,14 +387,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Copy Notificare configuration file";
+			name = "Copy Actito configuration file";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "CONFIGURATION_FILE_NAME=NotificareServices.plist\n\nBUILD_TYPE=$(echo $CONFIGURATION | cut -d \"-\" -f 1)\nENVIRONMENT=$(echo $CONFIGURATION | cut -d \"-\" -f 2)\n\nCONFIGURATION_FILE=${PROJECT_DIR}/${TARGET_NAME}/Configuration/${BUILD_TYPE}/${ENVIRONMENT}/${CONFIGURATION_FILE_NAME}\nCONFIGURATION_FILE_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\necho \"Looking for ${CONFIGURATION_FILE_NAME} in ${CONFIGURATION_FILE}\"\nif [ ! -f $CONFIGURATION_FILE ] ; then\n    echo \"File not found.\"\n    exit 1\nfi\n\necho \"Copying ${CONFIGURATION_FILE_NAME} to final destination: ${CONFIGURATION_FILE}\"\ncp \"${CONFIGURATION_FILE}\" \"${CONFIGURATION_FILE_DESTINATION}\"\n\n";
+			shellScript = "CONFIGURATION_FILE_NAME=ActitoServices.plist\n\nBUILD_TYPE=$(echo $CONFIGURATION | cut -d \"-\" -f 1)\nENVIRONMENT=$(echo $CONFIGURATION | cut -d \"-\" -f 2)\n\nCONFIGURATION_FILE=${PROJECT_DIR}/${TARGET_NAME}/Configuration/${BUILD_TYPE}/${ENVIRONMENT}/${CONFIGURATION_FILE_NAME}\nCONFIGURATION_FILE_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n\necho \"Looking for ${CONFIGURATION_FILE_NAME} in ${CONFIGURATION_FILE}\"\nif [ ! -f $CONFIGURATION_FILE ] ; then\n    echo \"File not found.\"\n    exit 1\nfi\n\necho \"Copying ${CONFIGURATION_FILE_NAME} to final destination: ${CONFIGURATION_FILE}\"\ncp \"${CONFIGURATION_FILE}\" \"${CONFIGURATION_FILE_DESTINATION}\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -935,7 +939,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "FlutterGeneratedPluginSwiftPackage" */ = {
+		781AD8BC2B33823900A9FFBB /* XCLocalSwiftPackageReference "Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = Flutter/ephemeral/Packages/FlutterGeneratedPluginSwiftPackage;
 		};
@@ -947,7 +951,7 @@
 			repositoryURL = "https://github.com/actito/actito-sdk-ios-in-house-releases";
 			requirement = {
 				kind = exactVersion;
-				version = "5.0.0-canary.1";
+				version = "5.0.0-canary.4";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
