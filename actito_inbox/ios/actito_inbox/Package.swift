@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "actito-inbox", targets: ["actito_inbox"])
     ],
     dependencies: [
-        .package(url: "git@github.com:actito/actito-sdk-ios-in-house-releases.git", from: "5.0.0-canary.4"),
+        .package(url: "git@github.com:actito/actito-sdk-ios-in-house-releases.git", from: "5.0.0-canary.5"),
     ],
     targets: [
         .target(
