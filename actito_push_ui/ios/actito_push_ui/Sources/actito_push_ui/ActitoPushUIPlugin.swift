@@ -6,7 +6,6 @@ import UIKit
 private let DEFAULT_ERROR_CODE = "actito_error"
 private let NAMESPACE = "com.actito.push.ui.flutter"
 
-@MainActor
 public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
     static let instance = ActitoPushUIPlugin()
 
@@ -27,7 +26,9 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
         eventBroker.setup(registrar: registrar)
 
         // Delegate
-        Actito.shared.pushUI().delegate = self
+        DispatchQueue.main.async {
+            Actito.shared.pushUI().delegate = self
+        }
 
         let channel = FlutterMethodChannel(name: "\(NAMESPACE)/actito_push_ui", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(self, channel: channel)
@@ -59,15 +60,17 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        if notification.requiresViewController {
-            let navigationController = createNavigationController()
-            rootViewController.present(navigationController, animated: true) {
-                Actito.shared.pushUI().presentNotification(notification, in: navigationController)
+        DispatchQueue.main.async {
+            if notification.requiresViewController {
+                let navigationController = self.createNavigationController()
+                rootViewController.present(navigationController, animated: true) {
+                    Actito.shared.pushUI().presentNotification(notification, in: navigationController)
+                    response(nil)
+                }
+            } else {
+                Actito.shared.pushUI().presentNotification(notification, in: rootViewController)
                 response(nil)
             }
-        } else {
-            Actito.shared.pushUI().presentNotification(notification, in: rootViewController)
-            response(nil)
         }
     }
 
@@ -89,10 +92,13 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.pushUI().presentAction(action, for: notification, in: rootViewController)
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.pushUI().presentAction(action, for: notification, in: rootViewController)
+            response(nil)
+        }
     }
 
+    @MainActor
     private func createNavigationController() -> UINavigationController {
         let navigationController = UINavigationController()
         let theme = Actito.shared.options?.theme(for: navigationController)

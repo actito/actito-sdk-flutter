@@ -5,7 +5,6 @@ import UIKit
 
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-@MainActor
 public class ActitoInboxPlugin: NSObject, FlutterPlugin {
     static let instance = ActitoInboxPlugin()
 
@@ -17,7 +16,9 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
 
     private func register(with registrar: FlutterPluginRegistrar) {
         // Delegate
-        Actito.shared.inbox().delegate = self
+        DispatchQueue.main.async {
+            Actito.shared.inbox().delegate = self
+        }
 
         // Events
         events.setup(registrar: registrar)
@@ -46,29 +47,35 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
         }
     }
 
-    private func getItems(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        do {
-            let items = try Actito.shared.inbox().items.map { item in
-                try item.toJson()
-            }
+    private func getItems(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            do {
+                let items = try Actito.shared.inbox().items.map { item in
+                    try item.toJson()
+                }
 
-            response(items)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                response(items)
+            } catch {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
         }
     }
 
-    private func getBadge(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        response(Actito.shared.inbox().badge)
+    private func getBadge(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            response(Actito.shared.inbox().badge)
+        }
     }
 
     private func refresh(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.inbox().refresh { result in
-            switch result {
-            case let .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.inbox().refresh { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -84,17 +91,19 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.inbox().open(item) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    let json = try notification.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.inbox().open(item) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        let json = try notification.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -110,23 +119,27 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.inbox().markAsRead(item) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.inbox().markAsRead(item) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func markAllAsRead(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.inbox().markAllAsRead { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.inbox().markAllAsRead { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -142,23 +155,27 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.inbox().remove(item) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.inbox().remove(item) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func clear(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.inbox().clear { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.inbox().clear { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }

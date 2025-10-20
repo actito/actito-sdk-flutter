@@ -6,7 +6,6 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-@MainActor
 public class ActitoGeoPlugin: NSObject, FlutterPlugin {
 
     private static let instance = ActitoGeoPlugin()
@@ -17,7 +16,9 @@ public class ActitoGeoPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
 
         instance.events.setup(registrar: registrar)
-        Actito.shared.geo().delegate = instance
+        DispatchQueue.main.async {
+            Actito.shared.geo().delegate = instance
+        }
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -37,45 +38,57 @@ public class ActitoGeoPlugin: NSObject, FlutterPlugin {
     // MARK: - Methods
 
     private func hasLocationServicesEnabled(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        response(Actito.shared.geo().hasLocationServicesEnabled)
+        DispatchQueue.main.async {
+            response(Actito.shared.geo().hasLocationServicesEnabled)
+        }
     }
 
     private func hasBluetoothEnabled(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        response(Actito.shared.geo().hasBluetoothEnabled)
+        DispatchQueue.main.async {
+            response(Actito.shared.geo().hasBluetoothEnabled)
+        }
     }
 
     private func getMonitoredRegions(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        do {
-            let regions = try Actito.shared.geo().monitoredRegions.map { region in
-                try region.toJson()
-            }
+        DispatchQueue.main.async {
+            do {
+                let regions = try Actito.shared.geo().monitoredRegions.map { region in
+                    try region.toJson()
+                }
 
-            response(regions)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                response(regions)
+            } catch {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
         }
     }
 
     private func getEnteredRegions(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        do {
-            let regions = try Actito.shared.geo().enteredRegions.map { region in
-                try region.toJson()
-            }
+        DispatchQueue.main.async {
+            do {
+                let regions = try Actito.shared.geo().enteredRegions.map { region in
+                    try region.toJson()
+                }
 
-            response(regions)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                response(regions)
+            } catch {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
         }
     }
 
     private func enableLocationUpdates(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.geo().enableLocationUpdates()
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.geo().enableLocationUpdates()
+            response(nil)
+        }
     }
 
     private func disableLocationUpdates(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.geo().disableLocationUpdates()
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.geo().disableLocationUpdates()
+            response(nil)
+        }
     }
 }
 

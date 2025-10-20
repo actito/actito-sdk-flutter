@@ -6,7 +6,6 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-@MainActor
 public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
 
     private static let instance = ActitoLoyaltyPlugin()
@@ -32,17 +31,19 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassBySerial(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let serial = call.arguments as! String
 
-        Actito.shared.loyalty().fetchPass(serial: serial) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    let json = try pass.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(serial: serial) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        let json = try pass.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -50,17 +51,19 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassByBarcode(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let barcode = call.arguments as! String
 
-        Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    let json = try pass.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        let json = try pass.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -81,7 +84,9 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.loyalty().present(pass: pass, in: rootViewController)
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().present(pass: pass, in: rootViewController)
+            response(nil)
+        }
     }
 }

@@ -6,7 +6,6 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-@MainActor
 public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
     private static let instance = ActitoInAppMessagingPlugin()
     private let events = ActitoInAppMessagingPluginEvents(packageId: "com.actito.iam.flutter")
@@ -16,7 +15,9 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
 
         instance.events.setup(registrar: registrar)
-        Actito.shared.inAppMessaging().delegate = instance
+        DispatchQueue.main.async {
+            Actito.shared.inAppMessaging().delegate = instance
+        }
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -32,7 +33,9 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
     // MARK: - Methods
 
     private func hasMessagesSuppressed(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        response(Actito.shared.inAppMessaging().hasMessagesSuppressed)
+        DispatchQueue.main.async {
+            response(Actito.shared.inAppMessaging().hasMessagesSuppressed)
+        }
     }
 
     private func setMessagesSuppressed(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
@@ -44,9 +47,10 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         let suppressed = arguments["suppressed"] as! Bool
         let evaluateContext = arguments["evaluateContext"] as? Bool ?? false
 
-        Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
-
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
+            response(nil)
+        }
     }
 }
 

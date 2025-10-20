@@ -6,7 +6,6 @@ import UIKit
 fileprivate let DEFAULT_ERROR_CODE = "actito_error"
 fileprivate let NAMESPACE = "com.actito.push.flutter"
 
-@MainActor
 public class ActitoPushPlugin: NSObject, FlutterPlugin {
     static let instance = ActitoPushPlugin()
 
@@ -21,7 +20,9 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
         eventBroker.setup(registrar: registrar)
 
         // Delegate
-        Actito.shared.push().delegate = self
+        DispatchQueue.main.async {
+            Actito.shared.push().delegate = self
+        }
 
         // NOTE: We need to have a blank implementation of the didReceiveRemoteNotification to allow the native
         // side to swizzle the method.
@@ -52,7 +53,7 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
         }
     }
 
-    private func setAuthorizationOptions(_ call: FlutterMethodCall, _ response: FlutterResult) {
+    private func setAuthorizationOptions(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         var authorizationOptions: UNAuthorizationOptions = []
 
         let options = call.arguments as! [String]
@@ -94,11 +95,13 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
             }
         }
 
-        Actito.shared.push().authorizationOptions = authorizationOptions
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.push().authorizationOptions = authorizationOptions
+            response(nil)
+        }
     }
 
-    private func setCategoryOptions(_ call: FlutterMethodCall, _ response: FlutterResult) {
+    private func setCategoryOptions(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         var categoryOptions: UNNotificationCategoryOptions = []
 
         let options = call.arguments as! [String]
@@ -128,11 +131,13 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
             }
         }
 
-        Actito.shared.push().categoryOptions = categoryOptions
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.push().categoryOptions = categoryOptions
+            response(nil)
+        }
     }
 
-    private func setPresentationOptions(_ call: FlutterMethodCall, _ response: FlutterResult) {
+    private func setPresentationOptions(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         var presentationOptions: UNNotificationPresentationOptions = []
 
         let options = call.arguments as! [String]
@@ -160,49 +165,63 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
             }
         }
 
-        Actito.shared.push().presentationOptions = presentationOptions
-        response(nil)
-    }
-
-    private func hasRemoteNotificationsEnabled(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        response(Actito.shared.push().hasRemoteNotificationsEnabled)
-    }
-
-    private func getTransport(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        response(Actito.shared.push().transport?.rawValue)
-    }
-
-    private func getSubscription(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        do {
-            let json = try Actito.shared.push().subscription?.toJson()
-            response(json)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.push().presentationOptions = presentationOptions
+            response(nil)
         }
     }
 
-    private func allowedUI(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        response(Actito.shared.push().allowedUI)
+    private func hasRemoteNotificationsEnabled(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            response(Actito.shared.push().hasRemoteNotificationsEnabled)
+        }
     }
 
-    private func enableRemoteNotifications(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.push().enableRemoteNotifications { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
+    private func getTransport(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            response(Actito.shared.push().transport?.rawValue)
+        }
+    }
+
+    private func getSubscription(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            do {
+                let json = try Actito.shared.push().subscription?.toJson()
+                response(json)
+            } catch {
                 response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
 
+    private func allowedUI(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            response(Actito.shared.push().allowedUI)
+        }
+    }
+
+    private func enableRemoteNotifications(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            Actito.shared.push().enableRemoteNotifications { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
+            }
+        }
+    }
+
     private func disableRemoteNotifications(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.push().disableRemoteNotifications { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.push().disableRemoteNotifications { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
