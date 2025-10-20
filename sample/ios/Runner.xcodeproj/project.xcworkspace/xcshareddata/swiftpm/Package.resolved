@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/actito/actito-sdk-ios-in-house-releases",
       "state" : {
-        "revision" : "ee54771c6313b18d5008466525b108b7bd61342a",
-        "version" : "5.0.0-canary.4"
+        "revision" : "6f31f47f86f20ec11616f10f9cd543b9cdc5df45",
+        "version" : "5.0.0-canary.5"
       }
     }
   ],
