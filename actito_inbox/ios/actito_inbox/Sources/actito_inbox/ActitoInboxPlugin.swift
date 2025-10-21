@@ -16,7 +16,7 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
 
     private func register(with registrar: FlutterPluginRegistrar) {
         // Delegate
-        DispatchQueue.main.async {
+        MainActor.assumeIsolated {
             Actito.shared.inbox().delegate = self
         }
 

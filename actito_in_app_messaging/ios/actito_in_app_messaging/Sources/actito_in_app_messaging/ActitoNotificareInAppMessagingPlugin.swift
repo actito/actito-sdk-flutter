@@ -15,7 +15,7 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
 
         instance.events.setup(registrar: registrar)
-        DispatchQueue.main.async {
+        MainActor.assumeIsolated {
             Actito.shared.inAppMessaging().delegate = instance
         }
     }

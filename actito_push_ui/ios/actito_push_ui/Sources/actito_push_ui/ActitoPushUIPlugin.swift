@@ -26,7 +26,7 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
         eventBroker.setup(registrar: registrar)
 
         // Delegate
-        DispatchQueue.main.async {
+        MainActor.assumeIsolated {
             Actito.shared.pushUI().delegate = self
         }
 

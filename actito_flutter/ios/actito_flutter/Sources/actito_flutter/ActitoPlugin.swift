@@ -22,7 +22,7 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
         ActitoEventManager.shared.register(for: registrar)
 
         // Delegate
-        DispatchQueue.main.async {
+        MainActor.assumeIsolated {
             Actito.shared.delegate = self
         }
 
