@@ -20,9 +20,6 @@ rootProject.allprojects {
         google()
         mavenLocal()
         mavenCentral()
-
-        maven { url 'https://maven.notifica.re/releases' }
-        maven { url 'https://maven.notifica.re/prereleases' }
     }
 }
 
@@ -59,7 +56,7 @@ android {
 }
 
 dependencies {
-    def actito_version = '5.0.0-canary.3'
+    def actito_version = '5.0.0-beta.1'
     api "com.actito:actito:$actito_version"
     api "com.actito:actito-user-inbox:$actito_version"
 }
