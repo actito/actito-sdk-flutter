@@ -1,4 +1,4 @@
-[<img src="./assets/logo.png"/>](https://actito.com)
+[<img src="https://cdn-mobile.actito.com/logo.png"/>](https://actito.com)
 
 # Actito Flutter SDK
 
@@ -7,18 +7,15 @@
 
 The Actito Flutter SDK makes it quick and easy to communicate efficiently with many of the Actito API services and enables you to seamlessly integrate our various features, from Push Notifications to Contextualised Storage.
 
-Get started with our [📚 integration guides](https://docs.notifica.re/sdk/v4/flutter/setup) and [example projects](#examples).
-
 
 Table of contents
 =================
 
 * [Features](#features)
-* [Installation](#installation)
-  * [Requirements](#requirements)
-  * [Configuration](#configuration)
+* [Requirements](#requirements)
 * [Getting Started](#getting-started)
-* [Examples](#examples)
+    * [Integration](#integration)
+    * [Examples](#examples)
 
 
 ## Features
@@ -38,36 +35,20 @@ Table of contents
 **Assets**: Add powerful contextual marketing features to your apps. Show the right content to the right users at the right time or location. Maximise the content you're already creating without increasing development costs.
 
 
-## Installation
-
-### Requirements
+## Requirements
 
 * Android 6 (API level 23) and above
-* iOS 11 and above
+* iOS 13 and above
 
-### Configuration
-
-Add the Flutter packages to your `pubspec.yaml` and follow the Getting Started guide.
-
-```yaml
-dependencies:
-  # Required
-  actito: ^4.0.0
-
-  # Optional modules
-  actito_assets: ^4.0.0
-  actito_geo: ^4.0.0
-  actito_inbox: ^4.0.0
-  actito_loyalty: ^4.0.0
-  actito_push: ^4.0.0
-  actito_push_ui: ^4.0.0
-```
 
 ## Getting Started
 
 ### Integration
-Get started with our [📚 integration guides](https://docs.notifica.re/sdk/v4/flutter/setup) and [example projects](#examples).
 
+To integrate the Actito Flutter SDK into your application, follow the full setup and implementation guides available in our [official documentation](https://developers.actito.com/docs/push-implementation/flutter/implementation/)
+
+The documentation includes step-by-step instructions for installation, configuration, and advanced customization across all supported platforms.
 
 ### Examples
-- The [example project](https://github.com/actito/actito-sdk-flutter/tree/main/sample) demonstrates other integrations in a simplified fashion, to quickly understand how a given feature should be implemented.
+
+The [example project](https://github.com/Actito/actito-sdk-flutter/tree/main/packages/sample) demonstrates other integrations in a simplified fashion, to quickly understand how a given feature should be implemented.
