@@ -26,7 +26,7 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
         eventBroker.setup(registrar: registrar)
 
         // Delegate
-        MainActor.assumeIsolated {
+        onMainThreadIsolated {
             Actito.shared.pushUI().delegate = self
         }
 
@@ -212,5 +212,26 @@ extension ActitoPushUIPlugin: ActitoPushUIDelegate {
                 url: url
             )
         )
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T! = nil
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

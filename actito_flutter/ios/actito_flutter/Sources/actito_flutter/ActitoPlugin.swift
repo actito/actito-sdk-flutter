@@ -22,7 +22,7 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
         ActitoEventManager.shared.register(for: registrar)
 
         // Delegate
-        MainActor.assumeIsolated {
+        onMainThreadIsolated {
             Actito.shared.delegate = self
         }
 
@@ -463,7 +463,7 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
 
 extension ActitoPlugin {
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        MainActor.assumeIsolated {
+        return onMainThreadIsolated {
             if Actito.shared.handleTestDeviceUrl(url) {
                 return true
             }
@@ -478,7 +478,7 @@ extension ActitoPlugin {
     }
 
     public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
-        MainActor.assumeIsolated {
+        return onMainThreadIsolated {
             guard let url = userActivity.webpageURL else {
                 return false
             }
@@ -504,5 +504,26 @@ extension ActitoPlugin: ActitoDelegate {
 
     public func actito(_ actito: Actito, didRegisterDevice device: ActitoDevice) {
         ActitoEventManager.shared.send(ActitoEventOnDeviceRegistered(device: device))
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T! = nil
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

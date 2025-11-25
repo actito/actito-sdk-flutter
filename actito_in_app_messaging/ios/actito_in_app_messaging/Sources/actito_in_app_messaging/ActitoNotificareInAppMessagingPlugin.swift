@@ -15,7 +15,7 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
 
         instance.events.setup(registrar: registrar)
-        MainActor.assumeIsolated {
+        onMainThreadIsolated {
             Actito.shared.inAppMessaging().delegate = instance
         }
     }
@@ -73,5 +73,26 @@ extension ActitoInAppMessagingPlugin: ActitoInAppMessagingDelegate {
 
     public func actito(_ actito: ActitoInAppMessaging, didFailToExecuteAction action: ActitoInAppMessage.Action, for message: ActitoInAppMessage, error: Error?) {
         events.emit(ActitoInAppMessagingPluginEvents.OnActionFailedToExecute(message: message, action: action, error: error))
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T! = nil
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

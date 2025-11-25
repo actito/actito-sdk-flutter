@@ -16,7 +16,7 @@ public class ActitoInboxPlugin: NSObject, FlutterPlugin {
 
     private func register(with registrar: FlutterPluginRegistrar) {
         // Delegate
-        MainActor.assumeIsolated {
+        onMainThreadIsolated {
             Actito.shared.inbox().delegate = self
         }
 
@@ -192,5 +192,26 @@ extension ActitoInboxPlugin: ActitoInboxDelegate {
         events.emit(
             ActitoInboxPluginEvents.OnBadgeUpdated(badge: badge)
         )
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T! = nil
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

@@ -20,7 +20,7 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
         eventBroker.setup(registrar: registrar)
 
         // Delegate
-        MainActor.assumeIsolated {
+        onMainThreadIsolated {
             Actito.shared.push().delegate = self
         }
 
@@ -325,5 +325,26 @@ extension ActitoPushPlugin: FlutterApplicationLifeCycleDelegate {
     public func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) -> Bool {
         // This method is never called. The swizzling performed on the native side takes care of it.
         return true
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T! = nil
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }
