@@ -514,7 +514,7 @@ internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> 
         }
     } else {
         let group = DispatchGroup()
-        var result: T! = nil
+        var result: T!
 
         group.enter()
 
