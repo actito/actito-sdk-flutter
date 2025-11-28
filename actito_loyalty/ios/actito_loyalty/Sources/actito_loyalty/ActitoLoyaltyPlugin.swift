@@ -31,17 +31,19 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassBySerial(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let serial = call.arguments as! String
 
-        Actito.shared.loyalty().fetchPass(serial: serial) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    let json = try pass.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(serial: serial) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        let json = try pass.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -49,17 +51,19 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
     private func fetchPassByBarcode(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let barcode = call.arguments as! String
 
-        Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
-            switch result {
-            case let .success(pass):
-                do {
-                    let json = try pass.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.loyalty().fetchPass(barcode: barcode) { result in
+                switch result {
+                case let .success(pass):
+                    do {
+                        let json = try pass.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -75,12 +79,14 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a pass with a nil root view controller.", details: nil))
-            return
-        }
+        DispatchQueue.main.async {
+            guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a pass with a nil root view controller.", details: nil))
+                return
+            }
 
-        Actito.shared.loyalty().present(pass: pass, in: rootViewController)
-        response(nil)
+            Actito.shared.loyalty().present(pass: pass, in: rootViewController)
+            response(nil)
+        }
     }
 }

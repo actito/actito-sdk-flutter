@@ -22,7 +22,9 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
         ActitoEventManager.shared.register(for: registrar)
 
         // Delegate
-        Actito.shared.delegate = self
+        onMainThreadIsolated {
+            Actito.shared.delegate = self
+        }
 
         // Communication channel
         channel = FlutterMethodChannel(name: "com.actito.flutter/actito", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
@@ -74,57 +76,69 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
 
     // MARK: - Actito
 
-    private func isConfigured(_ call: FlutterMethodCall, _ result: FlutterResult) {
-        result(Actito.shared.isConfigured)
+    private func isConfigured(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            result(Actito.shared.isConfigured)
+        }
     }
 
-    private func isReady(_ call: FlutterMethodCall, _ result: FlutterResult) {
-        result(Actito.shared.isReady)
+    private func isReady(_ call: FlutterMethodCall, _ result: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            result(Actito.shared.isReady)
+        }
     }
 
     private func launch(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.launch { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.launch { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func unlaunch(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.unlaunch { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.unlaunch { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func getApplication(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        do {
-            let json = try Actito.shared.application?.toJson()
-            response(json)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            do {
+                let json = try Actito.shared.application?.toJson()
+                response(json)
+            } catch {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
         }
     }
 
     private func fetchApplication(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.fetchApplication { result in
-            switch result {
-            case let .success(application):
-                do {
-                    let json = try application.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchApplication { result in
+                switch result {
+                case let .success(application):
+                    do {
+                        let json = try application.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -132,17 +146,19 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func fetchNotification(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let id = call.arguments as! String
 
-        Actito.shared.fetchNotification(id) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    let json = try notification.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchNotification(id) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        let json = try notification.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -150,32 +166,38 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func fetchDynamicLink(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let url = call.arguments as! String
 
-        Actito.shared.fetchDynamicLink(url) { result in
-            switch result {
-            case let .success(dynamicLink):
-                do {
-                    let json = try dynamicLink.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.fetchDynamicLink(url) { result in
+                switch result {
+                case let .success(dynamicLink):
+                    do {
+                        let json = try dynamicLink.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
 
-    private func canEvaluateDeferredLink(_ call: FlutterMethodCall, _ response: FlutterResult) {
-        response(Actito.shared.canEvaluateDeferredLink)
+    private func canEvaluateDeferredLink(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
+        DispatchQueue.main.async {
+            response(Actito.shared.canEvaluateDeferredLink)
+        }
     }
 
     private func evaluateDeferredLink(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.evaluateDeferredLink { result in
-            switch result {
-            case let .success(evaluated):
-                response(evaluated)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.evaluateDeferredLink { result in
+                switch result {
+                case let .success(evaluated):
+                    response(evaluated)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -183,26 +205,30 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     // MARK: - Actito Device Manager
 
     private func getCurrentDevice(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        do {
-            let json = try Actito.shared.device().currentDevice?.toJson()
-            response(json)
-        } catch {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            do {
+                let json = try Actito.shared.device().currentDevice?.toJson()
+                response(json)
+            } catch {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+            }
         }
     }
 
     private func register(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let arguments = call.arguments as! FlutterDictionary
 
-        Actito.shared.device().register(
-            userId: arguments["userId"] as? String,
-            userName: arguments["userName"] as? String
-        ) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().register(
+                userId: arguments["userId"] as? String,
+                userName: arguments["userName"] as? String
+            ) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -210,26 +236,30 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func updateUser(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let arguments = call.arguments as! FlutterDictionary
 
-        Actito.shared.device().updateUser(
-            userId: arguments["userId"] as? String,
-            userName: arguments["userName"] as? String
-        ) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().updateUser(
+                userId: arguments["userId"] as? String,
+                userName: arguments["userName"] as? String
+            ) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func fetchTags(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        Actito.shared.device().fetchTags { result in
-            switch result {
-            case .success(let tags):
-                response(tags)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchTags { result in
+                switch result {
+                case .success(let tags):
+                    response(tags)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -237,12 +267,14 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func addTag(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let tag = call.arguments as! String
 
-        Actito.shared.device().addTag(tag) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().addTag(tag) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -250,12 +282,14 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func addTags(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
         let tags = call.arguments as! [String]
 
-        Actito.shared.device().addTags(tags) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().addTags(tags) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -263,12 +297,14 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func removeTag(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
         let tag = call.arguments as! String
 
-        Actito.shared.device().removeTag(tag) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().removeTag(tag) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -276,56 +312,66 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func removeTags(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
         let tags = call.arguments as! [String]
 
-        Actito.shared.device().removeTags(tags) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().removeTags(tags) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func clearTags(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        Actito.shared.device().clearTags { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().clearTags { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func getPreferredLanguage(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        response(Actito.shared.device().preferredLanguage)
+        DispatchQueue.main.async {
+            response(Actito.shared.device().preferredLanguage)
+        }
     }
 
     private func updatePreferredLanguage(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
         let language = call.arguments as! String?
 
-        Actito.shared.device().updatePreferredLanguage(language) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().updatePreferredLanguage(language) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func fetchDoNotDisturb(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        Actito.shared.device().fetchDoNotDisturb { result in
-            switch result {
-            case .success(let dnd):
-                do {
-                    let json = try dnd?.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchDoNotDisturb { result in
+                switch result {
+                case .success(let dnd):
+                    do {
+                        let json = try dnd?.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case .failure(let error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -341,34 +387,40 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.device().updateDoNotDisturb(dnd) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().updateDoNotDisturb(dnd) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func clearDoNotDisturb(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        Actito.shared.device().clearDoNotDisturb { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().clearDoNotDisturb { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
 
     private func fetchUserData(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
-        Actito.shared.device().fetchUserData { result in
-            switch result {
-            case .success(let userData):
-                response(userData)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().fetchUserData { result in
+                switch result {
+                case .success(let userData):
+                    response(userData)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -376,12 +428,14 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     private func updateUserData(_ call: FlutterMethodCall, _ response: @escaping  FlutterResult) {
         let userData = call.arguments as! [String: String?]
 
-        Actito.shared.device().updateUserData(userData) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.device().updateUserData(userData) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -394,12 +448,14 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
         let eventName = arguments["event"] as! String
         let eventData = arguments["data"] as? [String: Any]
 
-        Actito.shared.events().logCustom(eventName, data: eventData) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case .failure(let error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.events().logCustom(eventName, data: eventData) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case .failure(let error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -407,28 +463,32 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
 
 extension ActitoPlugin {
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
-        if Actito.shared.handleTestDeviceUrl(url) {
-            return true
-        }
+        return onMainThreadIsolated {
+            if Actito.shared.handleTestDeviceUrl(url) {
+                return true
+            }
 
-        if Actito.shared.handleDynamicLinkUrl(url) {
-            return true
-        }
+            if Actito.shared.handleDynamicLinkUrl(url) {
+                return true
+            }
 
-        ActitoEventManager.shared.send(ActitoEventOnUrlOpened(url: url.absoluteString))
-        return false
+            ActitoEventManager.shared.send(ActitoEventOnUrlOpened(url: url.absoluteString))
+            return false
+        }
     }
 
     public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
-        guard let url = userActivity.webpageURL else {
-            return false
-        }
+        return onMainThreadIsolated {
+            guard let url = userActivity.webpageURL else {
+                return false
+            }
 
-        if Actito.shared.handleTestDeviceUrl(url) {
-            return true
-        }
+            if Actito.shared.handleTestDeviceUrl(url) {
+                return true
+            }
 
-        return Actito.shared.handleDynamicLinkUrl(url)
+            return Actito.shared.handleDynamicLinkUrl(url)
+        }
     }
 }
 
@@ -444,5 +504,26 @@ extension ActitoPlugin: ActitoDelegate {
 
     public func actito(_ actito: Actito, didRegisterDevice device: ActitoDevice) {
         ActitoEventManager.shared.send(ActitoEventOnDeviceRegistered(device: device))
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T!
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

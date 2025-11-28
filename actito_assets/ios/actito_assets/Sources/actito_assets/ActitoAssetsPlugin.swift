@@ -29,17 +29,19 @@ public class ActitoAssetsPlugin: NSObject, FlutterPlugin {
     private func fetch(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
         let group = call.arguments as! String
 
-        Actito.shared.assets().fetch(group: group) { result in
-            switch result {
-            case let .success(assets):
-                do {
-                    let json = try assets.map { try $0.toJson() }
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.assets().fetch(group: group) { result in
+                switch result {
+                case let .success(assets):
+                    do {
+                        let json = try assets.map { try $0.toJson() }
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }

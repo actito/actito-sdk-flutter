@@ -15,7 +15,9 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         registrar.addMethodCallDelegate(instance, channel: channel)
 
         instance.events.setup(registrar: registrar)
-        Actito.shared.inAppMessaging().delegate = instance
+        onMainThreadIsolated {
+            Actito.shared.inAppMessaging().delegate = instance
+        }
     }
 
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
@@ -31,7 +33,9 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
     // MARK: - Methods
 
     private func hasMessagesSuppressed(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
-        response(Actito.shared.inAppMessaging().hasMessagesSuppressed)
+        DispatchQueue.main.async {
+            response(Actito.shared.inAppMessaging().hasMessagesSuppressed)
+        }
     }
 
     private func setMessagesSuppressed(_ call: FlutterMethodCall, _ response: @escaping FlutterResult) {
@@ -43,9 +47,10 @@ public class ActitoInAppMessagingPlugin: NSObject, FlutterPlugin {
         let suppressed = arguments["suppressed"] as! Bool
         let evaluateContext = arguments["evaluateContext"] as? Bool ?? false
 
-        Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
-
-        response(nil)
+        DispatchQueue.main.async {
+            Actito.shared.inAppMessaging().setMessagesSuppressed(suppressed, evaluateContext: evaluateContext)
+            response(nil)
+        }
     }
 }
 
@@ -68,5 +73,26 @@ extension ActitoInAppMessagingPlugin: ActitoInAppMessagingDelegate {
 
     public func actito(_ actito: ActitoInAppMessaging, didFailToExecuteAction action: ActitoInAppMessage.Action, for message: ActitoInAppMessage, error: Error?) {
         events.emit(ActitoInAppMessagingPluginEvents.OnActionFailedToExecute(message: message, action: action, error: error))
+    }
+}
+
+internal func onMainThreadIsolated<T>(_ block: @MainActor @escaping () -> T) -> T {
+    if Thread.isMainThread {
+        return MainActor.assumeIsolated {
+            block()
+        }
+    } else {
+        let group = DispatchGroup()
+        var result: T!
+
+        group.enter()
+
+        DispatchQueue.main.async {
+            result = block()
+            group.leave()
+        }
+
+        group.wait()
+        return result
     }
 }

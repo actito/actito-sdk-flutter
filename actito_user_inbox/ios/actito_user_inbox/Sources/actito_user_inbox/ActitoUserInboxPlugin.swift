@@ -65,17 +65,19 @@ public class ActitoUserInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.userInbox().open(item) { result in
-            switch result {
-            case let .success(notification):
-                do {
-                    let json = try notification.toJson()
-                    response(json)
-                } catch {
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().open(item) { result in
+                switch result {
+                case let .success(notification):
+                    do {
+                        let json = try notification.toJson()
+                        response(json)
+                    } catch {
+                        response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                    }
+                case let .failure(error):
                     response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
                 }
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
             }
         }
     }
@@ -91,12 +93,14 @@ public class ActitoUserInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.userInbox().markAsRead(item) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().markAsRead(item) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }
@@ -112,12 +116,14 @@ public class ActitoUserInboxPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        Actito.shared.userInbox().remove(item) { result in
-            switch result {
-            case .success:
-                response(nil)
-            case let .failure(error):
-                response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+        DispatchQueue.main.async {
+            Actito.shared.userInbox().remove(item) { result in
+                switch result {
+                case .success:
+                    response(nil)
+                case let .failure(error):
+                    response(FlutterError(code: DEFAULT_ERROR_CODE, message: error.localizedDescription, details: nil))
+                }
             }
         }
     }

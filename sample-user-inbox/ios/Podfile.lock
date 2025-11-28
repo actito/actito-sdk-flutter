@@ -1,28 +1,28 @@
 PODS:
-  - Actito/ActitoKit (5.0.0-canary.1):
+  - Actito/ActitoKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoNotificationServiceExtensionKit (5.0.0-canary.1)
-  - Actito/ActitoPushKit (5.0.0-canary.1):
+  - Actito/ActitoNotificationServiceExtensionKit (5.0.0-beta.1)
+  - Actito/ActitoPushKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoPushUIKit (5.0.0-canary.1):
+  - Actito/ActitoPushUIKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUserInboxKit (5.0.0-canary.1):
+  - Actito/ActitoUserInboxKit (5.0.0-beta.1):
     - Actito/ActitoUtilitiesKit
-  - Actito/ActitoUtilitiesKit (5.0.0-canary.1)
+  - Actito/ActitoUtilitiesKit (5.0.0-beta.1)
   - actito_flutter (4.0.0):
-    - Actito/ActitoKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
     - Flutter
   - actito_push (4.0.0):
-    - Actito/ActitoKit (= 5.0.0-canary.1)
-    - Actito/ActitoPushKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoPushKit (= 5.0.0-beta.1)
     - Flutter
   - actito_push_ui (4.0.0):
-    - Actito/ActitoKit (= 5.0.0-canary.1)
-    - Actito/ActitoPushUIKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoPushUIKit (= 5.0.0-beta.1)
     - Flutter
   - actito_user_inbox (4.0.0):
-    - Actito/ActitoKit (= 5.0.0-canary.1)
-    - Actito/ActitoUserInboxKit (= 5.0.0-canary.1)
+    - Actito/ActitoKit (= 5.0.0-beta.1)
+    - Actito/ActitoUserInboxKit (= 5.0.0-beta.1)
     - Flutter
   - Auth0 (2.7.2):
     - JWTDecode (~> 3.1)
@@ -40,7 +40,7 @@ PODS:
   - SimpleKeychain (1.1.0)
 
 DEPENDENCIES:
-  - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-canary.1)
+  - Actito/ActitoNotificationServiceExtensionKit (= 5.0.0-beta.1)
   - actito_flutter (from `.symlinks/plugins/actito_flutter/ios`)
   - actito_push (from `.symlinks/plugins/actito_push/ios`)
   - actito_push_ui (from `.symlinks/plugins/actito_push_ui/ios`)
@@ -50,9 +50,8 @@ DEPENDENCIES:
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
 
 SPEC REPOS:
-  "git@github.com:actito/actito-cocoapods-specs.git":
-    - Actito
   trunk:
+    - Actito
     - Auth0
     - JWTDecode
     - SimpleKeychain
@@ -74,18 +73,18 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
 
 SPEC CHECKSUMS:
-  Actito: 93c5844668acb24df54e83131ca364abbe52d375
-  actito_flutter: 48e196bcbf98432b4b9ff582aefc9e14a1c86db0
-  actito_push: e0668fe4bb4c0de71adf01014c699ed042a87343
-  actito_push_ui: 66a9c4d2664867720faca6b281f607f111603739
-  actito_user_inbox: 24c77a05494d1790d0cb517f4fb623f0e2f4bdd4
+  Actito: 643861951daa72306f170a6a3eb4ce1764fb0a01
+  actito_flutter: de9632e97b0413430188e0d24c341c25c1222c85
+  actito_push: 48d3028c561ea0d5d36ead6f680681a5b93ddf95
+  actito_push_ui: cbea3f491bb6ea5830a2423beed7fc5c5a0bfb8c
+  actito_user_inbox: 43f4868aaaf6b753c1eb4385358142f2fd291ab3
   Auth0: 28cb24cb19ebd51f0b07751f16d83b59f4019532
   auth0_flutter: 7b99a56cc3aef5ca4e0a2a6f1f4e6c4e105dcc2d
-  Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
   permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   SimpleKeychain: f8707c8e97b38c6a6e687b17732afc9bcef06439
 
-PODFILE CHECKSUM: b6db4d3df2037d21bf8211627c13b539ca5947d7
+PODFILE CHECKSUM: 3da175e92fe973dcfada77edb97c9c64411f933e
 
 COCOAPODS: 1.16.2

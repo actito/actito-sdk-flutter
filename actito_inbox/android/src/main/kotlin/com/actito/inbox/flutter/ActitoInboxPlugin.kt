@@ -88,9 +88,16 @@ class ActitoInboxPlugin : FlutterPlugin, MethodCallHandler {
         }
     }
 
-    private fun refresh(@Suppress("UNUSED_PARAMETER") call: MethodCall, result: Result) {
-        Actito.inbox().refresh()
-        result.success(null)
+    private fun refresh(@Suppress("UNUSED_PARAMETER") call: MethodCall, pluginResult: Result) {
+        Actito.inbox().refresh(object : ActitoCallback<Unit> {
+            override fun onSuccess(result: Unit) {
+                pluginResult.success(null)
+            }
+
+            override fun onFailure(e: Exception) {
+                pluginResult.error(ACTITO_ERROR, e.localizedMessage, null)
+            }
+        })
     }
 
     private fun open(@Suppress("UNUSED_PARAMETER") call: MethodCall, pluginResult: Result) {

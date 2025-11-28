@@ -13,14 +13,14 @@ let package = Package(
         .library(name: "actito-inbox", targets: ["actito_inbox"])
     ],
     dependencies: [
-        .package(url: "git@github.com:actito/actito-sdk-ios-in-house-releases.git", from: "5.0.0-canary.1"),
+        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.0.0-beta.1"),
     ],
     targets: [
         .target(
             name: "actito_inbox",
             dependencies: [
-                .product(name: "ActitoKit", package: "actito-sdk-ios-in-house-releases", condition: nil),
-                .product(name: "ActitoInboxKit", package: "actito-sdk-ios-in-house-releases", condition: nil),
+                .product(name: "ActitoKit", package: "actito-sdk-ios", condition: nil),
+                .product(name: "ActitoInboxKit", package: "actito-sdk-ios", condition: nil),
             ],
         ),
     ]

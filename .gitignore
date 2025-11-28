@@ -4,8 +4,8 @@
 
 google-services.json
 agconnect-services.json
-notificare-services.json
-NotificareServices.plist
+actito-services.json
+ActitoServices.plist
 
 # fastlane specific
 **/fastlane/report.xml
