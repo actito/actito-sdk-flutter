@@ -55,12 +55,12 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        guard let rootViewController = rootViewController else {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a notification with a nil root view controller.", details: nil))
-            return
-        }
-
         DispatchQueue.main.async {
+            guard let rootViewController = self.rootViewController else {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a notification with a nil root view controller.", details: nil))
+                return
+            }
+
             if notification.requiresViewController {
                 let navigationController = self.createNavigationController()
                 rootViewController.present(navigationController, animated: true) {
@@ -87,12 +87,12 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        guard let rootViewController = rootViewController else {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a notification with a nil root view controller.", details: nil))
-            return
-        }
-
         DispatchQueue.main.async {
+            guard let rootViewController = self.rootViewController else {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a notification with a nil root view controller.", details: nil))
+                return
+            }
+
             Actito.shared.pushUI().presentAction(action, for: notification, in: rootViewController)
             response(nil)
         }

@@ -79,12 +79,12 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
             return
         }
 
-        guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
-            response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a pass with a nil root view controller.", details: nil))
-            return
-        }
-
         DispatchQueue.main.async {
+            guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
+                response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a pass with a nil root view controller.", details: nil))
+                return
+            }
+
             Actito.shared.loyalty().present(pass: pass, in: rootViewController)
             response(nil)
         }
