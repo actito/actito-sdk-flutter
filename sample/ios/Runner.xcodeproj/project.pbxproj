@@ -947,7 +947,7 @@
 			repositoryURL = "https://github.com/actito/actito-sdk-ios";
 			requirement = {
 				kind = exactVersion;
-				version = "5.0.0-beta.1";
+				version = "5.0.0-beta.2";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
