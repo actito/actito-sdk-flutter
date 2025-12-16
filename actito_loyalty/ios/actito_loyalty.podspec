@@ -1,7 +1,7 @@
 require 'yaml'
 
 pubspec = YAML.load(File.read(File.join(__dir__, "..", "pubspec.yaml")))
-actito_version = '5.0.0-beta.1'
+actito_version = '5.0.0-beta.2'
 
 Pod::Spec.new do |s|
   s.name             = pubspec['name']

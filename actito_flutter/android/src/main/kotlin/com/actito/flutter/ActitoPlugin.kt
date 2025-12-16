@@ -13,8 +13,6 @@ import com.actito.ActitoIntentReceiver
 import com.actito.flutter.events.ActitoEvent
 import com.actito.flutter.events.ActitoEventManager
 import com.actito.internal.ktx.toEventData
-import com.actito.ktx.device
-import com.actito.ktx.events
 import com.actito.models.ActitoApplication
 import com.actito.models.ActitoDoNotDisturb
 import com.actito.models.ActitoDynamicLink

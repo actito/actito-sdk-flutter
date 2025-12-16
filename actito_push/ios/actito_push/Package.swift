@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "actito-push", targets: ["actito_push"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.0.0-beta.1"),
+        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.0.0-beta.2"),
     ],
     targets: [
         .target(
