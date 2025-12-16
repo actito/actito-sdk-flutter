@@ -2,7 +2,7 @@ name: actito_flutter
 description: Internal Actito plugin. Use the `actito` plugin instead.
 version: 4.0.0
 homepage: https://actito.com
-documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito
 
 environment:

@@ -2,7 +2,7 @@ name: actito_assets
 description: "Actito Assets Flutter Plugin: Add powerful contextual marketing features to your apps. Show the right content to the right users at the right time or location."
 version: 4.0.0
 homepage: https://actito.com
-documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito_assets
 
 environment:

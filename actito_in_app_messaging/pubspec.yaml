@@ -2,7 +2,7 @@ name: actito_in_app_messaging
 description: "Actito In-App Messaging Flutter Plugin: Automatically show relevant in-app content to your users with zero effort."
 version: 4.0.0
 homepage: https://actito.com
-documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito_in_app_messaging
 
 environment:

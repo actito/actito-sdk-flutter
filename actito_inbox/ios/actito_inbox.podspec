@@ -10,12 +10,12 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 The Actito Flutter Plugin implements the power of smart notifications, location services, contextual marketing and powerful loyalty solutions provided by the Actito platform in Flutter applications.
 
-For documentation please refer to: http://docs.notifica.re
-For support please use: http://support.notifica.re
+For documentation please refer to: https://developers.actito.com
+For support please use: https://www.actito.com/en-BE/contact/support/
                        DESC
   s.homepage         = 'https://actito.com'
   s.license          = { :file => '../LICENSE' }
-  s.author           = { 'Actito' => 'product@actito.com' }
+  s.author           = { 'Actito' => 'mobile@actito.com' }
   s.source           = { :path => '.' }
   s.source_files = 'actito_inbox/Sources/actito_inbox/**/*'
   s.dependency 'Flutter'
