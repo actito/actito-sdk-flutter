@@ -3,8 +3,6 @@ allprojects {
         google()
         mavenCentral()
         mavenLocal()
-
-        maven { url 'https://maven.notifica.re/prereleases' }
     }
 }
 
