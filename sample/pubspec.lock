@@ -7,70 +7,70 @@ packages:
       path: "../actito"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_assets:
     dependency: "direct main"
     description:
       path: "../actito_assets"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_flutter:
     dependency: "direct overridden"
     description:
       path: "../actito_flutter"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_geo:
     dependency: "direct main"
     description:
       path: "../actito_geo"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_in_app_messaging:
     dependency: "direct main"
     description:
       path: "../actito_in_app_messaging"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_inbox:
     dependency: "direct main"
     description:
       path: "../actito_inbox"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_loyalty:
     dependency: "direct main"
     description:
       path: "../actito_loyalty"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_push:
     dependency: "direct main"
     description:
       path: "../actito_push"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_push_ui:
     dependency: "direct main"
     description:
       path: "../actito_push_ui"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   actito_user_inbox:
     dependency: "direct main"
     description:
       path: "../actito_user_inbox"
       relative: true
     source: path
-    version: "4.0.0"
+    version: "5.0.0-beta.2"
   async:
     dependency: transitive
     description:
@@ -242,10 +242,10 @@ packages:
     dependency: transitive
     description:
       name: meta
-      sha256: e3641ec5d63ebf0d9b41bd43201a66e3fc79a65db5f61fc181f04cd27aab950c
+      sha256: "23f08335362185a5ea2ad3a4e597f1375e78bce8a040df5c600c8d3552ef2394"
       url: "https://pub.dev"
     source: hosted
-    version: "1.16.0"
+    version: "1.17.0"
   path:
     dependency: transitive
     description:
@@ -359,10 +359,10 @@ packages:
     dependency: transitive
     description:
       name: test_api
-      sha256: "522f00f556e73044315fa4585ec3270f1808a4b186c936e612cab0b565ff1e00"
+      sha256: ab2726c1a94d3176a45960b6234466ec367179b87dd74f1611adb1f3b5fb9d55
       url: "https://pub.dev"
     source: hosted
-    version: "0.7.6"
+    version: "0.7.7"
   timeago:
     dependency: "direct main"
     description:

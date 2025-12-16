@@ -1,8 +1,8 @@
 name: actito_loyalty
 description: "Actito Loyalty Flutter Plugin: Harness the power of digital cards that live beyond your app and are always in your customer’s pocket."
-version: 4.0.0
+version: 5.0.0-beta.2
 homepage: https://actito.com
-documentation: https://docs.notifica.re/sdk/v4/flutter/setup/
+documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito_loyalty
 
 environment:
@@ -13,7 +13,7 @@ dependencies:
   flutter:
     sdk: flutter
   json_annotation: ^4.9.0
-  actito: ^4.0.0
+  actito: ^5.0.0-beta.2
 
 dev_dependencies:
   flutter_test:
