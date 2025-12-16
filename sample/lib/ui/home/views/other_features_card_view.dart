@@ -1,0 +1,99 @@
+import 'package:flutter/material.dart';
+
+import '../../assets/assets.dart';
+import '../../custom_events/custom_events.dart';
+
+class OtherFeaturesCardViewView extends StatelessWidget {
+  const OtherFeaturesCardViewView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.fromLTRB(16, 32, 16, 8),
+          child: Text(
+            "Other Features".toUpperCase(),
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+        ),
+        Card(
+          elevation: 1,
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Column(
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AssetsView(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(12, 12, 12, 12),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.folder),
+                      const SizedBox(width: 12),
+                      Text(
+                        "Assets",
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14,
+                        color: Colors.black26,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.fromLTRB(48, 0, 0, 0),
+                child: const Divider(height: 0),
+              ),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CustomEventsView(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: const EdgeInsets.fromLTRB(12, 12, 12, 12),
+                  child: Row(
+                    children: [
+                      const Icon(Icons.event),
+                      const SizedBox(width: 12),
+                      Text(
+                        "Custom Events",
+                        style: Theme.of(context).textTheme.titleSmall,
+                      ),
+                      const Spacer(),
+                      const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 14,
+                        color: Colors.black26,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}

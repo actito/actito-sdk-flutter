@@ -1,0 +1,130 @@
+package com.actito.geo.flutter
+
+import android.os.Handler
+import android.os.Looper
+import com.actito.geo.models.ActitoBeacon
+import com.actito.geo.models.ActitoLocation
+import com.actito.geo.models.ActitoRegion
+import io.flutter.plugin.common.BinaryMessenger
+import io.flutter.plugin.common.EventChannel
+import io.flutter.plugin.common.JSONMethodCodec
+
+internal object ActitoGeoPluginEventBroker {
+
+    private val streams: Map<Event.Type, Stream> by lazy {
+        Event.Type.values().associate {
+            it to Stream(it)
+        }
+    }
+
+    fun register(messenger: BinaryMessenger) {
+        streams.values.forEach {
+            val channel = EventChannel(messenger, it.name, JSONMethodCodec.INSTANCE)
+            channel.setStreamHandler(it)
+        }
+    }
+
+    fun emit(event: Event) {
+        Handler(Looper.getMainLooper()).post {
+            streams[event.type]?.emit(event)
+        }
+    }
+
+
+    sealed class Event {
+
+        abstract val type: Type
+        abstract val payload: Any?
+
+        enum class Type(val id: String) {
+            LOCATION_UPDATED(id = "location_updated"),
+            REGION_ENTERED(id = "region_entered"),
+            REGION_EXITED(id = "region_exited"),
+            BEACON_ENTERED(id = "beacon_entered"),
+            BEACON_EXITED(id = "beacon_exited"),
+            BEACONS_RANGED(id = "beacons_ranged"),
+
+            // iOS-only events
+            VISIT(id = "visit"),
+            HEADING_UPDATED(id = "heading_updated"),
+        }
+
+        class LocationUpdated(
+            location: ActitoLocation,
+        ) : Event() {
+            override val type = Type.LOCATION_UPDATED
+            override val payload = location.toJson()
+        }
+
+        class RegionEntered(
+            region: ActitoRegion,
+        ) : Event() {
+            override val type = Type.REGION_ENTERED
+            override val payload = region.toJson()
+        }
+
+        class RegionExited(
+            region: ActitoRegion,
+        ) : Event() {
+            override val type = Type.REGION_EXITED
+            override val payload = region.toJson()
+        }
+
+        class BeaconEntered(
+            beacon: ActitoBeacon,
+        ) : Event() {
+            override val type = Type.BEACON_ENTERED
+            override val payload = beacon.toJson()
+        }
+
+        class BeaconExited(
+            beacon: ActitoBeacon,
+        ) : Event() {
+            override val type = Type.BEACON_EXITED
+            override val payload = beacon.toJson()
+        }
+
+        class BeaconsRanged(
+            region: ActitoRegion,
+            beacons: List<ActitoBeacon>,
+        ) : Event() {
+            override val type = Type.BEACONS_RANGED
+            override val payload = mapOf(
+                "region" to region.toJson(),
+                "beacons" to beacons.map { it.toJson() }
+            )
+        }
+    }
+
+
+    class Stream(type: Event.Type) : EventChannel.StreamHandler {
+
+        private var eventSink: EventChannel.EventSink? = null
+        private val pendingEvents = mutableListOf<Event>()
+
+        val name = "com.actito.geo.flutter/events/${type.id}"
+
+        fun emit(event: Event) {
+            val eventSink = this.eventSink
+
+            if (eventSink == null) {
+                pendingEvents.add(event)
+            } else {
+                eventSink.success(event.payload)
+            }
+        }
+
+        override fun onListen(arguments: Any?, eventSink: EventChannel.EventSink?) {
+            this.eventSink = eventSink
+
+            if (eventSink != null) {
+                pendingEvents.forEach(::emit)
+                pendingEvents.clear()
+            }
+        }
+
+        override fun onCancel(arguments: Any?) {
+            this.eventSink = null
+        }
+    }
+}

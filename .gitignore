@@ -1,0 +1,16 @@
+.DS_Store
+
+.idea/libraries/
+
+google-services.json
+agconnect-services.json
+actito-services.json
+ActitoServices.plist
+
+# fastlane specific
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+sample/android/app/build/

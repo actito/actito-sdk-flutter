@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "actito-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Actito/actito-sdk-ios.git",
+      "state" : {
+        "revision" : "a80159a1d579f74724e657c8c8d41464bd89a098",
+        "version" : "5.0.0-beta.2"
+      }
+    }
+  ],
+  "version" : 2
+}

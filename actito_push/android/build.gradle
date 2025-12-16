@@ -1,0 +1,56 @@
+group 'com.actito.push.flutter'
+
+buildscript {
+    ext.kotlin_version = '2.2.20'
+
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.13.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+android {
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.actito.push.flutter'
+    }
+
+    compileSdkVersion 36
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+
+    defaultConfig {
+        minSdkVersion 23
+    }
+}
+
+dependencies {
+    def actito_version = '5.0.0-beta.2'
+    api "com.actito:actito:$actito_version"
+    api "com.actito:actito-push:$actito_version"
+}

@@ -1,0 +1,15 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.actito.geo.flutter">
+
+    <application>
+        <provider
+            android:authorities="${applicationId}.ActitoGeoPluginProvider"
+            android:name="com.actito.geo.flutter.ActitoGeoPluginProvider"
+            android:exported="false" />
+
+        <receiver
+            android:name="com.actito.geo.flutter.ActitoGeoPluginIntentReceiver"
+            android:exported="false" />
+    </application>
+
+</manifest>

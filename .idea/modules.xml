@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/actito/actito.iml" filepath="$PROJECT_DIR$/actito/actito.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_assets/actito_assets.iml" filepath="$PROJECT_DIR$/actito_assets/actito_assets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_assets/android/actito_assets_android.iml" filepath="$PROJECT_DIR$/actito_assets/android/actito_assets_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_flutter/actito_flutter.iml" filepath="$PROJECT_DIR$/actito_flutter/actito_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" filepath="$PROJECT_DIR$/actito_flutter/android/actito_flutter_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_geo/actito_geo.iml" filepath="$PROJECT_DIR$/actito_geo/actito_geo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_in_app_messaging/actito_in_app_messaging.iml" filepath="$PROJECT_DIR$/actito_in_app_messaging/actito_in_app_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" filepath="$PROJECT_DIR$/actito_in_app_messaging/android/actito_in_app_messaging_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_inbox/actito_inbox.iml" filepath="$PROJECT_DIR$/actito_inbox/actito_inbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_inbox/android/actito_inbox_android.iml" filepath="$PROJECT_DIR$/actito_inbox/android/actito_inbox_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_loyalty/actito_loyalty.iml" filepath="$PROJECT_DIR$/actito_loyalty/actito_loyalty.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_loyalty/android/actito_loyalty_android.iml" filepath="$PROJECT_DIR$/actito_loyalty/android/actito_loyalty_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_push/actito_push.iml" filepath="$PROJECT_DIR$/actito_push/actito_push.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_push/android/actito_push_android.iml" filepath="$PROJECT_DIR$/actito_push/android/actito_push_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_push_ui/actito_push_ui.iml" filepath="$PROJECT_DIR$/actito_push_ui/actito_push_ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_push_ui/android/actito_push_ui_android.iml" filepath="$PROJECT_DIR$/actito_push_ui/android/actito_push_ui_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_user_inbox/actito_user_inbox.iml" filepath="$PROJECT_DIR$/actito_user_inbox/actito_user_inbox.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_user_inbox/android/actito_user_inbox_android.iml" filepath="$PROJECT_DIR$/actito_user_inbox/android/actito_user_inbox_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" filepath="$PROJECT_DIR$/actito_geo/android/notificare_geo_android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample/sample.iml" filepath="$PROJECT_DIR$/sample/sample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sample-user-inbox/sample-user-inbox.iml" filepath="$PROJECT_DIR$/sample-user-inbox/sample-user-inbox.iml" />
+    </modules>
+  </component>
+</project>
