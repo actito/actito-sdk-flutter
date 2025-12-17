@@ -211,10 +211,31 @@ def update_native_android_libraries(version)
 end
 
 def update_native_ios_libraries(version)
+  UI.message('Updating native iOS podspec files.')
+  update_native_ios_podspec_files(version)
+
+  UI.message('Updating native iOS SPM files.')
+  update_native_ios_spm_files(version)
+end
+
+def update_native_ios_podspec_files(version)
   files = Dir['../actito*/ios/*.podspec']
   regex = /actito_version = '.*'/
   replacement = "actito_version = '#{version}'"
 
+  files.each { |file| update_file(file, regex, replacement) }
+end
+
+def update_native_ios_spm_files(version)
+  files = Dir['../actito*/ios/actito*/Package.swift']
+  regex = /
+    (\.package\(
+      \s*url:\s*"https:\/\/github\.com\/Actito\/actito-sdk-ios\.git",
+      \s*from:\s*")([^"]+)
+      ("\s*\),?)
+  /x
+
+  replacement = "\\1#{version}\\3"
   files.each { |file| update_file(file, regex, replacement) }
 end
 
