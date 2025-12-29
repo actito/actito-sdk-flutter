@@ -156,6 +156,9 @@ lane :update_sample do
 
   UI.message('Updating app pods.')
   update_pods
+
+  UI.message('Updating app SPM.')
+  update_sample_spm_dependency
 end
 
 desc <<-DESC
@@ -253,6 +256,50 @@ end
 
 def update_pods
   stream_shell_command("cd ../sample/ios && pod update")
+end
+
+def update_sample_spm_dependency
+  package_swift_path = "../actito_flutter/ios/actito_flutter/Package.swift"
+  ios_project_path = "../sample/ios/Runner.xcodeproj"
+  dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
+
+  new_version = get_spm_dependency_version(package_swift_path, dependency_url)
+  UI.message("Updating Sample's Actito SPM dependency to: #{new_version}")
+
+  project = Xcodeproj::Project.open(ios_project_path)
+  spm_ref = project
+                .objects
+                .select { |o| o.is_a?(Xcodeproj::Project::Object::XCRemoteSwiftPackageReference) }
+                .find { |p| p.repositoryURL.downcase == dependency_url.downcase }
+
+  UI.user_error!("SPM package not found in Xcode project: #{dependency_url}") unless spm_ref
+
+  spm_ref.requirement = {
+    'kind' => 'exactVersion',
+    'version' => new_version
+  }
+
+  project.save
+
+  UI.success("Updated #{dependency_url} → #{new_version}")
+end
+
+def get_spm_dependency_version(package_swift_path, dependency_url)
+  content = File.read(package_swift_path)
+
+  regex = /
+    \.package\s*\(
+      [^\)]*
+      url:\s*"#{Regexp.escape(dependency_url)}"
+      [^\)]*
+      from:\s*"([^"]+)"
+  /mx
+
+  match = content.match(regex)
+
+  UI.user_error!("SPM version not found for dependency: #{dependency_url}") unless match
+
+  match[1]
 end
 
 def stream_shell_command(command)
