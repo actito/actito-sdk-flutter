@@ -140,7 +140,7 @@ lane :update_android_gradle_plugin do |options|
 end
 
 desc <<-DESC
-Updates the lockfile of each package, and samples apps iOS dependencies (SPM & Pods).
+Updates the lockfile of each package, and sample apps iOS dependencies (SPM & Pods).
 
 #### Examples
 ```sh
@@ -152,7 +152,7 @@ lane :update_sample_apps do
   dependency_url = "https://github.com/Actito/actito-sdk-ios.git"
   dependency_version = get_spm_dependency_version(package_swift_path, dependency_url)
 
-  UI.message('Updating Flutter packages in all modules, Sample and Sample User Inbox.')
+  UI.message('Updating Flutter packages in all modules and sample apps.')
   fetch_packages
 
   UI.message('Updating Sample Pods and SPM.')
