@@ -151,11 +151,18 @@ lane :update_sample do
   UI.message('Updating Flutter packages.')
   fetch_packages
 
-  UI.message('Updating Cocoapods repo.')
-  update_pod_repo
+  ios_dir = "../sample/ios"
+  podfile_path = File.join(ios_dir, "Podfile")
 
-  UI.message('Updating app pods.')
-  update_pods
+  if File.exist?(podfile_path)
+    UI.message('Updating Cocoapods repo.')
+    update_pod_repo
+
+    UI.message('Updating app pods.')
+    update_pods
+  else
+    UI.important('⚠️ No Podfile found. Skipping Cocoapods steps.')
+  end
 
   UI.message('Updating app SPM.')
   update_sample_spm_dependency
@@ -272,7 +279,10 @@ def update_sample_spm_dependency
                 .select { |o| o.is_a?(Xcodeproj::Project::Object::XCRemoteSwiftPackageReference) }
                 .find { |p| p.repositoryURL.downcase == dependency_url.downcase }
 
-  UI.user_error!("SPM package not found in Xcode project: #{dependency_url}") unless spm_ref
+  unless spm_ref
+    UI.important("⚠️ SPM package #{dependency_url} not found in Xcode project #{ios_project_path}. Skipping update.")
+    return
+  end
 
   spm_ref.requirement = {
     'kind' => 'exactVersion',
