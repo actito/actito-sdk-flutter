@@ -6,7 +6,9 @@ import 'package:actito_geo/actito_geo.dart';
 import 'package:actito_in_app_messaging/actito_in_app_messaging.dart';
 import 'package:actito_push/actito_push.dart';
 import 'package:actito_push_ui/actito_push_ui.dart';
+import 'package:flutter/services.dart';
 import 'package:sample/ui/home/home.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'logger/custom_event_logger.dart';
 import 'logger/logger.dart';
@@ -65,6 +67,7 @@ class App extends StatefulWidget {
 }
 
 class _AppState extends State<App> {
+  static const _platform = MethodChannel('com.actito.sample/info');
   final scaffoldMessengerKey = GlobalKey<ScaffoldMessengerState>();
 
   bool get isIOSBackgroundEvent {
@@ -83,6 +86,18 @@ class _AppState extends State<App> {
   }
 
   void _configureActito() async {
+    final servicesInfo = await _platform.invokeMethod<Map>('getActitoServicesInfo');
+    final applicationKey = servicesInfo?['applicationKey'];
+    final applicationSecret = servicesInfo?['applicationSecret'];
+
+    if (applicationKey == null || applicationSecret == null) {
+      throw Exception("Failed to get services info.");
+    }
+
+    final sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.setString('applicationKey', applicationKey);
+    sharedPreferences.setString('applicationSecret', applicationSecret);
+
     await ActitoGeo.setLocationUpdatedBackgroundCallback(
         _onLocationUpdatedCallback);
     await ActitoGeo.setRegionEnteredBackgroundCallback(
