@@ -228,7 +228,7 @@ class RemoteNotificationsCardViewState
         _hasNotificationsEnabled = enabled;
       });
     } catch (error) {
-      logger.e('Get Notifications status error.', error);
+      logger.e('Get Notifications status error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -255,7 +255,7 @@ class RemoteNotificationsCardViewState
           ),
         );
       } catch (error) {
-        logger.e('Disabled remote notifications error.', error);
+        logger.e('Disabled remote notifications error.', error: error);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('$error'),
@@ -281,7 +281,7 @@ class RemoteNotificationsCardViewState
         return;
       }
     } catch (error) {
-      logger.e('Enabling remote notifications error.', error);
+      logger.e('Enabling remote notifications error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -465,7 +465,7 @@ class RemoteNotificationsCardViewState
         },
       );
     } catch (error) {
-      logger.e('Remote Notifications info error.', error);
+      logger.e('Remote Notifications info error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
