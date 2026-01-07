@@ -75,7 +75,7 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
         _hasDndEnabled = dnd != null;
       });
     } catch (error) {
-      logger.e('Fetch DND error.', error);
+      logger.e('Fetch DND error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -103,7 +103,7 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
         ),
       );
     } catch (error) {
-      logger.e('Clear do not disturb error.', error);
+      logger.e('Clear do not disturb error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -128,7 +128,7 @@ class DoNotDisturbCardViewState extends State<DoNotDisturbCardView> {
         ),
       );
     } catch (error) {
-      logger.e('Update Do Not Disturb error.', error);
+      logger.e('Update Do Not Disturb error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

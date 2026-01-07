@@ -114,7 +114,7 @@ class AuthenticationCardView extends StatelessWidget {
         },
       );
     } catch (error) {
-      logger.e('Authentication flow info error.', error);
+      logger.e('Authentication flow info error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

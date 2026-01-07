@@ -239,7 +239,7 @@ class _AppState extends State<App> {
 
       await Actito.launch();
     } catch (error) {
-      logger.e('Something went wrong.', error);
+      logger.e('Something went wrong.', error: error);
     }
   }
 
