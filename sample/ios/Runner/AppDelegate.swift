@@ -37,7 +37,6 @@ import UIKit
             fatalError("Missing values in ActitoServices.plist")
         }
 
-
         let resultMap: [String: Any] = [
             "applicationKey": applicationKey,
             "applicationSecret": applicationSecret
