@@ -162,7 +162,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       );
     } catch (error) {
-      logger.e('Failed auto login flow.', error);
+      logger.e('Failed auto login flow.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Failed auto login flow.'),
@@ -199,7 +199,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       );
     } catch (error) {
-      logger.e('Failed login flow.', error);
+      logger.e('Failed login flow.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Failed login flow.'),
@@ -253,7 +253,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       );
     } catch (error) {
-      logger.e('Failed logout flow.', error);
+      logger.e('Failed logout flow.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Failed logout flow.'),
@@ -296,7 +296,7 @@ class _HomeViewState extends State<HomeView> {
         ),
       );
     } catch (error) {
-      logger.e('Failed to refresh badge.', error);
+      logger.e('Failed to refresh badge.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Failed to refresh badge.'),

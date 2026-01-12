@@ -154,7 +154,7 @@ class _InboxViewState extends State<InboxView> {
         _refresh();
       }
     } catch (error) {
-      logger.e('Open inbox item error.', error);
+      logger.e('Open inbox item error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -180,7 +180,7 @@ class _InboxViewState extends State<InboxView> {
         _refresh();
       }
     } catch (error) {
-      logger.e('Mark as read error.', error);
+      logger.e('Mark as read error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -204,7 +204,7 @@ class _InboxViewState extends State<InboxView> {
 
       _refresh();
     } catch (error) {
-      logger.e('Remove inbox item error.', error);
+      logger.e('Remove inbox item error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -240,7 +240,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Failed to refresh inbox.', error);
+      logger.e('Failed to refresh inbox.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: const Text('Failed to refresh inbox.'),

@@ -128,7 +128,7 @@ class _CustomEventsViewState extends State<CustomEventsView> {
         ),
       );
     } catch (error) {
-      logger.e('Register custom event failed.', error);
+      logger.e('Register custom event failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

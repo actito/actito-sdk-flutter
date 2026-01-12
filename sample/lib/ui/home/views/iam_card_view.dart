@@ -109,7 +109,7 @@ class InAppMessagingCardViewState extends State<InAppMessagingCardView> {
         ),
       );
     } catch (error) {
-      logger.e('Set messages suppressed error.', error);
+      logger.e('Set messages suppressed error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

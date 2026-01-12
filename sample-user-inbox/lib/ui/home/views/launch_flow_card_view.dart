@@ -79,7 +79,7 @@ class LaunchFlowCardView extends StatelessWidget {
         ),
       );
     } catch (error) {
-      logger.e('Actito launch failed.', error);
+      logger.e('Actito launch failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -101,7 +101,7 @@ class LaunchFlowCardView extends StatelessWidget {
         ),
       );
     } catch (error) {
-      logger.e('Actito unlaunch failed.', error);
+      logger.e('Actito unlaunch failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -160,7 +160,7 @@ class LaunchFlowCardView extends StatelessWidget {
         },
       );
     } catch (error) {
-      logger.e('Launch flow info error.', error);
+      logger.e('Launch flow info error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
