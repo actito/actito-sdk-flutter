@@ -86,17 +86,20 @@ class _AppState extends State<App> {
   }
 
   void _configureActito() async {
-    final servicesInfo = await _platform.invokeMethod<Map>('getActitoServicesInfo');
-    final applicationKey = servicesInfo?['applicationKey'];
-    final applicationSecret = servicesInfo?['applicationSecret'];
-
-    if (applicationKey == null || applicationSecret == null) {
-      throw Exception("Failed to get services info.");
-    }
-
     final sharedPreferences = await SharedPreferences.getInstance();
-    sharedPreferences.setString('applicationKey', applicationKey);
-    sharedPreferences.setString('applicationSecret', applicationSecret);
+
+    if (!sharedPreferences.containsKey('applicationKey')) {
+      final servicesInfo = await _platform.invokeMethod<Map>('getActitoServicesInfo');
+      final applicationKey = servicesInfo?['applicationKey'];
+      final applicationSecret = servicesInfo?['applicationSecret'];
+
+      if (applicationKey == null || applicationSecret == null) {
+        throw Exception("Failed to get services info.");
+      }
+
+      sharedPreferences.setString('applicationKey', applicationKey);
+      sharedPreferences.setString('applicationSecret', applicationSecret);
+    }
 
     await ActitoGeo.setLocationUpdatedBackgroundCallback(
         _onLocationUpdatedCallback);

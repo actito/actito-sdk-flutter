@@ -31,7 +31,7 @@ class MainActivity : FlutterActivity() {
             try {
                 getString(R.string.actito_services_application_key)
             } catch (_: Resources.NotFoundException) {
-                error("Application secret resource unavailable.")
+                error("Application key resource unavailable.")
             }
 
         val applicationSecret =
