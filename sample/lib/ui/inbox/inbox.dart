@@ -123,7 +123,7 @@ class _InboxViewState extends State<InboxView> {
         _items = loadedItems;
       });
     } catch (error) {
-      logger.e('Failed to load initial inbox items.', error);
+      logger.e('Failed to load initial inbox items.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -158,7 +158,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Open inbox item error.', error);
+      logger.e('Open inbox item error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -180,7 +180,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Mark as read error.', error);
+      logger.e('Mark as read error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -202,7 +202,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Remove inbox item error.', error);
+      logger.e('Remove inbox item error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -224,7 +224,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Refresh inbox error.', error);
+      logger.e('Refresh inbox error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -246,7 +246,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Mark all as read error.', error);
+      logger.e('Mark all as read error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -268,7 +268,7 @@ class _InboxViewState extends State<InboxView> {
         ),
       );
     } catch (error) {
-      logger.e('Clear inbox error.', error);
+      logger.e('Clear inbox error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

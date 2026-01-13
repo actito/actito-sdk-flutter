@@ -149,7 +149,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         _hasLocationEnabled = enabled;
       });
     } catch (error) {
-      logger.e('Get location status error.', error);
+      logger.e('Get location status error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -177,7 +177,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
           ),
         );
       } catch (error) {
-        logger.e('Disable location updates error.', error);
+        logger.e('Disable location updates error.', error: error);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('$error'),
@@ -207,7 +207,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         return;
       }
     } catch (error) {
-      logger.e('Enable foreground Location updates error.', error);
+      logger.e('Enable foreground Location updates error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -229,7 +229,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         );
       }
     } catch (error) {
-      logger.e('Enable background Location updates error.', error);
+      logger.e('Enable background Location updates error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -488,7 +488,7 @@ class _GeoCardViewState extends State<GeoCardView> with WidgetsBindingObserver {
         },
       );
     } catch (error) {
-      logger.e('Geo info error.', error);
+      logger.e('Geo info error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

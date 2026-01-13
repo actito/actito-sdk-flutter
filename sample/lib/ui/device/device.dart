@@ -273,7 +273,7 @@ class _DeviceViewState extends State<DeviceView> {
 
       logger.i('Got current device data successfully.');
     } catch (error) {
-      logger.e('Getting current device data error.', error);
+      logger.e('Getting current device data error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -300,7 +300,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      logger.e('Update user as Notificarista error.', error);
+      logger.e('Update user as Notificarista error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -327,7 +327,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      logger.e('Update user as anonymous error.', error);
+      logger.e('Update user as anonymous error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -351,7 +351,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      logger.e('Update preferred language error.', error);
+      logger.e('Update preferred language error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -375,7 +375,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      logger.e('Clear preferred language error.', error);
+      logger.e('Clear preferred language error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -402,7 +402,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      Logger().e('Updated user data error.', error);
+      Logger().e('Updated user data error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -429,7 +429,7 @@ class _DeviceViewState extends State<DeviceView> {
         ),
       );
     } catch (error) {
-      Logger().e('Unset user data error.', error);
+      Logger().e('Unset user data error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

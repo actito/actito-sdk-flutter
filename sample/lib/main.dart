@@ -484,7 +484,7 @@ class _AppState extends State<App> {
 
       await Actito.launch();
     } catch (error) {
-      logger.e('Something went wrong.', error);
+      logger.e('Something went wrong.', error: error);
     }
   }
 
@@ -503,7 +503,7 @@ class _AppState extends State<App> {
         ),
       );
     } catch (error) {
-      logger.e('Error evaluating deferred link.', error);
+      logger.e('Error evaluating deferred link.', error: error);
     }
   }
 
