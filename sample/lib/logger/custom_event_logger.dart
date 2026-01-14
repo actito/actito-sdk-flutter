@@ -2,22 +2,17 @@ import 'dart:convert';
 
 import 'package:actito/actito.dart';
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
-import '../utils/enviroment_variables.dart';
 import 'logger.dart';
 
 void logCustomEvent(String event, Map<String, dynamic>? data) async {
   final device = await Actito.device().currentDevice;
-  final env = await parseEnvVariablesToMap(assetsFileName: '.env');
+  final sharedPreferences = await SharedPreferences.getInstance();
+  final applicationKey = sharedPreferences.getString('applicationKey');
+  final applicationSecret = sharedPreferences.getString('applicationSecret');
 
-  if (device == null || env.isEmpty) {
-    return;
-  }
-
-  final applicationKey = env['APPLICATION_KEY'];
-  final applicationSecret = env['APPLICATION_SECRET'];
-
-  if (applicationKey == null || applicationSecret == null) {
+  if (device == null || applicationKey == null || applicationSecret == null) {
     return;
   }
 
@@ -43,7 +38,7 @@ void logCustomEvent(String event, Map<String, dynamic>? data) async {
   request.headers.addAll(headers);
   http.StreamedResponse response = await request.send();
 
-  if (response.statusCode == 200) {
+  if (response.statusCode >= 200 && response.statusCode < 300) {
     logger.i(await response.stream.bytesToString());
   } else {
     logger.e(response.reasonPhrase);

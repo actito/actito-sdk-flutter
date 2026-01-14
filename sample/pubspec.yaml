@@ -57,6 +57,7 @@ dependencies:
   actito_user_inbox:
     path: "../actito_user_inbox"
   http: ^1.2.0
+  shared_preferences: ^2.5.4
 
 dev_dependencies:
   flutter_test:
