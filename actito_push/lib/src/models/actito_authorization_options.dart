@@ -29,7 +29,7 @@ enum ActitoAuthorizationOptions {
 
   /// Allows the ability to post noninterrupting notifications provisionally to
   /// the Notification Center.
-@JsonValue("provisional")
+  @JsonValue("provisional")
   provisional,
 
   /// Allows the app to play sounds for critical alerts.
