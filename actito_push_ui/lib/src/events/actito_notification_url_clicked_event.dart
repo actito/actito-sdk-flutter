@@ -14,8 +14,6 @@ part 'actito_notification_url_clicked_event.g.dart';
 /// - `re.notifica.notification.WebView`
 /// - `re.notifica.notification.URL`
 /// - `re.notifica.notification.URLResolver`
-/// - `re.notifica.notification.Video`
-/// - `re.notifica.notification.Passbook`
 @JsonSerializable(anyMap: true, explicitToJson: true)
 class ActitoNotificationUrlClickedEvent {
   /// Notification that contained the clicked URL.
