@@ -5,7 +5,7 @@ part 'actito_notification.g.dart';
 
 /// Represents a notification delivered by Actito.
 ///
-/// An [ActitoNotification] contains the full payload of a notification, including
+/// An [ActitoNotification] contains the payload of a notification, including
 /// its content, actions, attachments, and additional metadata.
 /// Notifications may be partial, meaning that only a subset of fields is provided
 /// and additional data may need to be fetched.

@@ -71,13 +71,14 @@ class ActitoAssetButton {
   /// Converts this [ActitoAssetButton] to a JSON map.
   Map<String, dynamic> toJson() => _$ActitoAssetButtonToJson(this);
 }
+
 /// Contains metadata describing the underlying file of an [ActitoAsset].
 @JsonSerializable(anyMap: true, explicitToJson: true)
 class ActitoAssetMetaData {
   /// The original name of the file as provided at upload time.
   final String originalFileName;
 
-  /// The MIME type of the file (for example, `image/png` or `application/pdf`).
+  /// The MIME type of the file.
   final String contentType;
 
   /// The size of the file in bytes.

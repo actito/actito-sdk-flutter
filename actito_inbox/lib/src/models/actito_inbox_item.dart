@@ -5,9 +5,8 @@ part 'actito_inbox_item.g.dart';
 
 /// Represents an item in the Actito inbox.
 ///
-/// An [ActitoInboxItem] contains a notification and metadata about its delivery
-/// and read state within the inbox. Inbox items can optionally have an expiration
-/// date.
+/// An [ActitoInboxItem] contains a notification and metadata about its read state
+/// within the inbox. Inbox items can optionally have an expiration date.
 @JsonSerializable(anyMap: true, explicitToJson: true)
 @ActitoIsoDateTimeConverter()
 class ActitoInboxItem {

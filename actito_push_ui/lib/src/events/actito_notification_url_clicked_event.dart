@@ -8,6 +8,14 @@ part 'actito_notification_url_clicked_event.g.dart';
 /// This event is triggered when a notification contains a URL, and the user
 /// interacts with it. It provides the original notification and the URL
 /// that was clicked, allowing the app to handle navigation or other logic.
+///
+/// Notification types where this event can be triggered:
+///
+/// - `re.notifica.notification.WebView`
+/// - `re.notifica.notification.URL`
+/// - `re.notifica.notification.URLResolver`
+/// - `re.notifica.notification.Video`
+/// - `re.notifica.notification.Passbook`
 @JsonSerializable(anyMap: true, explicitToJson: true)
 class ActitoNotificationUrlClickedEvent {
   /// Notification that contained the clicked URL.
