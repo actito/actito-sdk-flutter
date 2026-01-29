@@ -153,7 +153,7 @@ class ActitoNotificationAction {
   /// Whether the action requires keyboard input.
   final bool keyboard;
 
-  /// Whether the action requires camera access.
+  /// Whether the action requires camera input.
   final bool camera;
 
   /// Whether the action is destructive.
