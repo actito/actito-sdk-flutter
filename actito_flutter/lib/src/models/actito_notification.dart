@@ -63,7 +63,7 @@ class ActitoNotification {
   /// List of attachments included with the notification.
   final List<ActitoNotificationAttachment> attachments;
 
-  /// Additional unstructured fields not explicitly modeled.
+  /// Collection of key-value pairs used to add extra information to the notification.
   final Map<String, dynamic> extra;
 
   /// Optional identifier of the target content related to the notification.

@@ -27,7 +27,7 @@ class ActitoAsset {
   /// Optional metadata associated with the asset.
   final ActitoAssetMetaData? metaData;
 
-  /// Additional unstructured fields not explicitly modeled.
+  /// Collection of key-value pairs used to add extra information to the asset.
   final Map<String, dynamic> extra;
 
   /// Constructor for [ActitoAsset].
