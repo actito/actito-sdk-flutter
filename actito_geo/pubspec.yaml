@@ -1,6 +1,6 @@
 name: actito_geo
 description: "Actito Geo Flutter Plugin: Transform your user's location into relevant information, automate users segmentation based on location and create truly contextual notifications."
-version: 5.0.0-beta.2
+version: 5.0.0
 homepage: https://actito.com
 documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito_geo
@@ -18,7 +18,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_lints: ^1.0.0
+  flutter_lints: ^6.0.0
   build_runner: ^2.0.0
   json_serializable: ^6.3.0
 

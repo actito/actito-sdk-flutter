@@ -122,7 +122,7 @@ class _TagsViewState extends State<TagsView> {
 
       _tagsInfo(tags);
     } catch (error) {
-      logger.e('Fetch tags failed.', error);
+      logger.e('Fetch tags failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -144,7 +144,7 @@ class _TagsViewState extends State<TagsView> {
         ),
       );
     } catch (error) {
-      logger.e('Add tags failed.', error);
+      logger.e('Add tags failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -166,7 +166,7 @@ class _TagsViewState extends State<TagsView> {
         ),
       );
     } catch (error) {
-      logger.e('Remove tag failed.', error);
+      logger.e('Remove tag failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),
@@ -188,7 +188,7 @@ class _TagsViewState extends State<TagsView> {
         ),
       );
     } catch (error) {
-      logger.e('Clear tags failed.', error);
+      logger.e('Clear tags failed.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

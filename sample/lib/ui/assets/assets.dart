@@ -105,7 +105,7 @@ class _AssetsViewState extends State<AssetsView> {
         _assets = List.empty();
       });
 
-      logger.e('Fetch assets error.', error);
+      logger.e('Fetch assets error.', error: error);
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('$error'),

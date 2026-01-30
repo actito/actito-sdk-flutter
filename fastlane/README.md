@@ -101,17 +101,17 @@ bundle exec fastlane update_android_gradle_plugin version:7.4.2
 ```
 
 
-### update_sample
+### update_sample_apps
 
 ```sh
-[bundle exec] fastlane update_sample
+[bundle exec] fastlane update_sample_apps
 ```
 
-Updates the lockfile of each package and sample app pods.
+Updates the lockfile of each package, and sample apps iOS dependencies (SPM & Pods).
 
 #### Examples
 ```sh
-bundle exec fastlane update_sample
+bundle exec fastlane update_sample_apps
 ```
 
 
