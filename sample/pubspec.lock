@@ -7,70 +7,70 @@ packages:
       path: "../actito"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_assets:
     dependency: "direct main"
     description:
       path: "../actito_assets"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_flutter:
     dependency: "direct overridden"
     description:
       path: "../actito_flutter"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_geo:
     dependency: "direct main"
     description:
       path: "../actito_geo"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_in_app_messaging:
     dependency: "direct main"
     description:
       path: "../actito_in_app_messaging"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_inbox:
     dependency: "direct main"
     description:
       path: "../actito_inbox"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_loyalty:
     dependency: "direct main"
     description:
       path: "../actito_loyalty"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_push:
     dependency: "direct main"
     description:
       path: "../actito_push"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_push_ui:
     dependency: "direct main"
     description:
       path: "../actito_push_ui"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   actito_user_inbox:
     dependency: "direct main"
     description:
       path: "../actito_user_inbox"
       relative: true
     source: path
-    version: "5.0.0-beta.2"
+    version: "5.0.0"
   async:
     dependency: transitive
     description:
