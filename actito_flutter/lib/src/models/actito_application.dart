@@ -3,7 +3,7 @@ import 'package:actito_flutter/src/models/actito_notification.dart';
 
 part 'actito_application.g.dart';
 
-/// Represents an Actito application configuration.
+/// Represents an Actito application.
 ///
 /// An [ActitoApplication] describes the capabilities, services, and configuration
 /// of an application as defined in Actito. It includes enabled services, region
@@ -16,7 +16,7 @@ class ActitoApplication {
   /// Name of the application.
   final String name;
 
-  /// Category of the application as defined in Actito.
+  /// Category of the application.
   final String category;
 
   /// Map of enabled services for the application.
@@ -54,13 +54,13 @@ class ActitoApplication {
   Map<String, dynamic> toJson() => _$ActitoApplicationToJson(this);
 }
 
-/// Configuration related to the Actito inbox feature.
+/// Configuration related to inbox-based features.
 @JsonSerializable(anyMap: true, explicitToJson: true)
 class ActitoInboxConfig {
   /// Whether the inbox feature is enabled for the application.
   final bool useInbox;
 
-  /// Whether unread inbox messages should automatically update the application
+  /// Whether inbox messages should automatically update the application
   /// badge count.
   final bool autoBadge;
 

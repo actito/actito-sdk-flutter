@@ -58,7 +58,7 @@ class ActitoPass {
   /// Token associated with the pass for secure validation.
   final String token;
 
-  /// Additional custom data associated with the pass.
+  /// Collection of key-value pairs used to add extra information to the pass.
   final Map<String, dynamic> data;
 
   /// Timestamp indicating when the pass was created or issued.

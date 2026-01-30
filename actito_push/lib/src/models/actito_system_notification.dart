@@ -15,7 +15,7 @@ class ActitoSystemNotification {
   /// Type of the system notification.
   final String type;
 
-  /// Additional unstructured fields not explicitly modeled.
+  /// Collection of key-value pairs used to add extra information to the notification.
   final Map<String, String?> extra;
 
   /// Constructor for [ActitoSystemNotification].

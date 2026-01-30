@@ -63,7 +63,7 @@ class ActitoNotification {
   /// List of attachments included with the notification.
   final List<ActitoNotificationAttachment> attachments;
 
-  /// Additional unstructured fields not explicitly modeled.
+  /// Collection of key-value pairs used to add extra information to the notification.
   final Map<String, dynamic> extra;
 
   /// Optional identifier of the target content related to the notification.
@@ -153,7 +153,7 @@ class ActitoNotificationAction {
   /// Whether the action requires keyboard input.
   final bool keyboard;
 
-  /// Whether the action requires camera access.
+  /// Whether the action requires camera input.
   final bool camera;
 
   /// Whether the action is destructive.
