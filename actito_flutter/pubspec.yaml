@@ -1,6 +1,6 @@
 name: actito_flutter
 description: Internal Actito plugin. Use the `actito` plugin instead.
-version: 5.0.0
+version: 5.1.0
 homepage: https://actito.com
 documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito
