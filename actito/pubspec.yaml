@@ -1,6 +1,6 @@
 name: actito
 description: Official Actito Flutter plugin. Implements the power of the Actito platform in Flutter applications.
-version: 5.0.0
+version: 5.1.0
 homepage: https://actito.com
 documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito
@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  actito_flutter: 5.0.0
+  actito_flutter: 5.1.0
 
 dev_dependencies:
   flutter_test:
