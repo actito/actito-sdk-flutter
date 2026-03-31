@@ -9,18 +9,18 @@ PODS:
   - Actito/ActitoUserInboxKit (5.0.0):
     - Actito/ActitoUtilitiesKit
   - Actito/ActitoUtilitiesKit (5.0.0)
-  - actito_flutter (5.0.0):
+  - actito_flutter (5.1.0):
     - Actito/ActitoKit (= 5.0.0)
     - Flutter
-  - actito_push (5.0.0):
+  - actito_push (5.1.0):
     - Actito/ActitoKit (= 5.0.0)
     - Actito/ActitoPushKit (= 5.0.0)
     - Flutter
-  - actito_push_ui (5.0.0):
+  - actito_push_ui (5.1.0):
     - Actito/ActitoKit (= 5.0.0)
     - Actito/ActitoPushUIKit (= 5.0.0)
     - Flutter
-  - actito_user_inbox (5.0.0):
+  - actito_user_inbox (5.1.0):
     - Actito/ActitoKit (= 5.0.0)
     - Actito/ActitoUserInboxKit (= 5.0.0)
     - Flutter
@@ -74,10 +74,10 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Actito: 20847de916c0db781ca15461d4635e79edca2ef7
-  actito_flutter: 9319221b22f8a9ac0ec0ccc8925ddaa405ad3865
-  actito_push: c6d7fa53b5852a76f7f5070c391d5e2d3a8f32ae
-  actito_push_ui: c66ba0de0eb2dca79624a22a1db7693e7062dcd0
-  actito_user_inbox: feccad663813ce37a5b77c589209fccad1e90fa4
+  actito_flutter: cb6b16f868d93fba084ff1ff5d71758ea0e28a5c
+  actito_push: 66029aed5426777ae6f6ee599eb3f4a7ea5fd712
+  actito_push_ui: 63995ede89602cdf609dd199411c2a584c36dfc4
+  actito_user_inbox: de7033d7c431963d6b9e2c5e00a31e3de53a9bf0
   Auth0: 28cb24cb19ebd51f0b07751f16d83b59f4019532
   auth0_flutter: 7b99a56cc3aef5ca4e0a2a6f1f4e6c4e105dcc2d
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
