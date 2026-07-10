@@ -24,7 +24,7 @@ Updates the versions of the native libraries.
 #### Options
 * `version`: The version of the native libraries.
 * `platform`: The platform to update. Leave blank to update both.
-* `local`: Option to use local SPM. For Cocoapods and Android apps should be updated to use local sources.
+* `local`: Whether to use the local SPM instead of the remote.
 
 #### Examples
 ```sh
