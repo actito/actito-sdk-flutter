@@ -40,6 +40,7 @@ class ActitoNotification {
   /// - `re.notifica.notification.Rate`
   /// - `re.notifica.notification.Passbook`
   /// - `re.notifica.notification.Store`
+  /// - `re.notifica.notification.Pass`
   final String type;
 
   /// Timestamp indicating when the notification was generated.
