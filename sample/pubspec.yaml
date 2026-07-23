@@ -18,7 +18,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 3.0.0+3
 
 environment:
-  sdk: '>=2.18.2 <3.0.0'
+  sdk: ^3.12.0
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -34,7 +34,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   timeago: ^3.1.0
-  permission_handler: ^12.0.1
+  permission_handler: ^12.0.3
   logger: ^2.6.2
 
   # Actito dependencies
@@ -57,7 +57,7 @@ dependencies:
   actito_user_inbox:
     path: "../actito_user_inbox"
   http: ^1.2.0
-  shared_preferences: ^2.5.4
+  shared_preferences: ^2.5.5
 
 dev_dependencies:
   flutter_test:
