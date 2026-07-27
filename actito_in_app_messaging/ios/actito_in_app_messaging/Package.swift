@@ -13,7 +13,7 @@ let package = Package(
         .library(name: "actito-in-app-messaging", targets: ["actito_in_app_messaging"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.0.0"),
+        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.2.0"),
     ],
     targets: [
         .target(
