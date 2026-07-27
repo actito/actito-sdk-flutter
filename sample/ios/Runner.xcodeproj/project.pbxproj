@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -1019,7 +1019,7 @@
 			repositoryURL = "https://github.com/Actito/actito-sdk-ios.git";
 			requirement = {
 				kind = exactVersion;
-				version = 5.0.0;
+				version = 5.2.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
