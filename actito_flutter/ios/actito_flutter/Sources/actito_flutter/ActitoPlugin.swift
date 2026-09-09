@@ -489,6 +489,22 @@ extension ActitoPlugin {
     public func scene(_ scene: UIScene, continue userActivity: NSUserActivity) -> Bool {
         return handleContinuedUserActivity(userActivity)
     }
+
+    public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions?) -> Bool {
+        guard let connectionOptions else {
+            return false
+        }
+
+        if let url = connectionOptions.urlContexts.first?.url, handleOpenedUrl(url) {
+            return true
+        }
+
+        if let userActivity = connectionOptions.userActivities.first, handleContinuedUserActivity(userActivity) {
+            return true
+        }
+
+        return false
+    }
 }
 
 extension ActitoPlugin {
