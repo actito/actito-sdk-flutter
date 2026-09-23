@@ -20,6 +20,6 @@ For support please use: https://www.actito.com/en-BE/contact/support/
   s.source_files = 'actito_flutter/Sources/actito_flutter/**/*'
   s.dependency 'Flutter'
   s.dependency 'Actito/ActitoKit', actito_version
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '15.0'
   s.swift_version = '5.0'
 end

@@ -21,6 +21,6 @@ For support please use: https://www.actito.com/en-BE/contact/support/
   s.dependency 'Flutter'
   s.dependency 'Actito/ActitoKit', actito_version
   s.dependency 'Actito/ActitoAssetsKit', actito_version
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '15.0'
   s.swift_version = '5.0'
 end

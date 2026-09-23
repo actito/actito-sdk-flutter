@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "actito_loyalty",
     platforms: [
-        .iOS("13.0")
+        .iOS("15.0")
     ],
     products: [
         // If the plugin name contains "_", replace with "-" for the library name.
