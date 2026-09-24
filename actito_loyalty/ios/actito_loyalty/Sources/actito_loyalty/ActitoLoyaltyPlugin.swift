@@ -10,7 +10,11 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
 
     private static let instance = ActitoLoyaltyPlugin()
 
+    private weak var registrar: FlutterPluginRegistrar?
+
     public static func register(with registrar: FlutterPluginRegistrar) {
+        instance.registrar = registrar
+
         let channel = FlutterMethodChannel(name: "com.actito.loyalty.flutter/actito_loyalty", binaryMessenger: registrar.messenger(), codec: FlutterJSONMethodCodec.sharedInstance())
         registrar.addMethodCallDelegate(instance, channel: channel)
     }
@@ -80,7 +84,7 @@ public class ActitoLoyaltyPlugin: NSObject, FlutterPlugin {
         }
 
         DispatchQueue.main.async {
-            guard let rootViewController = UIApplication.shared.delegate?.window??.rootViewController else {
+            guard let rootViewController = self.registrar?.viewController else {
                 response(FlutterError(code: DEFAULT_ERROR_CODE, message: "Cannot present a pass with a nil root view controller.", details: nil))
                 return
             }
