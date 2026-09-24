@@ -15,13 +15,17 @@ public class ActitoPushUIPlugin: NSObject, FlutterPlugin {
 
     private let eventBroker = ActitoPushUIPluginEventBroker(namespace: NAMESPACE)
 
+    private weak var registrar: FlutterPluginRegistrar?
+
     private var rootViewController: UIViewController? {
         get {
-            UIApplication.shared.delegate?.window??.rootViewController
+            registrar?.viewController
         }
     }
 
     private func register(with registrar: FlutterPluginRegistrar) {
+        self.registrar = registrar
+
         // Events
         eventBroker.setup(registrar: registrar)
 
