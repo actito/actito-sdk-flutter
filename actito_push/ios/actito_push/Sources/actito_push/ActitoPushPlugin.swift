@@ -85,10 +85,6 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
             if option == "criticalAlert" {
                 authorizationOptions = [authorizationOptions, .criticalAlert]
             }
-
-            if option == "announcement" {
-                authorizationOptions = [authorizationOptions, .announcement]
-            }
         }
 
         DispatchQueue.main.async {
@@ -116,10 +112,6 @@ public class ActitoPushPlugin: NSObject, FlutterPlugin {
 
             if option == "hiddenPreviewsShowSubtitle" {
                 categoryOptions = [categoryOptions, .hiddenPreviewsShowSubtitle]
-            }
-
-            if option == "allowAnnouncement" {
-                categoryOptions = [categoryOptions, .allowAnnouncement]
             }
         }
 
