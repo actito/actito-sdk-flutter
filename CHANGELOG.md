@@ -4,8 +4,8 @@
 
 - Add UIScene support
 - Bump minimum deployment target to iOS 15 for XCode 27 compatibility
-- Deprecate `ActitoAuthorizationOptions.announcement` and `ActitoCategoryOptions.allowAnnouncement` as they have no effect on iOS 15 and later
 - Bump minimum Flutter version to 3.38
+- Deprecate `ActitoAuthorizationOptions.announcement` and `ActitoCategoryOptions.allowAnnouncement` as they have no effect on iOS 15 and later
 
 #### Native changes
 
