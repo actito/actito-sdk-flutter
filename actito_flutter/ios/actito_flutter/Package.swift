@@ -6,14 +6,14 @@ import PackageDescription
 let package = Package(
     name: "actito_flutter",
     platforms: [
-        .iOS("13.0")
+        .iOS("15.0")
     ],
     products: [
         // If the plugin name contains "_", replace with "-" for the library name.
         .library(name: "actito-flutter", targets: ["actito_flutter"])
     ],
     dependencies: [
-        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.2.0"),
+        .package(url: "https://github.com/Actito/actito-sdk-ios.git", from: "5.3.0"),
     ],
     targets: [
         .target(
