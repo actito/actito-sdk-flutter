@@ -1,7 +1,7 @@
 require 'yaml'
 
 pubspec = YAML.load(File.read(File.join(__dir__, "..", "pubspec.yaml")))
-actito_version = '5.2.0'
+actito_version = '5.3.0'
 
 Pod::Spec.new do |s|
   s.name             = pubspec['name']
@@ -21,6 +21,6 @@ For support please use: https://www.actito.com/en-BE/contact/support/
   s.dependency 'Flutter'
   s.dependency 'Actito/ActitoKit', actito_version
   s.dependency 'Actito/ActitoAssetsKit', actito_version
-  s.platform = :ios, '13.0'
+  s.platform = :ios, '15.0'
   s.swift_version = '5.0'
 end

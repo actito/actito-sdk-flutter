@@ -5,7 +5,7 @@ import UIKit
 private typealias FlutterDictionary = [String: Any?]
 private let DEFAULT_ERROR_CODE = "actito_error"
 
-public class ActitoPlugin: NSObject, FlutterPlugin {
+public class ActitoPlugin: NSObject, FlutterPlugin, FlutterSceneLifeCycleDelegate {
 
     static let instance = ActitoPlugin()
 
@@ -17,6 +17,7 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
 
     private func register(with registrar: FlutterPluginRegistrar) {
         registrar.addApplicationDelegate(self)
+        registrar.addSceneDelegate(self)
 
         // Events
         ActitoEventManager.shared.register(for: registrar)
@@ -461,8 +462,53 @@ public class ActitoPlugin: NSObject, FlutterPlugin {
     }
 }
 
+// Kept for apps that have not yet adopted UIScene.
 extension ActitoPlugin {
     public func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        return handleOpenedUrl(url)
+    }
+
+    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
+        return handleContinuedUserActivity(userActivity)
+    }
+}
+
+extension ActitoPlugin {
+    public func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) -> Bool {
+        var handled = false
+
+        for context in URLContexts {
+            if handleOpenedUrl(context.url) {
+                handled = true
+            }
+        }
+
+        return handled
+    }
+
+    public func scene(_ scene: UIScene, continue userActivity: NSUserActivity) -> Bool {
+        return handleContinuedUserActivity(userActivity)
+    }
+
+    public func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions?) -> Bool {
+        guard let connectionOptions else {
+            return false
+        }
+
+        if let url = connectionOptions.urlContexts.first?.url, handleOpenedUrl(url) {
+            return true
+        }
+
+        if let userActivity = connectionOptions.userActivities.first, handleContinuedUserActivity(userActivity) {
+            return true
+        }
+
+        return false
+    }
+}
+
+extension ActitoPlugin {
+    private func handleOpenedUrl(_ url: URL) -> Bool {
         return onMainThreadIsolated {
             if Actito.shared.handleTestDeviceUrl(url) {
                 return true
@@ -477,7 +523,7 @@ extension ActitoPlugin {
         }
     }
 
-    public func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]) -> Void) -> Bool {
+    private func handleContinuedUserActivity(_ userActivity: NSUserActivity) -> Bool {
         return onMainThreadIsolated {
             guard let url = userActivity.webpageURL else {
                 return false

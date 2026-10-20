@@ -25,6 +25,7 @@ enum ActitoCategoryOptions {
   hiddenPreviewsShowSubtitle,
 
   /// Allows notifications in this category to be announced using voice assistance.
+  @Deprecated('This option is ignored on iOS 15 and later.')
   @JsonValue("allowAnnouncement")
   allowAnnouncement;
 

@@ -1,13 +1,13 @@
 name: actito_flutter
 description: Internal Actito plugin. Use the `actito` plugin instead.
-version: 5.2.0
+version: 5.3.0
 homepage: https://actito.com
 documentation: https://developers.actito.com/docs/push-implementation/flutter/implementation/
 repository: https://github.com/actito/actito-sdk-flutter/tree/main/actito
 
 environment:
-  sdk: '>=2.17.0 <4.0.0'
-  flutter: ">=1.20.0"
+  sdk: ^3.10.0
+  flutter: ">=3.38.0"
 
 dependencies:
   flutter:

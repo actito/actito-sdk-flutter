@@ -37,6 +37,7 @@ enum ActitoAuthorizationOptions {
   criticalAlert,
 
   /// Allows notifications to be announced using voice assistance.
+  @Deprecated('Announcement is always included on iOS 15 and later.')
   @JsonValue("announcement")
   announcement;
 
