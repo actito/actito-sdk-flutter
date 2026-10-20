@@ -1,6 +1,6 @@
 # CHANGELOG
 
-## Upcoming release
+## 5.3.0
 
 - Add UIScene support
 - Bump minimum deployment target to iOS 15 for XCode 27 compatibility
